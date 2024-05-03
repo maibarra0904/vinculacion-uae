@@ -1,18 +1,18 @@
-import OrderSidebar from "@/components/order/OrderSidebar";
+import OrderSidebar from "@/components/order/OrderSidebar"
 
-export default function Home({children}) {
-
-
+const LaborComunitaria = () => {
   return (
     <div className="md:flex">
             
             <OrderSidebar />
 
             <main className="md:flex-1 md:h-screen md:overflow-y-scroll p-5">
-                {children}
+                <p>Labor Comunitaria</p>
             </main>
 
             
       </div>
-  );
+  )
 }
+
+export default LaborComunitaria
