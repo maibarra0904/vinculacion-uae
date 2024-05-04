@@ -23,6 +23,11 @@ const OrderSidebar = () => {
             id: 2,
             name: "Practicas Preprofesionales",
             slug: "practica"
+        },
+        {
+            id: 3,
+            name: 'Desglose (Egresados)',
+            slug: "desglose"
         }
     ]
 
@@ -31,8 +36,8 @@ const OrderSidebar = () => {
     <aside className="md:w-72 md:h-screen bg-white">
 
         <Logo />
-        <p className="flex justify-center items-center text-green-500">Universidad Agraria del Ecuador</p>
-        <p className="flex justify-center items-center text-green-500">Vinculación - Computación</p>
+        <p className="flex justify-center items-center font-bold text-indigo-800">Universidad Agraria del Ecuador</p>
+        <p className="flex justify-center items-center font-bold text-indigo-800">Vinculación - Computación</p>
         <nav className="mt-10">
             {
                 categories.map(category => (

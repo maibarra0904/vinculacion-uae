@@ -1,17 +1,13 @@
-import OrderSidebar from "@/components/order/OrderSidebar"
+'use client'
+import Layout from "@/components/ui/Layout"
+import MyPage from '../../components/contents/labor.mdx';
 
 const LaborComunitaria = () => {
   return (
-    <div className="md:flex">
-            
-            <OrderSidebar />
+    <Layout>
+               <MyPage />
+    </Layout>
 
-            <main className="md:flex-1 md:h-screen md:overflow-y-scroll p-5">
-                <p>Labor Comunitaria</p>
-            </main>
-
-            
-      </div>
   )
 }
 
