@@ -10,7 +10,7 @@ const CategoryIcon = ({category, path}) => {
 
   return (
     <div
-        className={`${"/"+category?.slug === path ? 'bg-indigo-400' :''} flex items-center gap-4 w-full border-t border-gray-200 p-3 last-of-type:border-b`}
+        className={`${path.includes("/"+category?.slug) ? 'bg-indigo-400' :''} flex items-center gap-4 w-full border-t border-gray-200 p-3 last-of-type:border-b`}
     >
         <div className="w-16 h-10 relative">
         <Image 
@@ -19,7 +19,7 @@ const CategoryIcon = ({category, path}) => {
             alt="Imagen Categoria"
         />
         </div>
-        <Link className={`text-xl font-bold ${"/"+category?.slug === path ? "text-white" :"text-indigo-800"}`} href={`/${category.slug}`}>{category.name}</Link>
+        <Link className={`text-xl font-bold ${path.includes("/"+category?.slug) ? "text-white" :"text-indigo-800"}`} href={`/${category.slug}`}>{category.name}</Link>
     </div>
   )
 }
