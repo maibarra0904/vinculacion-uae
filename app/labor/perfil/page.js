@@ -44,20 +44,18 @@ const PasosPerfil = () => {
               nuevo={true}
               external={true}
             />
-
-            
           </EnlacesRelacionados>
 
           <EnlacesRelacionados text="Otros enlaces de Interés">
-              <Enlace
-                url={"/labor"}
-                text="Información general sobre Labores Comunitarias"
-              />
-              <Enlace
-                url={"/labor/convenio"}
-                text="Información sobre convenios"
-              />
-            </EnlacesRelacionados>
+            <Enlace
+              url={"/labor"}
+              text="Información general sobre Labores Comunitarias"
+            />
+            <Enlace
+              url={"/labor/convenio"}
+              text="Información sobre convenios"
+            />
+          </EnlacesRelacionados>
         </>
       ) : (
         <>
@@ -113,15 +111,15 @@ const PasosPerfil = () => {
           </EnlacesRelacionados>
 
           <EnlacesRelacionados text="Otros enlaces de Interés">
-              <Enlace
-                url={"/labor"}
-                text="Información general sobre Labores Comunitarias"
-              />
-              <Enlace
-                url={"/labor/convenio"}
-                text="Información sobre convenios"
-              />
-            </EnlacesRelacionados>
+            <Enlace
+              url={"/labor"}
+              text="Información general sobre Labores Comunitarias"
+            />
+            <Enlace
+              url={"/labor/convenio"}
+              text="Información sobre convenios"
+            />
+          </EnlacesRelacionados>
         </>
       )}
     </Layout>

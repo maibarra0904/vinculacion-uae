@@ -9,7 +9,7 @@ const LaborComunitaria = () => {
     <Layout>
       <MyPage />
 
-      <EnlacesRelacionados text="Enlaces de interés">
+      <EnlacesRelacionados>
       <Enlace
           url={
             "/labor/convenio"
