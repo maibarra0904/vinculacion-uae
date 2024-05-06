@@ -38,6 +38,7 @@ const OrderSidebar = () => {
         <Logo />
         <p className="flex justify-center items-center font-bold text-indigo-800">Universidad Agraria del Ecuador</p>
         <p className="flex justify-center items-center font-bold text-indigo-800">Vinculación - Computación</p>
+        <p className="flex justify-center items-center font-bold text-indigo-800">Milagro</p>
         <nav className="mt-10">
             {
                 categories.map(category => (
