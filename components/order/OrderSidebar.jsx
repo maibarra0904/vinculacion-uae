@@ -12,6 +12,8 @@ const OrderSidebar = () => {
 
     const [showNavBar, setShowNavBar] = useState(false)
 
+    const [loading, setLoading] = useState(true)
+
     const [windowSize, setWindowSize] = useState({
         width: undefined,
         height: undefined
@@ -27,6 +29,9 @@ const OrderSidebar = () => {
                 height: window.innerHeight
             });
         };
+
+        handleResize()
+        setLoading(false)
 
         window.addEventListener("resize", handleResize);
 
