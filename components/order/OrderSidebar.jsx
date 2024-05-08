@@ -33,7 +33,7 @@ const OrderSidebar = () => {
 
 
   return (
-    <aside className="md:w-72 md:h-screen bg-white">
+    <aside className="pt-5 md:w-72 md:h-screen bg-white">
 
         <Logo />
         <p className="flex justify-center items-center font-bold text-indigo-800">Universidad Agraria del Ecuador</p>

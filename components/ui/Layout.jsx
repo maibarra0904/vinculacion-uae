@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
         <div className="md:flex">
             <OrderSidebar />
 
-            <main className="md:flex-1 md:h-screen md:overflow-y-scroll p-5">
+            <main className="p-5 md:flex-1 md:h-screen md:overflow-y-scroll">
                 {children}
             </main>
         </div>
