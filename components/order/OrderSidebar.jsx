@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import CategoryIcon from "../ui/CategoryIcon"
 import Logo from "../ui/Logo"
+import BarNav from "../ui/BarNav"
 
 
 
@@ -9,49 +10,78 @@ const OrderSidebar = () => {
 
     const [path, setPath] = useState('')
 
+    const [showNavBar, setShowNavBar] = useState(false)
+
+    const [windowSize, setWindowSize] = useState({
+        width: undefined,
+        height: undefined
+    });
+
     useEffect(() => {
+
         setPath(window.location.pathname)
-    },[])
 
-    const categories = [
-        {
-            id: 1,
-            name: "Labores Comunitarias",
-            slug: "labor"
-        },
-        {
-            id: 2,
-            name: "Practicas Preprofesionales",
-            slug: "practica"
-        },
-        {
-            id: 3,
-            name: 'Desglose (Egresados)',
-            slug: "desglose"
-        }
-    ]
+        const handleResize = () => {
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        // Limpia el listener cuando el componente se desmonta
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    const handleShow = () => {
+        setShowNavBar(!showNavBar)
+    }
 
 
-  return (
-    <aside className="pt-5 md:w-72 md:h-screen bg-white">
+    return (
+        <aside className="pt-5 pb-2 md:w-72 md:h-screen bg-white">
 
-        <Logo />
-        <p className="flex justify-center items-center font-bold text-indigo-800">Universidad Agraria del Ecuador</p>
-        <p className="flex justify-center items-center font-bold text-indigo-800">Vinculación - Computación</p>
-        <p className="flex justify-center items-center font-bold text-indigo-800">Milagro</p>
-        <nav className="mt-10">
+            <Logo />
+            <p className="flex justify-center items-center font-bold text-indigo-800">Universidad Agraria del Ecuador</p>
+            <p className="flex justify-center items-center font-bold text-indigo-800">Vinculación - Computación</p>
+            <p className="flex justify-center items-center font-bold text-indigo-800">Milagro</p>
+
             {
-                categories.map(category => (
-                    <CategoryIcon 
-                        key={category.id}
-                        category={category}
-                        path={path}
-                    />
-                ))
+                windowSize.width < 768 ?
+                    <>
+                        <div
+                            className={`${showNavBar?'ml-4 mr-4 mt-4':'m-4'} flex flex-col justify-center items-center border border-gray-200 hover:cursor-pointer`}
+                            onClick={handleShow}
+                        >
+                            <div className={`m-1`}>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+                                </svg>
+                            </div>
+
+
+
+                        </div>
+
+                        {
+                            showNavBar &&
+                            <div
+                                className={`${showNavBar?'ml-4 mr-4 mt-0 mb-4 transition duration-500':'m-4'} justify-center items-center hover:cursor-pointer border border-gray-200`}
+                            >
+                                <BarNav path={path} showNavBar={showNavBar}/>
+                            </div>
+                        }
+
+                    </>
+                    :
+                    <BarNav path={path} />
             }
-        </nav>
-    </aside>
-  )
+
+        </aside>
+    )
 }
 
 export default OrderSidebar
