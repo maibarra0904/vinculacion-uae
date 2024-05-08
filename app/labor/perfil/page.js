@@ -7,12 +7,14 @@ import { useState } from "react";
 import Paginacion from "@/components/ui/Paginacion";
 import EnlacesRelacionados from "@/components/ui/EnlacesRelacionados";
 import Enlace from "@/components/ui/Enlace";
+import Regresar from "@/components/ui/Regresar";
 
 const PasosPerfil = () => {
   const [page, setPage] = useState(1);
 
   return (
     <Layout>
+      <Regresar />
       <Perfil />
 
       <Paginacion page={page} setPage={setPage} />

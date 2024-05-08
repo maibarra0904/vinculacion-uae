@@ -4,12 +4,14 @@ import InformeFinal from "../../../components/contents/labor/laborInforme.mdx";
 import React from "react";
 import EnlacesRelacionados from "@/components/ui/EnlacesRelacionados";
 import Enlace from "@/components/ui/Enlace";
+import Regresar from "@/components/ui/Regresar";
 
 const Informe = () => {
   return (
     <Layout>
+      <Regresar />
       <InformeFinal />
-
+      
       <EnlacesRelacionados>
         <Enlace
           url={

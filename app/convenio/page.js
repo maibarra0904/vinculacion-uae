@@ -3,11 +3,13 @@ import Layout from "@/components/ui/Layout";
 import Convenios from "../../components/contents/labor/convenios.mdx";
 import EnlacesRelacionados from "@/components/ui/EnlacesRelacionados";
 import Enlace from "@/components/ui/Enlace";
+import Regresar from "@/components/ui/Regresar";
 
 const Convenio = () => {
   return (
     <>
       <Layout>
+        <Regresar />
         <Convenios />
 
         <EnlacesRelacionados>

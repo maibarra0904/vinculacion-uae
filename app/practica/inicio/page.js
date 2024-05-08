@@ -1,30 +1,48 @@
-'use client'
-import Layout from '@/components/ui/Layout'
+"use client";
+import Layout from "@/components/ui/Layout";
 import Inicio from "../../../components/contents/practicas/practicasInicio.mdx";
 import Paso1 from "../../../components/contents/practicas/paso1.mdx";
 import Paso2 from "../../../components/contents/practicas/paso2.mdx";
-import React, { useState } from 'react'
-import Paginacion from '@/components/ui/Paginacion';
-import EnlacesRelacionados from '@/components/ui/EnlacesRelacionados';
-import Enlace from '@/components/ui/Enlace';
+import React, { useState } from "react";
+import Paginacion from "@/components/ui/Paginacion";
+import EnlacesRelacionados from "@/components/ui/EnlacesRelacionados";
+import Enlace from "@/components/ui/Enlace";
+import Regresar from "@/components/ui/Regresar";
 
 const InicioPracticas = () => {
-    const [page, setPage] = useState(1);
+  const [page, setPage] = useState(1);
   return (
     <Layout>
-        <Inicio />
+      <Regresar />
+      <Inicio />
 
-        <Paginacion page={page} setPage={setPage} />
+      <Paginacion page={page} setPage={setPage} />
 
-        {page === 1 ? 
+      {page === 1 ? (
         <>
           <Paso1 />
 
           <EnlacesRelacionados>
-          <Enlace
+            <Enlace
               url={"/convenio"}
               text="Información sobre convenios"
               nuevo={true}
+            />
+            <Enlace
+              url={
+                "https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EVH1EZp0XnRHpK3GAS2YjbkBo54sb3BpFfyuXNqJ4sXGsw?e=3gibyd"
+              }
+              text="Formato de Solicitud Con Convenio para realizar PP"
+              nuevo={true}
+              external={true}
+            />
+            <Enlace
+              url={
+                "https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EZAFqFqV0pVFoEPefB2VvKwB2CEVpE3jRpdiOZCxnZY1lg?e=lZPJKg"
+              }
+              text="Formato de Solicitud Con Carta de Intensión para realizar PP"
+              nuevo={true}
+              external={true}
             />
             <Enlace
               url={"https://forms.office.com/r/STqADeUtDd"}
@@ -41,9 +59,7 @@ const InicioPracticas = () => {
               external={true}
             />
             <Enlace
-              url={
-                "http://academico.uagraria.edu.ec/index.php"
-              }
+              url={"http://academico.uagraria.edu.ec/index.php"}
               text="Enlace para ingresar al sistema de MATRICULA"
               nuevo={true}
               external={true}
@@ -60,8 +76,8 @@ const InicioPracticas = () => {
               text="Información general sobre Prácticas Preprofesionales"
             />
           </EnlacesRelacionados>
-        
-        </> :
+        </>
+      ) : (
         <>
           <Paso2 />
 
@@ -89,10 +105,9 @@ const InicioPracticas = () => {
             />
           </EnlacesRelacionados>
         </>
-}
-      
+      )}
     </Layout>
-  )
-}
+  );
+};
 
-export default InicioPracticas
+export default InicioPracticas;
