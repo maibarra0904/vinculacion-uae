@@ -12,7 +12,7 @@ const LaborComunitaria = () => {
       <EnlacesRelacionados>
       <Enlace
           url={
-            "/labor/convenio"
+            "/convenio"
           }
           text="Información sobre convenios"
         />

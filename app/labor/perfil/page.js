@@ -22,6 +22,7 @@ const PasosPerfil = () => {
           <Paso1 />
 
           <EnlacesRelacionados>
+            
             <Enlace
               url={"https://forms.office.com/r/STqADeUtDd"}
               text="Formulario para solicitar número de oficio"
