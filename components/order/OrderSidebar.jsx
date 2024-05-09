@@ -10,7 +10,7 @@ const OrderSidebar = () => {
 
     const [path, setPath] = useState('')
 
-    const [showNavBar, setShowNavBar] = useState(localStorage.getItem('showNavBar') === 'true')
+    const [showNavBar, setShowNavBar] = useState(localStorage.getItem('showNavBar') === 'true' || false)
 
     const [windowSize, setWindowSize] = useState({
         width: undefined,
