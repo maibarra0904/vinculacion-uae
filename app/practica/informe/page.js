@@ -28,6 +28,14 @@ const Final = () => {
           external={true}
         />
       </EnlacesRelacionados>
+      <EnlacesRelacionados text="Otros enlaces de Interés">
+        <Enlace
+          url={"https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/EfvsHKUVh9tLneCfApkqRekBbRrBo6rNQbxbHu1AYaC78A?e=0DYtNS"}
+          text="Ejemplo de documentos de cierre de PP con recibido"
+          nuevo={true}
+          external={true}
+        />
+      </EnlacesRelacionados>
     </Layout>
   );
 };

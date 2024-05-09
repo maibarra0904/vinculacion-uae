@@ -75,6 +75,18 @@ const InicioPracticas = () => {
               url={"/practica"}
               text="Información general sobre Prácticas Preprofesionales"
             />
+            <Enlace
+              url={"https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/Ec4jvOXjUBtLqLTcaA2tF0QBatL05w7dHFg8QdPkWRGcgA?e=UoNQKy"}
+              text="Ejemplo de Documentación de Inicio con Convenio"
+              nuevo={true}
+              external={true}
+            />
+            <Enlace
+              url={"https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/ERhGF0_GeZ5JjV0aCKlcGkoB4M9psk3spbqvUJQLztfnvw?e=OcHBiu"}
+              text="Ejemplo de Documentación de Inicio con Carta de Intension"
+              nuevo={true}
+              external={true}
+            />
           </EnlacesRelacionados>
         </>
       ) : (
@@ -102,6 +114,18 @@ const InicioPracticas = () => {
             <Enlace
               url={"/practica"}
               text="Información general sobre Prácticas Preprofesionales"
+            />
+            <Enlace
+              url={"https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/Ec4jvOXjUBtLqLTcaA2tF0QBatL05w7dHFg8QdPkWRGcgA?e=UoNQKy"}
+              text="Ejemplo de Documentación de Inicio con Convenio"
+              nuevo={true}
+              external={true}
+            />
+            <Enlace
+              url={"https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/ERhGF0_GeZ5JjV0aCKlcGkoB4M9psk3spbqvUJQLztfnvw?e=OcHBiu"}
+              text="Ejemplo de Documentación de Inicio con Carta de Intension"
+              nuevo={true}
+              external={true}
             />
           </EnlacesRelacionados>
         </>

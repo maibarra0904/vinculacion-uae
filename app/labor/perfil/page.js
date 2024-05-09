@@ -58,6 +58,14 @@ const PasosPerfil = () => {
               url={"/labor/convenio"}
               text="Información sobre convenios"
             />
+            <Enlace
+              url={
+                "https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/Ee81ntrXu8NAtzSSDxOMkJQBEjMjMVX0H98hNFaVBh6r2Q?e=5NY6rl"
+              }
+              text="Ejemplo de un perfil aprobado"
+              nuevo={true}
+              external={true}
+            />
           </EnlacesRelacionados>
         </>
       ) : (
@@ -122,7 +130,16 @@ const PasosPerfil = () => {
               url={"/labor/convenio"}
               text="Información sobre convenios"
             />
+            <Enlace
+              url={
+                "https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/Ee81ntrXu8NAtzSSDxOMkJQBEjMjMVX0H98hNFaVBh6r2Q?e=5NY6rl"
+              }
+              text="Ejemplo de un perfil aprobado"
+              nuevo={true}
+              external={true}
+            />
           </EnlacesRelacionados>
+          
         </>
       )}
     </Layout>

@@ -64,6 +64,14 @@ const Informe = () => {
           text="Información general sobre Labores Comunitarias"
         />
         <Enlace url={"/labor/convenio"} text="Información sobre convenios" />
+        <Enlace
+          url={
+            "https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/EbFF1wjyWtpDhXe10Jt0GVkBwlRAbas8uCcr3Pn1RKgtWQ?e=O5UDIM"
+          }
+          text="Ejemplo de un informe final aprobado"
+          nuevo={true}
+          external={true}
+        />
       </EnlacesRelacionados>
     </Layout>
   );
