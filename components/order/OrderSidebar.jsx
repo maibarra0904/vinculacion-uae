@@ -10,7 +10,7 @@ const OrderSidebar = () => {
 
     const [path, setPath] = useState('')
 
-    const [showNavBar, setShowNavBar] = useState(true)
+    const [showNavBar, setShowNavBar] = useState(localStorage.getItem('showNavBar') === 'true')
 
     const [windowSize, setWindowSize] = useState({
         width: undefined,
@@ -20,6 +20,7 @@ const OrderSidebar = () => {
     useEffect(() => {
 
         setPath(window.location.pathname)
+        
 
         const handleResize = () => {
             setWindowSize({
@@ -39,7 +40,10 @@ const OrderSidebar = () => {
     }, []);
 
     const handleShow = () => {
-        setShowNavBar(!showNavBar)
+        const showState = !showNavBar
+        console.log(showState)
+        setShowNavBar(showState)
+        localStorage.setItem('showNavBar', showState)
     }
 
 
@@ -69,7 +73,7 @@ const OrderSidebar = () => {
                         </div>
 
                         {
-                            showNavBar &&
+                            showNavBar===true &&
                             <div
                                 className={`${showNavBar?'ml-4 mr-4 mt-0 mb-4 transition duration-500':'m-4'} justify-center items-center hover:cursor-pointer border border-gray-200`}
                             >
