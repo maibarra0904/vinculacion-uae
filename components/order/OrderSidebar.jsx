@@ -10,7 +10,7 @@ const OrderSidebar = () => {
 
     const [path, setPath] = useState('')
 
-    const [showNavBar, setShowNavBar] = useState(JSON.parse(localStorage.getItem('showNavBar')) || false)
+    const [showNavBar, setShowNavBar] = useState(undefined)
 
     const [windowSize, setWindowSize] = useState({
         width: undefined,
@@ -18,6 +18,11 @@ const OrderSidebar = () => {
     });
 
     useEffect(() => {
+
+        if (typeof window !== 'undefined') {
+            const show = JSON.parse(localStorage.getItem('showNavBar')) || false;
+            setShowNavBar(show)
+        }
 
         setPath(window.location.pathname)
         
