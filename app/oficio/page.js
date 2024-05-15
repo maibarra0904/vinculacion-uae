@@ -419,14 +419,19 @@ function Oficio() {
         )}
 
         {loading ? (
+          <>
+          <div className="flex justify-center items-center mt-5">
+            <p className="p-2 font-bold">Generando numero de oficio...</p>
+          </div>
           <div className="flex justify-center items-center mt-5">
             <Image
               width={80}
               height={80}
-              alt="Logotipo Vinculacion"
-              src="/loader.gif"
+              alt="loader"
+              src="/spinner.gif"
             />
           </div>
+          </>
         ) : (
           letterNumber && (
             <>
