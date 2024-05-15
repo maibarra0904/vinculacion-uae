@@ -1,0 +1,4 @@
+[build]
+  env = [
+    "NEXT_PUBLIC_URL_OFICIO_BACKEND=https://backend-oficio-uae.onrender.com/api/applications"
+  ]
