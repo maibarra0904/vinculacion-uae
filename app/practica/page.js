@@ -8,7 +8,12 @@ const PracticasPreprofesionales = () => {
   return (
     <Layout>
       <Practicas />
-
+      <Enlace
+          url={
+            "/convenio"
+          }
+          text="Información sobre convenios"
+        />
       <EnlacesRelacionados>
         <Enlace
           url={
