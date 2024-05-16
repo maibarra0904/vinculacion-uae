@@ -190,7 +190,7 @@ function Oficio() {
           await axios
             .post(process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND, userData)
             .then((res) => {
-              console.log(res.data);
+              
               setLetterNumber(res.data?.data.idApp);
               setLoading(false);
             })
