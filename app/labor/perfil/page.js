@@ -24,12 +24,13 @@ const PasosPerfil = () => {
           <Paso1 />
 
           <EnlacesRelacionados>
-            
+
             <Enlace
-              url={"https://forms.office.com/r/STqADeUtDd"}
-              text="Formulario para solicitar número de oficio"
+              url={
+                "/oficio"
+              }
+              text="Aplicación para solicitar número de oficio"
               nuevo={true}
-              external={true}
             />
             <Enlace
               url={
@@ -74,10 +75,11 @@ const PasosPerfil = () => {
 
           <EnlacesRelacionados>
             <Enlace
-              url={"https://forms.office.com/r/STqADeUtDd"}
-              text="Formulario para solicitar número de oficio"
+              url={
+                "/oficio"
+              }
+              text="Aplicación para solicitar número de oficio"
               nuevo={true}
-              external={true}
             />
             <Enlace
               url={
@@ -139,7 +141,7 @@ const PasosPerfil = () => {
               external={true}
             />
           </EnlacesRelacionados>
-          
+
         </>
       )}
     </Layout>

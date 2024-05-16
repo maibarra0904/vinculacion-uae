@@ -6,6 +6,7 @@ import swal from "sweetalert";
 import Image from "next/image";
 import Layout from "@/components/ui/Layout";
 import EmailLink from "@/components/links/EmailSend";
+import Regresar from "@/components/ui/Regresar";
 
 const availabilityOptions = [
   { name: "--- SELECCIONE ---", value: true },
@@ -179,7 +180,7 @@ function Oficio() {
     try {
       swal({
         title: "Desea Generar el Número de Oficio?",
-        text: "Genérelo, solo si es necesario, válido por 72 horas a partir de su emisión!",
+        text: "Genérelo solo si ya tiene lista la documentación a presentar, válido por 72 horas a partir de su emisión!",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -377,7 +378,7 @@ function Oficio() {
                 {tutor && (
                   <div className="mb-4">
                     <label className="text-gray-800" htmlFor="tutor">
-                      Elegir tutor:
+                      Tutor:
                     </label>
                     <select
                       id="tutor"

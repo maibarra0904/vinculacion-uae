@@ -22,11 +22,12 @@ const Final = () => {
           external={true}
         />
         <Enlace
-          url={"https://forms.office.com/r/STqADeUtDd"}
-          text="Formulario para solicitar número de oficio"
-          nuevo={true}
-          external={true}
-        />
+              url={
+                "/oficio"
+              }
+              text="Aplicación para solicitar número de oficio"
+              nuevo={true}
+            />
       </EnlacesRelacionados>
       <EnlacesRelacionados text="Otros enlaces de Interés">
         <Enlace

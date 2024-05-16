@@ -45,10 +45,11 @@ const InicioPracticas = () => {
               external={true}
             />
             <Enlace
-              url={"https://forms.office.com/r/STqADeUtDd"}
-              text="Formulario para solicitar número de oficio"
+              url={
+                "/oficio"
+              }
+              text="Aplicación para solicitar número de oficio"
               nuevo={true}
-              external={true}
             />
             <Enlace
               url={
@@ -94,11 +95,12 @@ const InicioPracticas = () => {
           <Paso2 />
 
           <EnlacesRelacionados>
-            <Enlace
-              url={"https://forms.office.com/r/STqADeUtDd"}
-              text="Formulario para solicitar número de oficio"
+          <Enlace
+              url={
+                "/oficio"
+              }
+              text="Aplicación para solicitar número de oficio"
               nuevo={true}
-              external={true}
             />
             <Enlace
               url={
