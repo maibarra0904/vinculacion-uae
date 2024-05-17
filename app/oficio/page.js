@@ -95,6 +95,7 @@ function Oficio() {
   const [semestre, guardaSemestre] = useState("");
 
   const [loading, setLoading] = useState(null);
+  const [timeForOut, setTimeForOut] = useState(80)
   const [alerta, setAlerta] = useState({});
   const [letterNumber, setLetterNumber] = useState(null);
   const [copied, setCopied] = useState(false);
@@ -149,6 +150,22 @@ function Oficio() {
     guardaEmailTutor(getEmailByName(e.target.value));
   };
 
+  function countdown() {
+    let seconds = 80;
+  
+    const interval = setInterval(() => {
+      if (seconds >= 0) {
+        seconds--;
+        setTimeForOut(seconds)
+      } else {
+        clearInterval(interval);
+        
+      }
+    }, 1000);
+  }
+  
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -187,6 +204,8 @@ function Oficio() {
       }).then(async (willDelete) => {
         if (willDelete) {
           setLoading(true);
+          countdown();
+
           await axios
             .post(process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND, userData)
             .then((res) => {
@@ -202,7 +221,7 @@ function Oficio() {
                 keyWord: "bd",
                 message: "Hubo un error al conectar a la BD",
               });
-
+              setTimeForOut(80)
               setTimeout(() => {
                 setAlerta({});
               }, 2000);
@@ -421,8 +440,14 @@ function Oficio() {
 
         {loading ? (
           <>
-          <div className="flex justify-center items-center mt-5">
+          {
+            timeForOut > 0 ? 
+            <>
+            <div className="flex justify-center items-center mt-5">
             <p className="p-2 font-bold">Generando numero de oficio...</p>
+            </div>
+            <div className="flex justify-center items-center mt-5">
+            <p className="p-2 font-bold">Tiempo de espera estimado: <span className="text-red-400"> {timeForOut} segundo(s) </span></p>
           </div>
           <div className="flex justify-center items-center mt-5">
             <Image
@@ -432,6 +457,12 @@ function Oficio() {
               src="/spinner.gif"
             />
           </div>
+            </> :
+            <div className="flex justify-center items-center mt-5">
+            <p className="p-2 font-bold">Tiempo de espera agotado... Se sugiere recargar la página</p>
+          </div>
+          }
+          
           </>
         ) : (
           letterNumber && (
