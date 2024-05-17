@@ -15,8 +15,8 @@ const BarNav = ({path, showNavBar}) => {
         },
         {
             id: 3,
-            name: 'Desglose (Egresados)',
-            slug: "desglose"
+            name: 'Otros',
+            slug: "otros"
         }
     ]
   return (

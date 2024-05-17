@@ -1,6 +1,6 @@
 "use client";
 import Layout from "@/components/ui/Layout";
-import DesglosePage from "../../components/contents/desglose.mdx";
+import DesglosePage from "../../../components/contents/desglose.mdx";
 import EnlacesRelacionados from "@/components/ui/EnlacesRelacionados";
 import Enlace from "@/components/ui/Enlace";
 
