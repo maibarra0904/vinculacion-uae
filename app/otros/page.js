@@ -15,6 +15,10 @@ const Otros = () => {
               url={"/otros/desglose"}
               text="Solicitud de certificado de desglose (egresados)"
             />
+            <Enlace
+              url={"/otros/preguntas"}
+              text="VinculaBot: Haz consultas en torno a las preguntas frecuentes en los procesos de vinculación"
+            />
             
           </EnlacesRelacionados>
 
