@@ -4,7 +4,7 @@ const Enlace = ({ url, text, nuevo = false, external = false }) => {
     return (
         <Link
             href={url}
-            className="flex justify-center items-center gap-2 hover:text-blue-500"
+            className="flex justify-center items-center gap-2 text-green-600 hover:text-blue-500 hover:shadow-sm"
             target={nuevo ? '_blank' : ''}
         >
             {
