@@ -6,8 +6,9 @@ import Layout from "@/components/ui/Layout"
 const Otros = () => {
   return (
     <>
-    <h1>Otras Solicitudes y más</h1>
+    
     <Layout>
+          <h1>Otras Solicitudes y más</h1>
          <EnlacesRelacionados text="Enlaces Disponibles">
             <Enlace
               url={"/otros/solicitudes"}
