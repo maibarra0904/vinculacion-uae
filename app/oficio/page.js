@@ -281,7 +281,7 @@ function Oficio() {
                   <input
                     id="name"
                     type="text"
-                    className="mt-2 block w-full p-3 bg-gray-50"
+                    className="mt-2 text-gray-800 block w-full p-3 bg-gray-50"
                     placeholder="Coloque un nombre y un apellido"
                     name="name"
                     value={nombre}
@@ -296,7 +296,7 @@ function Oficio() {
                   </label>
                   <select
                     id="semestre"
-                    className="mt-2 block w-full p-3 bg-gray-50"
+                    className="mt-2 text-gray-800 block w-full p-3 bg-gray-50"
                     name="semestre"
                     defaultValue="--- SELECCIONE ---"
                     onChange={handleChangeSemestre}
@@ -319,7 +319,7 @@ function Oficio() {
                   </label>
                   <select
                     id="periodo"
-                    className="mt-2 block w-full p-3 bg-gray-50"
+                    className="mt-2 block text-gray-800 w-full p-3 bg-gray-50"
                     name="periodo"
                     defaultValue="--- SELECCIONE ---"
                     onChange={handleChangePeriodo}
@@ -344,7 +344,7 @@ function Oficio() {
                     <input
                       id="periodoAlt"
                       type="text"
-                      className="mt-2 block w-full p-3 bg-gray-50"
+                      className="mt-2 block text-gray-800 w-full p-3 bg-gray-50"
                       placeholder="Periodo al que aplica"
                       name="periodoAlt"
                       value={periodoAlt}
@@ -359,7 +359,7 @@ function Oficio() {
                   </label>
                   <select
                     id="tramite"
-                    className="mt-2 block w-full p-3 bg-gray-50"
+                    className="mt-2 block w-full text-gray-800 p-3 bg-gray-50"
                     name="tramite"
                     defaultValue="--- SELECCIONE ---"
                     onChange={handleChangeMotivo}
@@ -384,7 +384,7 @@ function Oficio() {
                     <input
                       id="motivoAlt"
                       type="text"
-                      className="mt-2 block w-full p-3 bg-gray-50"
+                      className="mt-2 block text-gray-800 w-full p-3 bg-gray-50"
                       placeholder="Motivo del Oficio"
                       name="motivoAlt"
                       value={motivoAlt}
@@ -401,7 +401,7 @@ function Oficio() {
                     </label>
                     <select
                       id="tutor"
-                      className="mt-2 block w-full p-3 bg-gray-50"
+                      className="mt-2 block w-full text-gray-800 p-3 bg-gray-50"
                       name="tutor"
                       defaultValue="--- SELECCIONE ---"
                       onChange={handleChangeEmail}
