@@ -7,6 +7,7 @@ import Image from "next/image";
 import Layout from "@/components/ui/Layout";
 import EmailLink from "@/components/links/EmailSend";
 import Regresar from "@/components/ui/Regresar";
+import EmailSendStudent from "@/components/links/EmailSendStudent";
 
 const availabilityOptions = [
   { name: "--- SELECCIONE ---", value: true },
@@ -95,7 +96,7 @@ function Oficio() {
   const [semestre, guardaSemestre] = useState("");
 
   const [loading, setLoading] = useState(null);
-  const [timeForOut, setTimeForOut] = useState(80)
+  const [timeForOut, setTimeForOut] = useState(80);
   const [alerta, setAlerta] = useState({});
   const [letterNumber, setLetterNumber] = useState(null);
   const [copied, setCopied] = useState(false);
@@ -103,6 +104,7 @@ function Oficio() {
 
   const [tutor, setTutor] = useState(false);
   const [emailTutor, guardaEmailTutor] = useState("");
+  const [email, guardaEmail] = useState("");
 
   const handleChangeNombre = (e) => {
     e.preventDefault();
@@ -145,6 +147,11 @@ function Oficio() {
     return tutor ? tutor.email : "Email not found";
   }
 
+  const handleChangeEmailStudent = (e) => {
+    e.preventDefault();
+    guardaEmail(e.target.value);
+  };
+
   const handleChangeEmail = (e) => {
     e.preventDefault();
     guardaEmailTutor(getEmailByName(e.target.value));
@@ -152,19 +159,16 @@ function Oficio() {
 
   function countdown() {
     let seconds = 80;
-  
+
     const interval = setInterval(() => {
       if (seconds >= 0) {
         seconds--;
-        setTimeForOut(seconds)
+        setTimeForOut(seconds);
       } else {
         clearInterval(interval);
-        
       }
     }, 1000);
   }
-  
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -209,7 +213,6 @@ function Oficio() {
           await axios
             .post(process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND, userData)
             .then((res) => {
-              
               setLetterNumber(res.data?.data.idApp);
               setLoading(false);
             })
@@ -221,7 +224,7 @@ function Oficio() {
                 keyWord: "bd",
                 message: "Hubo un error al conectar a la BD",
               });
-              setTimeForOut(80)
+              setTimeForOut(80);
               setTimeout(() => {
                 setAlerta({});
               }, 2000);
@@ -440,35 +443,46 @@ function Oficio() {
 
         {loading ? (
           <>
-          {
-            timeForOut > 0 ? 
-            <>
-            <div className="flex justify-center items-center mt-5">
-            <p className="p-2 font-bold">Generando numero de oficio...</p>
-            </div>
-            <div className="flex justify-center items-center mt-5">
-            <p className="p-2 font-bold">Tiempo de espera estimado: <span className="text-red-400"> {timeForOut} segundo(s) </span></p>
-          </div>
-          <div className="flex justify-center items-center mt-5">
-            <Image
-              width={80}
-              height={80}
-              alt="loader"
-              src="/spinner.gif"
-            />
-          </div>
-            </> :
-            <div className="flex justify-center items-center mt-5">
-            <p className="p-2 font-bold">Tiempo de espera agotado... Se sugiere recargar la página</p>
-          </div>
-          }
-          
+            {timeForOut > 0 ? (
+              <>
+                <div className="flex justify-center items-center mt-5">
+                  <p className="p-2 font-bold">Generando numero de oficio...</p>
+                </div>
+                <div className="flex justify-center items-center mt-5">
+                  <p className="p-2 font-bold">
+                    Tiempo de espera estimado:{" "}
+                    <span className="text-red-400">
+                      {" "}
+                      {timeForOut} segundo(s){" "}
+                    </span>
+                  </p>
+                </div>
+                <div className="flex justify-center items-center mt-5">
+                  <Image
+                    width={80}
+                    height={80}
+                    alt="loader"
+                    src="/spinner.gif"
+                  />
+                </div>
+              </>
+            ) : (
+              <div className="flex justify-center items-center mt-5">
+                <p className="p-2 font-bold">
+                  Tiempo de espera agotado... Se sugiere recargar la página
+                </p>
+              </div>
+            )}
           </>
         ) : (
           letterNumber && (
             <>
               <div className="flex justify-center items-center">
                 <div className="mt-10 bg-amber-200 pl-2 pr-2 pt-2 pb-5 w-96 rounded-lg">
+                  <h1 className="mt-5 mb-5 flex justify-center items-center">
+                    Cópialo
+                  </h1>
+
                   <div className="flex justify-center items-center">
                     <p className="mb-5">Su numero de oficio es: {"  "}</p>
                   </div>
@@ -490,7 +504,7 @@ function Oficio() {
                   </div>
                   {copied && (
                     <div className="flex justify-center items-center">
-                    <p className="text-red-500">Copiado al portapapeles!</p>
+                      <p className="text-red-500">Copiado al portapapeles!</p>
                     </div>
                   )}
                   <div className="flex justify-center items-center">
@@ -513,20 +527,55 @@ function Oficio() {
                       Copiado al portapapeles!
                     </p>
                   )}
-
-                  {tutor && (
-                    <div className="flex justify-center items-center">
-                      <div className="w-50 mt-5">
-                        <EmailLink
-                          emailTutor={emailTutor}
-                          nombre={nombre}
-                          semestre={semestre}
-                        />
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
+
+              <div className="flex justify-center items-center">
+                <div className="mt-10 bg-amber-200 pl-2 pr-2 pt-2 pb-5 w-96 rounded-lg">
+                  <div className="flex justify-center items-center ">
+                    <div>
+                      <h1 className="mt-5 mb-5 flex justify-center items-center">
+                        ó Envíalo a tu Correo
+                      </h1>
+                      <input
+                        className="p-2 m-2 w-80"
+                        type="text"
+                        placeholder="Ingresa tu email"
+                        onChange={handleChangeEmailStudent}
+                      />
+                      <EmailSendStudent
+                        email={email}
+                        oficio={`Oficio Nro. M-UAE-FCAJBO.V.CC-2024-
+                      ${formatNumber(parseInt(letterNumber))}.O`}
+                        fecha={`${formatDate(new Date()).toString()}`}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {tutor && (
+                <div className="flex justify-center items-center">
+                  <div className="mt-10 bg-amber-200 pl-2 pr-2 pt-2 pb-5 w-96 rounded-lg">
+                    <div className="flex justify-center items-center ">
+                      <div>
+                        <h1 className="mt-5 mb-5 flex justify-center items-center">
+                          Notificar al tutor
+                        </h1>
+                        <div className="flex justify-center items-center">
+                          <div className="w-50 mt-5">
+                            <EmailLink
+                              emailTutor={emailTutor}
+                              nombre={nombre}
+                              semestre={semestre}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </>
           )
         )}
