@@ -379,7 +379,7 @@ function Oficio() {
                       className="absolute bg-gray-800 text-white py-2 px-3 rounded text-sm z-10 pointer-events-none"
                       style={{
                         left: "50%",
-                        transform: screenWidth<=400 ? "translateX(-50%)" : "translateX(-11%)",
+                        transform: screenWidth<=768 ? "translateX(-50%)" : "translateX(-11%)",
                         marginTop: "0.5rem",
                         width: "345px"
                       }}
