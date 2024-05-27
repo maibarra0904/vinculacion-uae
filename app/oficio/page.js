@@ -90,9 +90,10 @@ const tutorOptions = [
 function Oficio() {
   const [nombre, guardaNombre] = useState("");
   const [aviso, setAviso] = useState("");
-  const nombreLocal = typeof window !== 'undefined' && localStorage?.getItem('nombre')
-  ? JSON.parse(localStorage.getItem('nombre'))
-  : ''
+  const nombreLocal =
+    typeof window !== "undefined" && localStorage?.getItem("nombre")
+      ? JSON.parse(localStorage.getItem("nombre"))
+      : "";
 
   const [periodo, guardaPeriodo] = useState("");
   const [periodoAlt, guardaPeriodoAlt] = useState("");
@@ -111,14 +112,17 @@ function Oficio() {
   const [emailTutor, guardaEmailTutor] = useState("");
   const [email, guardaEmail] = useState("");
 
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const handleChangeNombre = (e) => {
     e.preventDefault();
     guardaNombre(e.target.value);
-    if(e.target.value.toLowerCase() === nombreLocal && e.target.value!=='') {
-      setAviso('Este nombre ha solicitado ya un número de oficio antes en este equipo. Si desea volver a hacer la solicitud omita este mensaje.')
+    if (e.target.value.toLowerCase() === nombreLocal && e.target.value !== "") {
+      setAviso(
+        "Este nombre ha solicitado ya un número de oficio antes en este equipo. Si desea volver a hacer la solicitud omita este mensaje."
+      );
       setTimeout(() => {
-        setAviso('')
+        setAviso("");
       }, 5000);
     }
   };
@@ -167,6 +171,11 @@ function Oficio() {
   const handleChangeEmail = (e) => {
     e.preventDefault();
     guardaEmailTutor(getEmailByName(e.target.value));
+  };
+
+  const handleShowTooltip = (e) => {
+    e.preventDefault();
+    setShowTooltip(!showTooltip);
   };
 
   function countdown() {
@@ -227,7 +236,10 @@ function Oficio() {
             .then((res) => {
               setLetterNumber(res.data?.data.idApp);
               setLoading(false);
-              localStorage.setItem('nombre', JSON.stringify(nombre.toLowerCase()))
+              localStorage.setItem(
+                "nombre",
+                JSON.stringify(nombre.toLowerCase())
+              );
             })
             .catch((error) => {
               console.log(error);
@@ -304,9 +316,7 @@ function Oficio() {
                     onChange={handleChangeNombre}
                     maxLength={30}
                   />
-                  <p className="text-red-500">
-                    {aviso}
-                  </p>
+                  <p className="text-red-500">{aviso}</p>
                 </div>
 
                 <div className="mb-4">
@@ -333,9 +343,49 @@ function Oficio() {
                 </div>
 
                 <div className="mb-4">
-                  <label className="text-gray-800" htmlFor="periodo">
-                    Periodo al que aplica la actividad:
-                  </label>
+                  <div className="flex gap-2 items-center">
+                    <label className="text-gray-800" htmlFor="periodo">
+                      Periodo al que aplica la actividad:
+                    </label>
+                    <div
+                      title=""
+                      onClick={handleShowTooltip}
+                      className=" hover:cursor-pointer"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="icon icon-tabler icon-tabler-info-hexagon-filled"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="#2c3e50"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path
+                          d="M10.425 1.414a3.33 3.33 0 0 1 3.026 -.097l.19 .097l6.775 3.995l.096 .063l.092 .077l.107 .075a3.224 3.224 0 0 1 1.266 2.188l.018 .202l.005 .204v7.284c0 1.106 -.57 2.129 -1.454 2.693l-.17 .1l-6.803 4.302c-.918 .504 -2.019 .535 -3.004 .068l-.196 -.1l-6.695 -4.237a3.225 3.225 0 0 1 -1.671 -2.619l-.007 -.207v-7.285c0 -1.106 .57 -2.128 1.476 -2.705l6.95 -4.098zm1.575 9.586h-1l-.117 .007a1 1 0 0 0 0 1.986l.117 .007v3l.007 .117a1 1 0 0 0 .876 .876l.117 .007h1l.117 -.007a1 1 0 0 0 .876 -.876l.007 -.117l-.007 -.117a1 1 0 0 0 -.764 -.857l-.112 -.02l-.117 -.006v-3l-.007 -.117a1 1 0 0 0 -.876 -.876l-.117 -.007zm.01 -3l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007z"
+                          stroke-width="0"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  {showTooltip && (
+                    <div
+                      className="absolute bg-gray-800 text-white py-2 px-3 rounded text-sm z-10 pointer-events-none"
+                      style={{
+                        left: "50%",
+                        transform: "translateX(-11%)",
+                        marginTop: "0.5rem",
+                        width: "345px"
+                      }}
+                    >
+                      El período al que aplica la actividad, NO es necesariamente el período de estudio que está cursando porque dependerá si está arrastrando, si está al día o si está adelantando la actividad de vinculación. En caso de dudas comunicarse con el Responsable de Vinculación.
+                    </div>
+                  )}
                   <select
                     id="periodo"
                     className="mt-2 block text-gray-800 w-full p-3 bg-gray-50"
