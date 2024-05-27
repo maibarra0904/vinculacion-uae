@@ -89,6 +89,11 @@ const tutorOptions = [
 
 function Oficio() {
   const [nombre, guardaNombre] = useState("");
+  const [aviso, setAviso] = useState("");
+  const nombreLocal = typeof window !== 'undefined' && localStorage?.getItem('nombre')
+  ? JSON.parse(localStorage.getItem('nombre'))
+  : ''
+
   const [periodo, guardaPeriodo] = useState("");
   const [periodoAlt, guardaPeriodoAlt] = useState("");
   const [motivo, guardaMotivo] = useState("");
@@ -106,9 +111,16 @@ function Oficio() {
   const [emailTutor, guardaEmailTutor] = useState("");
   const [email, guardaEmail] = useState("");
 
+
   const handleChangeNombre = (e) => {
     e.preventDefault();
     guardaNombre(e.target.value);
+    if(e.target.value.toLowerCase() === nombreLocal && e.target.value!=='') {
+      setAviso('Este nombre ha solicitado ya un número de oficio antes en este equipo. Si desea volver a hacer la solicitud omita este mensaje.')
+      setTimeout(() => {
+        setAviso('')
+      }, 5000);
+    }
   };
 
   const handleChangeSemestre = (e) => {
@@ -215,6 +227,7 @@ function Oficio() {
             .then((res) => {
               setLetterNumber(res.data?.data.idApp);
               setLoading(false);
+              localStorage.setItem('nombre', JSON.stringify(nombre.toLowerCase()))
             })
             .catch((error) => {
               console.log(error);
@@ -291,6 +304,9 @@ function Oficio() {
                     onChange={handleChangeNombre}
                     maxLength={30}
                   />
+                  <p className="text-red-500">
+                    {aviso}
+                  </p>
                 </div>
 
                 <div className="mb-4">
