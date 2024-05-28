@@ -223,7 +223,7 @@ function Oficio() {
     try {
       swal({
         title: "Desea Generar el Número de Oficio?",
-        text: "Genérelo solo si ya tiene lista la documentación a presentar, válido por 72 horas a partir de su emisión!",
+        text: "¿Le falta SOLO el número de oficio para entregar la documentación? Si aún tiene pendientes NO genere el número y ocúpese de llenar primero la documentación de la gestión que le corresponda hacer (Paso 1, Paso 2, etc), válido por 72 horas a partir de su emisión!",
         icon: "warning",
         buttons: true,
         dangerMode: true,
