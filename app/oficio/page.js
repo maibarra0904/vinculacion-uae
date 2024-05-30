@@ -102,7 +102,7 @@ function Oficio() {
   const [semestre, guardaSemestre] = useState("");
 
   const [loading, setLoading] = useState(null);
-  const [timeForOut, setTimeForOut] = useState(80);
+  const [timeForOut, setTimeForOut] = useState(100);
   const [alerta, setAlerta] = useState({});
   const [letterNumber, setLetterNumber] = useState(null);
   const [copied, setCopied] = useState(false);
@@ -180,7 +180,7 @@ function Oficio() {
   };
 
   function countdown() {
-    let seconds = 80;
+    let seconds = 100;
 
     const interval = setInterval(() => {
       if (seconds >= 0) {
