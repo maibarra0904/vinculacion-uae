@@ -8,6 +8,7 @@ const withMDX = createMDX({
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'], // Incluye las extensiones de archivos MDX en las páginas
   // Otras opciones de configuración de Next.js si las tienes
+  reactStrictMode: false,
 }
 
 export default withMDX(nextConfig)

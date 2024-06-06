@@ -3,11 +3,14 @@ import { useEffect, useState } from "react"
 import CategoryIcon from "../ui/CategoryIcon"
 import Logo from "../ui/Logo"
 import BarNav from "../ui/BarNav"
+import LogOptions from "../ui/LogOptions"
+import { useMyContext } from "../context/myContext"
 
 
 
 const OrderSidebar = () => {
 
+    const { auth, setAuth } = useMyContext()
     const [path, setPath] = useState('')
 
     const [showNavBar, setShowNavBar] = useState(false)
@@ -51,14 +54,14 @@ const OrderSidebar = () => {
         localStorage.setItem('showNavBar', showState)
     }
 
-
     return (
         <aside className="pt-5 pb-2 md:w-72 md:h-screen bg-white">
-
             <Logo />
             <p className="flex justify-center items-center font-bold text-indigo-800">Universidad Agraria del Ecuador</p>
             <p className="flex justify-center items-center font-bold text-indigo-800">Vinculación - Computación</p>
             <p className="flex justify-center items-center font-bold text-indigo-800">Milagro</p>
+                
+            <LogOptions />            
 
             {
                 windowSize.width < 768 ?
