@@ -58,7 +58,7 @@ const Register = () => {
         try {
             await axios.post(`${process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND}/auth/register`, info)
             setLoading(false)
-            setAlerta({msg: 'Usuario Creado. Confirme su cuenta en el correo registrado. Revise su bandeja de Spam o Correo No Deseado si no le llegó en la Bandeja de entrada', err:false})    
+            setAlerta({msg: 'Usuario Creado. Confirme su cuenta en el correo registrado. Revise su bandeja de Spam o Correo No Deseado si no le llegó en la Bandeja de entrada. Si tiene problemas de confirmación realícelo desde una PC y no de su smartphone.', err:false})    
         } catch (error) {
             console.log(error)
         }

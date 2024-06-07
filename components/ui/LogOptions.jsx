@@ -17,7 +17,7 @@ const LogOptions = () => {
             auth?.nombre ?
                 <>
                     <div className='flex gap-4 justify-center items-center'>
-                        <p>Hola: {auth?.nombre?.toUpperCase()}</p>
+                        <p className='text-gray-800'>Hola: {auth?.nombre?.toUpperCase()}</p>
                         <button onClick={handleCerrarSesion} title='Cerrar Sesión' className='flex justify-center items-center p-1 m-2 w-10 bg-red-500 text-white rounded-md hover:cursor-pointer'>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
