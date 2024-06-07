@@ -5,6 +5,7 @@ import { useMyContext } from "../context/myContext"
 import axios from "axios"
 import { verifyJWT } from "@/utils/verifyJWT"
 import Alerta from "./Alerta"
+import Link from "next/link"
 
 const Register = () => {
 
@@ -64,7 +65,8 @@ const Register = () => {
         
     }
     return (
-        
+
+        <>
             
             <div className="flex flex-col justify-center items-center">
                 <h1 className="mb-5 font-bold">Regístrese en la App</h1>
@@ -152,7 +154,11 @@ const Register = () => {
             </form>
         </div>
         
-        
+        <div className="flex justify-center items-center mt-4">
+            <p>Tienes cuenta? <Link href="/login" className="text-blue-600 font-bold uppercase">Inicia Sesión</Link></p>
+
+        </div>
+        </>
     )
 }
 

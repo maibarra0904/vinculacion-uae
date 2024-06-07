@@ -6,6 +6,7 @@ import axios from "axios"
 import { verifyJWT } from "@/utils/verifyJWT"
 import Alerta from "./Alerta"
 import Image from "next/image"
+import Link from "next/link"
 
 const Login = () => {
 
@@ -70,7 +71,8 @@ const Login = () => {
 
     }
     return (
-        
+
+            <>
             
             <div className="flex flex-col justify-center items-center">
                 <h1 className="mb-5 font-bold">Ingrese a su cuenta</h1>
@@ -128,7 +130,16 @@ const Login = () => {
             </form>
         </div>
         
-        
+        <div className="flex justify-center items-center mt-4">
+            <p>No tienes cuenta? <Link href="/register" className="text-blue-600 font-bold uppercase">Regístrate</Link></p>
+            
+        </div>
+        <div className="flex justify-center items-center mt-4">
+            
+            <p>Si olvidaste tu password, comunícate con el administrador del sitio</p>
+        </div>
+
+        </>
     )
 }
 
