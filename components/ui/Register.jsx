@@ -52,7 +52,7 @@ const Register = () => {
             email,
             password
         }
-        console.log(info)
+        
 
         try {
             await axios.post(`${process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND}/auth/register`, info)

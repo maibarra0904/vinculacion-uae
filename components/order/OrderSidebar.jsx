@@ -40,11 +40,11 @@ const OrderSidebar = () => {
         handleResize()
 
         window.addEventListener("resize", handleResize);
-
         // Limpia el listener cuando el componente se desmonta
         return () => {
             window.removeEventListener("resize", handleResize);
         };
+        
     }, []);
 
     const handleShow = () => {
@@ -61,7 +61,7 @@ const OrderSidebar = () => {
             <p className="flex justify-center items-center font-bold text-indigo-800">Vinculación - Computación</p>
             <p className="flex justify-center items-center font-bold text-indigo-800">Milagro</p>
                 
-            {/* <LogOptions />             */}
+            <LogOptions />            
 
             {
                 windowSize.width < 768 ?

@@ -293,7 +293,7 @@ function OficioComponent() {
   }
 
   return ( !loadPage &&
-         //(auth?.nombre ?
+         (auth?.nombre ?
       <div className="flex flex-col">
         <h1 className="uppercase text-2xl font-bold mb-10 flex justify-center items-center">
           Solicitud de número de Oficio
@@ -315,7 +315,7 @@ function OficioComponent() {
                   <input
                     id="name"
                     type="text"
-                    className="mt-2 text-gray-800 block w-full p-3 bg-gray-50"// hover:cursor-not-allowed"
+                    className="mt-2 text-gray-800 block w-full p-3 bg-gray-200 hover:cursor-not-allowed"
                     placeholder="Coloque un nombre y un apellido"
                     name="name"
                     value={nombre}
@@ -660,14 +660,14 @@ function OficioComponent() {
           )
         )}
       </div>
-      //   :
-      //   <div className="flex flex-col">
-      //   <h1 className="uppercase text-2xl font-bold mb-10 flex justify-center items-center">
-      //     Solicitud de número de Oficio
-      //   </h1>
-      //   <p className="flex justify-center uppercase font-bold">Debe iniciar sesión para acceder a esta aplicación</p>
-      //   </div>
-      // )
+        :
+        <div className="flex flex-col">
+        <h1 className="uppercase text-2xl font-bold mb-10 flex justify-center items-center">
+          Solicitud de número de Oficio
+        </h1>
+        <p className="flex justify-center uppercase font-bold">Debe iniciar sesión para acceder a esta aplicación</p>
+        </div>
+      )
 );
 }
 

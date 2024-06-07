@@ -36,7 +36,7 @@ const Login = () => {
             email,
             password
         }
-        console.log(info)
+        
 
         const { data } = await axios.post(`${process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND}/auth/login`, info)
         
@@ -50,11 +50,11 @@ const Login = () => {
         }
 
         try {
-            if(data?.token) {
-                const token = data?.token;
-                const user = verifyJWT(token)
-                localStorage.setItem('usuario', JSON.stringify(user))
-                setAuth(user)
+            if(data?.data) {
+                //const token = data?.token;
+                //const user = verifyJWT(token)
+                localStorage.setItem('usuario', JSON.stringify(data.data))
+                setAuth(data.data)
                 setLoading(false)
                 
                 window.history.back()
