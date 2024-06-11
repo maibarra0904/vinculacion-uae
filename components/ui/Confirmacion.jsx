@@ -23,7 +23,7 @@ const Confirmacion = () => {
         const confirmar = async() => {
             try {
                 
-                await axios.get(`http://localhost:3000/api/applications/auth/confirmar/${token}`)    
+                await axios.get(`${process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND}/auth/confirmar/${token}`)    
                 
                 setConfirmed(true)
                 
