@@ -81,7 +81,7 @@ const Login = () => {
                     <Alerta msg={alerta?.msg} />
                 }
             <form
-                className="w-96 bg-amber-200 p-5 rounded-lg"
+                className="min-w-70 bg-amber-200 p-5 rounded-lg m-2 md:w-96"
             >
                 <div>
 
