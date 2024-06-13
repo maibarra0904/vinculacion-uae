@@ -28,7 +28,7 @@ const OrderSidebar = () => {
         }
 
         setPath(window.location.pathname)
-        
+
 
         const handleResize = () => {
             setWindowSize({
@@ -44,7 +44,7 @@ const OrderSidebar = () => {
         return () => {
             window.removeEventListener("resize", handleResize);
         };
-        
+
     }, []);
 
     const handleShow = () => {
@@ -60,18 +60,18 @@ const OrderSidebar = () => {
             <p className="flex justify-center items-center font-bold text-indigo-800">Universidad Agraria del Ecuador</p>
             <p className="flex justify-center items-center font-bold text-indigo-800">Vinculación - Computación</p>
             <p className="flex justify-center items-center font-bold text-indigo-800">Milagro</p>
-                
-            <LogOptions />            
+
+            <LogOptions />
 
             {
                 windowSize.width < 768 ?
                     <>
                         <div
-                            className={`${showNavBar?'ml-4 mr-4 mt-4':'m-4'} flex flex-col justify-center items-center border border-gray-200 hover:cursor-pointer`}
+                            className={`${showNavBar ? 'ml-4 mr-4 mt-4' : 'm-4'} flex flex-col justify-center items-center border border-gray-200 bg-indigo-200 hover:cursor-pointer`}
                             onClick={handleShow}
                         >
                             <div className={`m-1`}>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                                 </svg>
                             </div>
@@ -81,11 +81,11 @@ const OrderSidebar = () => {
                         </div>
 
                         {
-                            showNavBar===true &&
+                            showNavBar === true &&
                             <div
-                                className={`${showNavBar?'ml-4 mr-4 mt-0 mb-4 transition duration-500':'m-4'} justify-center items-center hover:cursor-pointer border border-gray-200`}
+                                className={`${showNavBar ? 'ml-4 mr-4 mt-0 mb-4 transition duration-500 ease-in-out' : 'transition duration-500 ease-in-out m-4'} justify-center items-center hover:cursor-pointer border border-gray-200`}
                             >
-                                <BarNav path={path} showNavBar={showNavBar}/>
+                                <BarNav path={path} showNavBar={showNavBar} />
                             </div>
                         }
 
