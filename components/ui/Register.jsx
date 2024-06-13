@@ -25,19 +25,28 @@ const Register = () => {
     }
 
     const handleChangeEmail = (e) => {
-        guardaEmail(e.target.value)
+        guardaEmail(e.target.value.trim())
     }
     const handleChangePassword = (e) => {
-        guardaPassword(e.target.value)
+        guardaPassword(e.target.value.trim())
     }
 
     const handleChangePassword2 = (e) => {
-        guardaPassword2(e.target.value)
+        guardaPassword2(e.target.value.trim())
     }
 
     const handleSubmit = async () => {
 
         setLoading(true)
+
+        if(password?.length<6) {
+            setAlerta({msg: 'El password debe tener al menos 6 caracteres'})
+            setLoading(false)
+            setTimeout(() => {
+                setAlerta({})
+            }, 2000);
+            return
+        }
 
         if(password !== password2) {
             setAlerta({msg: 'Los Passwords no coinciden'})

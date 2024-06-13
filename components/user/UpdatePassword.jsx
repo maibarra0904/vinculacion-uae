@@ -52,11 +52,11 @@ const UpdatePassword = () => {
     },[])
 
     const handleChangePassword = (e) => {
-        setPassword(e.target.value)
+        setPassword(e.target.value.trim())
     }
 
     const handleChangePassword2 = (e) => {
-        setPassword2(e.target.value)
+        setPassword2(e.target.value.trim())
     }
 
     const handleSubmit = async() => {
@@ -65,7 +65,7 @@ const UpdatePassword = () => {
         
     
 
-        if(password?.length<7) {
+        if(password?.length<6) {
             setAlerta({msg: 'El password debe tener al menos 6 caracteres'})
             setLoading(false)
             setTimeout(() => {

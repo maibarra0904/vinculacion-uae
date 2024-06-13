@@ -2,10 +2,6 @@
 import { useState } from "react"
 import { useMyContext } from "../context/myContext"
 import axios from "axios"
-import { verifyJWT } from "@/utils/verifyJWT"
-
-import Image from "next/image"
-import Link from "next/link"
 import Alerta from "../ui/Alerta"
 
 const OlvidaPass = () => {
@@ -20,7 +16,7 @@ const OlvidaPass = () => {
 
 
   const handleChangeEmail = (e) => {
-    guardaEmail(e.target.value)
+    guardaEmail(e.target.value.trim())
   }
 
   const handleSubmit = async () => {

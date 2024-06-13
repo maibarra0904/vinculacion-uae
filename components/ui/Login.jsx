@@ -25,10 +25,10 @@ const Login = () => {
     
 
     const handleChangeEmail = (e) => {
-        guardaEmail(e.target.value)
+        guardaEmail(e.target.value.trim())
     }
     const handleChangePassword = (e) => {
-        guardaPassword(e.target.value)
+        guardaPassword(e.target.value.trim())
     }
 
     const handleSubmit = async () => {
