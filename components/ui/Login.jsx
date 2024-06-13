@@ -75,7 +75,7 @@ const Login = () => {
             <>
             
             <div className="flex flex-col justify-center items-center">
-                <h1 className="mb-5 font-bold">Ingrese a su cuenta</h1>
+                <h1 className="mb-5 font-bold">Ingresa a tu cuenta</h1>
                 {
                     alerta?.msg &&
                     <Alerta msg={alerta?.msg} />
@@ -135,8 +135,8 @@ const Login = () => {
             
         </div>
         <div className="flex justify-center items-center mt-4">
+            <p>Olvidaste tu password? <Link href="/actualizar" className="text-blue-600 font-bold uppercase">Restáuralo</Link></p>
             
-            <p>Si olvidaste tu password, comunícate con el administrador del sitio</p>
         </div>
 
         </>

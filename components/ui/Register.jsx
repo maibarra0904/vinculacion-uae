@@ -56,9 +56,22 @@ const Register = () => {
         
 
         try {
-            await axios.post(`${process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND}/auth/register`, info)
-            setLoading(false)
-            setAlerta({msg: 'Usuario Creado. Confirme su cuenta en el correo registrado. Revise su bandeja de Spam o Correo No Deseado si no le llegó en la Bandeja de entrada. Si tiene problemas de confirmación realícelo desde una PC y no de su smartphone.', err:false})    
+            const {data} = await axios.post(`${process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND}/auth/register`, info)
+            
+            if (data?.msg) {
+                setAlerta({msg: 'Usuario Creado. Confirme su cuenta en el correo registrado. Revise su bandeja de Spam o Correo No Deseado si no le llegó en la Bandeja de entrada. Si tiene problemas de confirmación realícelo desde una PC y no de su smartphone.', err:false})
+                setLoading(false)
+                guardaEmail('')
+                return
+              }
+          
+              if (data?.err) {
+                setAlerta({ msg: 'Ya existe un usuario con ese email. Inicie sesión o restaure su contraseña.' })
+                setLoading(false)
+                return
+          
+              }
+ 
         } catch (error) {
             console.log(error)
         }
@@ -69,7 +82,7 @@ const Register = () => {
         <>
             
             <div className="flex flex-col justify-center items-center">
-                <h1 className="mb-5 font-bold">Regístrese en la App</h1>
+                <h1 className="mb-5 font-bold">Regístrate en la App</h1>
                 {
                     alerta?.msg &&
                     <Alerta msg={alerta?.msg} err={alerta?.err} />
@@ -155,7 +168,7 @@ const Register = () => {
         </div>
         
         <div className="flex justify-center items-center mt-4">
-            <p>Tienes cuenta? <Link href="/login" className="text-blue-600 font-bold uppercase">Inicia Sesión</Link></p>
+            <p>Ya tienes cuenta? <Link href="/login" className="text-blue-600 font-bold uppercase">Inicia Sesión</Link></p>
 
         </div>
         </>

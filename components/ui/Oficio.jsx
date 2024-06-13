@@ -321,7 +321,7 @@ function OficioComponent() {
                     value={nombre}
                     onChange={handleChangeNombre}
                     maxLength={30}
-                    //disabled
+                    disabled
                   />
                   <p className="text-red-500">{aviso}</p>
                 </div>
