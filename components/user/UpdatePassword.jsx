@@ -24,7 +24,12 @@ const UpdatePassword = () => {
 
     const token = params.token
 
+    const { setAuth } = useMyContext()
+
     useEffect(() => {
+
+        setAuth('')
+        localStorage?.removeItem('usuario')
 
         const getUser = async() => {
             try {
@@ -157,7 +162,7 @@ const UpdatePassword = () => {
                             type="button"
                             className="flex justify-center items-center mt-2 w-full p-3 bg-gray-500 text-white"
                             onClick={handleSubmit}
-                        >{loading ? 'Validando...' :'Ingresar'}</button>
+                        >{loading ? 'Validando...' :'Actualizar'}</button>
                     </div>
 
                 </div>

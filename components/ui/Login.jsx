@@ -1,12 +1,14 @@
 'use client'
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useMyContext } from "../context/myContext"
 import axios from "axios"
 import { verifyJWT } from "@/utils/verifyJWT"
 import Alerta from "./Alerta"
 import Image from "next/image"
 import Link from "next/link"
+import { redirect } from "next/navigation"
+import { redirectToUrl } from "@/utils/redirectToUrl"
 
 const Login = () => {
 
@@ -20,7 +22,11 @@ const Login = () => {
     const [loading, setLoading] = useState('')
 
         
-    
+    useEffect(() => {
+        if(auth?.nombre) {
+            redirectToUrl('/')
+        }
+    },[auth])
 
     
 

@@ -1,8 +1,9 @@
 'use client'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useMyContext } from "../context/myContext"
 import axios from "axios"
 import Alerta from "../ui/Alerta"
+import { redirectToUrl } from "@/utils/redirectToUrl"
 
 const OlvidaPass = () => {
 
@@ -14,6 +15,11 @@ const OlvidaPass = () => {
 
   const [loading, setLoading] = useState('')
 
+  useEffect(() => {
+    if(auth?.nombre) {
+        redirectToUrl('/')
+    }
+},[auth])
 
   const handleChangeEmail = (e) => {
     guardaEmail(e.target.value.trim())

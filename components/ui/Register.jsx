@@ -1,11 +1,12 @@
 'use client'
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useMyContext } from "../context/myContext"
 import axios from "axios"
 import { verifyJWT } from "@/utils/verifyJWT"
 import Alerta from "./Alerta"
 import Link from "next/link"
+import { redirectToUrl } from "@/utils/redirectToUrl"
 
 const Register = () => {
 
@@ -16,9 +17,16 @@ const Register = () => {
 
     const [loading, setLoading] = useState(false)
 
-    const { auth, setAuth } = useMyContext()
+    const { auth } = useMyContext()
 
     const [alerta, setAlerta] = useState('')
+
+    useEffect(() => {
+        console.log(auth)
+        if(auth?.nombre) {
+            redirectToUrl('/')
+        }
+    },[auth])
     
     const handleChangeNombre = (e) => {
         guardaNombre(e.target.value)
