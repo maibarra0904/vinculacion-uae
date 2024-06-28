@@ -8,6 +8,8 @@ import EmailLink from "@/components/links/EmailSend";
 import EmailSendStudent from "@/components/links/EmailSendStudent";
 import Alerta from "@/components/ui/Alerta";
 import { useMyContext } from "../context/myContext";
+import { userFromEmail } from "@/utils/takeuserFromemail";
+
 
 const availabilityOptions = [
   { name: "--- SELECCIONE ---", value: true },
@@ -208,6 +210,7 @@ function OficioComponent() {
       name: nombre.toString() ?? "",
       tramite: motivoAlt !== "" ? motivoAlt?.toString() : motivo?.toString(),
       periodo: periodoAlt !== "" ? periodoAlt?.toString() : periodo?.toString(),
+      status: emailTutor!=="" ? userFromEmail(emailTutor) : "utilizado"
     };
 
     if (
