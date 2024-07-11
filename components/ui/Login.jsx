@@ -104,7 +104,7 @@ const Login = () => {
                             name="email"
                             value={email}
                             onChange={handleChangeEmail}
-                            maxLength={30}
+                            //maxLength={30}
                         />
                     </div>
 

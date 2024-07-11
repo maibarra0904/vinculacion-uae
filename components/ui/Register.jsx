@@ -122,7 +122,7 @@ const Register = () => {
                             name="nombre"
                             value={nombre}
                             onChange={handleChangeNombre}
-                            maxLength={30}
+                            //maxLength={30}
                         />
                     
                         <label className="text-gray-800" htmlFor="email">
@@ -136,7 +136,7 @@ const Register = () => {
                             name="email"
                             value={email}
                             onChange={handleChangeEmail}
-                            maxLength={30}
+                            //maxLength={30}
                         />
                     </div>
 
