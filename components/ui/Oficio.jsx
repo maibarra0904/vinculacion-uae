@@ -91,7 +91,7 @@ const tutorOptions = [
 
 function OficioComponent() {
 
-    const {auth, loadPage} = useMyContext();
+    const {auth, setAuth, loadPage} = useMyContext();
 
   const [nombre, guardaNombre] = useState('');
   const [aviso, setAviso] = useState("");
@@ -124,6 +124,16 @@ function OficioComponent() {
   useEffect(() => {
     
     guardaNombre(auth?.nombre)
+
+    const setAuthToken = (token) => {
+      if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      } else {
+        delete axios.defaults.headers.common['Authorization'];
+      }
+    };
+
+    setAuthToken(auth.token);
   },[auth])
 
   const handleChangeNombre = (e) => {
@@ -260,11 +270,13 @@ function OficioComponent() {
               setAlerta({
                 type: "error",
                 keyWord: "bd",
-                message: "Hubo un error al conectar a la BD",
+                message: "Su sesión ha caducado, vuelva a iniciar sesión",
               });
               setTimeForOut(80);
               setTimeout(() => {
                 setAlerta({});
+                localStorage.removeItem("usuario")
+                setAuth({})
               }, 2000);
             });
         }

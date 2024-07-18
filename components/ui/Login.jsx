@@ -59,8 +59,10 @@ const Login = () => {
         try {
             if(data?.data) {
                 //const token = data?.token;
-                //const user = verifyJWT(token)
-                localStorage.setItem('usuario', JSON.stringify(data.data))
+                const datos = {...data.data, token: data.token}
+                
+                localStorage.setItem('usuario', JSON.stringify(datos))
+                //localStorage.setItem('token', JSON.stringify(data.token))
                 setAuth(data.data)
                 setLoading(false)
                 
