@@ -24,7 +24,7 @@ const Login = () => {
         
     useEffect(() => {
         if(auth?.nombre) {
-            redirectToUrl('/')
+            window.history.back()
         }
     },[auth])
 
@@ -64,7 +64,7 @@ const Login = () => {
                 setAuth(data.data)
                 setLoading(false)
                 
-                window.history.back()
+                //window.history.back()
             } else {
                 setLoading(false)
                 setAlerta({msg: 'Hubo un error'})

@@ -79,7 +79,6 @@ const PasosPerfil = () => {
                 "/oficio"
               }
               text="Aplicación para solicitar número de oficio"
-              nuevo={true}
             />
             <Enlace
               url={

@@ -26,7 +26,6 @@ const Final = () => {
                 "/oficio"
               }
               text="Aplicación para solicitar número de oficio"
-              nuevo={true}
             />
       </EnlacesRelacionados>
       <EnlacesRelacionados text="Otros enlaces de Interés">
