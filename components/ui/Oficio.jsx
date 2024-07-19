@@ -270,7 +270,7 @@ function OficioComponent() {
               setAlerta({
                 type: "error",
                 keyWord: "bd",
-                message: "Su sesión ha caducado, vuelva a iniciar sesión",
+                message: "Hubo un problema con el servidor",
               });
               setTimeForOut(80);
               setTimeout(() => {

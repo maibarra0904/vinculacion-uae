@@ -59,7 +59,7 @@ const Login = () => {
         try {
             if(data?.data) {
                 //const token = data?.token;
-                const datos = {...data.data, token: data.token}
+                const datos = {...data.data} // token: data.token}
                 
                 localStorage.setItem('usuario', JSON.stringify(datos))
                 //localStorage.setItem('token', JSON.stringify(data.token))
