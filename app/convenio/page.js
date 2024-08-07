@@ -15,7 +15,7 @@ const Convenio = () => {
         <EnlacesRelacionados>
           <Enlace
             url={
-              "https://uagrariaec.sharepoint.com/:x:/s/VINCULACIN-COMPUTACIN/EeFstLmtMmpJh4Lt1BnTc9ABHlZ1QEAavj_1HSOi3eg0Tg?e=wGT1vU"
+              "https://uagrariaec-my.sharepoint.com/:x:/g/personal/mibarra_uagraria_edu_ec/ERaxd0GfRRtPl4UZA2NllYoBCheW4ihpL0sQWNgasygCXA?e=XTWxQ5"
             }
             text="Matriz de Convenios de Labores Comunitarias"
             nuevo={true}
