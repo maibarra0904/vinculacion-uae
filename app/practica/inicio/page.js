@@ -59,8 +59,8 @@ const InicioPracticas = () => {
               external={true}
             />
             <Enlace
-              url={"http://academico.uagraria.edu.ec/index.php"}
-              text="Enlace para ingresar al sistema de MATRICULA"
+              url={"https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/EYRvqBrwcjJNiEkajCWSxKoBY93wICYpN8FFbBG6pYw8uA?e=f30peC"}
+              text="Procedimiento para obtener el HISTORIAL DE MATRICULA"
               nuevo={true}
               external={true}
             />
