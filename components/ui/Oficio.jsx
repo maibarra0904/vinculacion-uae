@@ -87,6 +87,26 @@ const tutorOptions = [
     email: "dpow@uagraria.edu.ec",
     value: false,
   },
+  {
+    name: "CARDENAS RODRIGUEZ MARIO MANUEL",
+    email: "mcardenas@uagraria.edu.ec",
+    value: false,
+  },
+  {
+    name: "BERMEO ALMEIDA OSCAR XAVIER",
+    email: "obermeo@uagraria.edu.ec",
+    value: false,
+  },
+  {
+    name: "BAZAN VERA WILLIAM DAVID",
+    email: "wbazan@uagraria.edu.ec",
+    value: false,
+  },
+  {
+    name: "CABEZAS CABEZAS ROBERTO FERNANDO",
+    email: "rcabezas@uagraria.edu.ec",
+    value: false,
+  },
 ];
 
 function OficioComponent() {
