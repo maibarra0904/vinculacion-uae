@@ -592,6 +592,28 @@ function OficioComponent() {
         ) : (
           letterNumber && (
             <>
+            {tutor && (
+                <div className="flex justify-center items-center">
+                  <div className="mt-10 bg-amber-200 pl-2 pr-2 pt-2 pb-5 w-96 rounded-lg">
+                    <div className="flex justify-center items-center ">
+                      <div>
+                        <h1 className="mt-5 mb-5 flex justify-center items-center">
+                          Notificar al tutor
+                        </h1>
+                        <div className="flex justify-center items-center">
+                          <div className="w-50 mt-5">
+                            <EmailLink
+                              emailTutor={emailTutor}
+                              nombre={nombre}
+                              semestre={semestre}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
               <div className="flex justify-center items-center">
                 <div className="mt-10 bg-amber-200 pl-2 pr-2 pt-2 pb-5 w-96 rounded-lg">
                   <h1 className="mt-5 mb-5 flex justify-center items-center">
@@ -669,28 +691,7 @@ function OficioComponent() {
                 </div>
               </div>
 
-              {tutor && (
-                <div className="flex justify-center items-center">
-                  <div className="mt-10 bg-amber-200 pl-2 pr-2 pt-2 pb-5 w-96 rounded-lg">
-                    <div className="flex justify-center items-center ">
-                      <div>
-                        <h1 className="mt-5 mb-5 flex justify-center items-center">
-                          Notificar al tutor
-                        </h1>
-                        <div className="flex justify-center items-center">
-                          <div className="w-50 mt-5">
-                            <EmailLink
-                              emailTutor={emailTutor}
-                              nombre={nombre}
-                              semestre={semestre}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
+              
             </>
           )
         )}
