@@ -119,6 +119,14 @@ const PasosPerfil = () => {
               nuevo={true}
               external={true}
             />
+            <Enlace
+              url={
+                "https://uagrariaec-my.sharepoint.com/:x:/g/personal/mibarra_uagraria_edu_ec/EQeOYeauGS5GnI5wYf28BhcB3qM8XlEXA3gMkF2QWttqig?e=YiFpcN"
+              }
+              text="Lista de Chequeo para Revisión del Perfil de Labor Comunitaria"
+              nuevo={true}
+              external={true}
+            />
           </EnlacesRelacionados>
 
           <EnlacesRelacionados text="Otros enlaces de Interés">
