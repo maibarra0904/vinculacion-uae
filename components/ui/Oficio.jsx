@@ -138,6 +138,7 @@ function OficioComponent() {
   const [email, guardaEmail] = useState(auth?.email || "");
 
   const [showTooltip, setShowTooltip] = useState(false);
+  const [showTooltip2, setShowTooltip2] = useState(false);
   const screenWidth = typeof window !== "undefined" ? window.innerWidth : 768;
 
 
@@ -248,19 +249,34 @@ function OficioComponent() {
         nombre.toString(),
         motivoAlt !== "" ? motivoAlt?.toString() : motivo?.toString(),
         periodoAlt !== "" ? periodoAlt?.toString() : periodo?.toString(),
-      ].includes("")
+      ].includes("") 
     ) {
+
+      
       setAlerta({
         type: "error",
         keyWord: "vacios",
         message: "Todos los campos son obligatorios",
       });
 
+      console.log(tutor===true)
+      console.log(emailTutor)
+
       setTimeout(() => {
         setAlerta({});
       }, 2000);
       return;
     }
+
+    if(tutor && emailTutor==='') { 
+      setShowTooltip2(!showTooltip2)
+
+    setTimeout(() => {
+      setShowTooltip2(false)
+    }, 2000);
+    return;
+  
+  }
 
     try {
       swal({
@@ -517,6 +533,7 @@ function OficioComponent() {
                     <label className="text-gray-800" htmlFor="tutor">
                       Tutor:
                     </label>
+                    {showTooltip2 && <p className="text-indigo-500">Debes escoger un tutor</p>}
                     <select
                       id="tutor"
                       className="mt-2 block w-full text-gray-800 p-3 bg-gray-50"
@@ -544,8 +561,11 @@ function OficioComponent() {
                       </span>{" "}
                       del tutor usando el enlace que se muestra a posterior.
                     </p>
+
                   </div>
                 )}
+
+
                 <input
                   type="submit"
                   className="mt-5 w-full bg-indigo-600 p-2 text-white font-bold text-lg cursor-pointer rounded"
