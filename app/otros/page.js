@@ -19,8 +19,10 @@ const Otros = () => {
               text="Proceso para solicitar el certificado de desglose (egresados)"
             /> */}
             <Enlace
-              url={"/otros/preguntas"}
+              url={"https://poe.com/VinculaBot"}
               text="VinculaBot: Realiza consultas acerca de los procesos de vinculación"
+              external={true}
+              nuevo={true}
             />
             
           </EnlacesRelacionados>
