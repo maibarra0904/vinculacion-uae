@@ -14,10 +14,10 @@ const Otros = () => {
               url={"/otros/solicitudes"}
               text="Proceso para solicitar impresión o reimpresión de certificados de vinculación (No requerido en procesos ordinarios)"
             />
-            <Enlace
+            {/* <Enlace
               url={"/otros/desglose"}
               text="Proceso para solicitar el certificado de desglose (egresados)"
-            />
+            /> */}
             <Enlace
               url={"/otros/preguntas"}
               text="VinculaBot: Realiza consultas acerca de los procesos de vinculación"
