@@ -45,14 +45,6 @@ const Convenio = () => {
             nuevo={true}
             external={true}
           />
-          <Enlace
-            url={
-              "https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EUpsYVP5V_JHs6Z8mzJENQwBpR1jqSlh_fQJdK9jRuWUBw?e=bKTAI5"
-            }
-            text="Modelo de solicitud de aprobación de nuevo convenio"
-            nuevo={true}
-            external={true}
-          />
         </EnlacesRelacionados>
         <EnlacesRelacionados text="Otros enlaces de Interés">
         <Enlace
