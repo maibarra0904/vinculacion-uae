@@ -10,6 +10,7 @@ const LogOptions = () => {
     const handleCerrarSesion = () => {
         setAuth('')
         localStorage.removeItem('usuario')
+        localStorage.removeItem('view')
     }
     return (
         !loadPage &&
