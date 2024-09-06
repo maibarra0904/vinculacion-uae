@@ -5,7 +5,7 @@ const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="modal-content m-20">
         <div className='flex justify-end'>
         <button onClick={onClose} className='px-3 py-1 bg-red-400 text-white rounded-lg'>x</button>
