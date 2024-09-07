@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-const Logo = () => {
+const Logo = ({image}) => {
 
   return (
     <div className="flex justify-center md:mt-5">
@@ -11,7 +11,7 @@ const Logo = () => {
             <Image 
                 fill
                 alt="Logotipo Vinculacion"
-                src='/logo.jpg'
+                src={image}
                 priority="true"
             />
             

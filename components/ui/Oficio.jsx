@@ -1,14 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { formatNumber, formatDate } from "./../../utils/formatFunctions";
 import swal from "sweetalert";
-import Image from "next/image";
-import EmailLink from "@/components/links/EmailSend";
-import EmailSendStudent from "@/components/links/EmailSendStudent";
-import Alerta from "@/components/ui/Alerta";
 import { useMyContext } from "../context/myContext";
 import { userFromEmail } from "@/utils/takeuserFromemail";
+import Logo from "./Logo";
 
 
 const availabilityOptions = [
@@ -343,7 +339,17 @@ function OficioComponent() {
     }
   }
 
-  return ( !loadPage &&
+  return (
+    <>
+    <div className="uppercase text-2xl font-bold mb-10 flex justify-center items-center text-indigo-800">Fuera de Servicio Temporalmente</div>
+    <Logo image='/warning.png'/>
+    <div className="text-green-700 flex justify-center mt-4 uppercase">Se podrá volver a generar número de oficio a partir del <span className="font-bold text-amber-700">17/09/2024</span></div>
+    </>
+  )
+  
+  /*
+  ( !loadPage &&
+
          (auth?.nombre ?
       <div className="flex flex-col">
         <h1 className="uppercase text-2xl font-bold mb-10 flex justify-center items-center">
@@ -725,6 +731,7 @@ function OficioComponent() {
         </div>
       )
 );
+*/
 }
 
 export default OficioComponent;
