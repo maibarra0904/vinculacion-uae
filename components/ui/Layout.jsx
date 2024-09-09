@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
     //const openModal = () => setIsModalOpen(true);
     const closeModal = () => {
         setIsModalOpen(false)
-        localStorage.setItem('view', JSON.stringify(true))
+        auth?.nombre && localStorage.setItem('view', JSON.stringify(true))
     }
 
     useEffect(() => {
