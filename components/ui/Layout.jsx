@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
                     <Modal isOpen={isModalOpen} onClose={closeModal}>
 
                         <h1 className="flex justify-center mt-2 mb-4 uppercase text-amber-500">Comunicado!</h1>
-                        <h2 className="text-indigo-500">La emisión de números de oficios quedarán inhabilitados temporalmente desde el <span className="font-bold">07/09/2024</span> hasta el <span className="font-bold">16/09/2024</span></h2>
+                        <h2 className="text-indigo-500">Constatar que el nombre de las autoridades sean las indicadas en los formatos facilitados</h2>
 
                     </Modal>
                 }

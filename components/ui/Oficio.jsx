@@ -5,6 +5,10 @@ import swal from "sweetalert";
 import { useMyContext } from "../context/myContext";
 import { userFromEmail } from "@/utils/takeuserFromemail";
 import Logo from "./Logo";
+import EmailSendStudent from "../links/EmailSendStudent";
+import EmailLink from "../links/EmailSend";
+import Image from "next/image";
+import Alerta from "./Alerta";
 
 
 const availabilityOptions = [
@@ -339,6 +343,7 @@ function OficioComponent() {
     }
   }
 
+  /*
   return (
     <>
     <div className="uppercase text-2xl font-bold mb-10 flex justify-center items-center text-indigo-800">Fuera de Servicio Temporalmente</div>
@@ -346,9 +351,9 @@ function OficioComponent() {
     <div className="text-green-700 flex justify-center mt-4 uppercase">Se podrá volver a generar número de oficio a partir del <span className="font-bold text-amber-700">17/09/2024</span></div>
     </>
   )
+  */
   
-  /*
-  ( !loadPage &&
+  return ( !loadPage &&
 
          (auth?.nombre ?
       <div className="flex flex-col">
@@ -731,7 +736,7 @@ function OficioComponent() {
         </div>
       )
 );
-*/
+
 }
 
 export default OficioComponent;
