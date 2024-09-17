@@ -9,6 +9,7 @@ import EmailSendStudent from "../links/EmailSendStudent";
 import EmailLink from "../links/EmailSend";
 import Image from "next/image";
 import Alerta from "./Alerta";
+import { formatDate } from "@/utils/formatFunctions";
 
 
 const availabilityOptions = [
