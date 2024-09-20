@@ -5,6 +5,7 @@ import Alerta from '../ui/Alerta'
 import { useParams } from 'next/navigation'
 import axios from 'axios'
 import { redirectToUrl } from '@/utils/redirectToUrl'
+import { useMyContext } from '../context/myContext'
 
 const UpdatePassword = () => {
 
