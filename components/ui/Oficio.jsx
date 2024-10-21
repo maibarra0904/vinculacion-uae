@@ -121,6 +121,11 @@ function OficioComponent() {
       ? JSON.parse(localStorage.getItem("nombre"))
       : "";
 
+  const fechaUltimoOficio =
+  typeof window !== "undefined" && localStorage?.getItem("fecha")
+    ? JSON.parse(localStorage.getItem("fecha"))
+    : "";
+
   const [periodo, guardaPeriodo] = useState("");
   const [periodoAlt, guardaPeriodoAlt] = useState("");
   const [motivo, guardaMotivo] = useState("");
@@ -238,6 +243,20 @@ function OficioComponent() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const fechaActual = new Date().toLocaleDateString();
+
+    if(fechaUltimoOficio.split(',')[0] === fechaActual){
+      setAlerta({
+        type: "error",
+        keyWord: "fecha",
+        message: "Ya generó un oficio hoy, comuníquese con el Ing. Mario Ibarra",
+      });
+      setTimeout(() => {
+        setAlerta({});
+      }, 2000);
+      return;
+    }
+
     const userData = {
       name: nombre.toString() ?? "",
       tramite: motivoAlt !== "" ? motivoAlt?.toString() : motivo?.toString(),
@@ -299,6 +318,10 @@ function OficioComponent() {
               localStorage.setItem(
                 "nombre",
                 JSON.stringify(nombre.toLowerCase())
+              );
+              localStorage.setItem(
+                "fecha",
+                JSON.stringify(new Date().toLocaleString())
               );
             })
             .catch((error) => {

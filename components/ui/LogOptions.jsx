@@ -11,6 +11,7 @@ const LogOptions = () => {
         setAuth('')
         localStorage.removeItem('usuario')
         localStorage.removeItem('view')
+        localStorage.removeItem('fecha')
     }
     return (
         !loadPage &&
