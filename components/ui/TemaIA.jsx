@@ -167,7 +167,8 @@ const Tema = () => {
                             <label className="text-gray-800" htmlFor="email">
                                 Idea:
                             </label>
-                            <textarea
+                            <input
+                                type="text"
                                 value={output}
                                 readOnly
                                 className="border border-gray-300 rounded-md p-2 bg-gray-200 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
