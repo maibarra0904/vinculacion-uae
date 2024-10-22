@@ -3,12 +3,10 @@
 import { useEffect, useState } from "react"
 import { useMyContext } from "../context/myContext"
 import axios from "axios"
-import { verifyJWT } from "@/utils/verifyJWT"
 import Alerta from "./Alerta"
-import Image from "next/image"
 import Link from "next/link"
-import { redirect } from "next/navigation"
-import { redirectToUrl } from "@/utils/redirectToUrl"
+import { enterKey } from "@/utils/enterKey"
+
 
 const Login = () => {
 
@@ -104,6 +102,7 @@ const Login = () => {
                             name="email"
                             value={email}
                             onChange={handleChangeEmail}
+                            onKeyDown={(event) => enterKey(event, "loginButton")}
                             //maxLength={30}
                         />
                     </div>
@@ -121,12 +120,14 @@ const Login = () => {
                             value={password}
                             onChange={handleChangePassword}
                             maxLength={30}
+                            onKeyDown={(event) => enterKey(event, "loginButton")}
                         />
                     </div>
 
                     <div>
                         <button
                             type="button"
+                            id="loginButton"
                             className="flex justify-center items-center mt-2 w-full p-3 bg-gray-500 text-white"
                             onClick={handleSubmit}
                         >{loading ? 'Validando...' :'Ingresar'}</button>

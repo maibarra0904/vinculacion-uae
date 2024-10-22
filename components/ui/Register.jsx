@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react"
 import { useMyContext } from "../context/myContext"
 import axios from "axios"
-import { verifyJWT } from "@/utils/verifyJWT"
 import Alerta from "./Alerta"
 import Link from "next/link"
 import { redirectToUrl } from "@/utils/redirectToUrl"
+import { enterKey } from "@/utils/enterKey"
 
 const Register = () => {
 
@@ -122,6 +122,7 @@ const Register = () => {
                             name="nombre"
                             value={nombre}
                             onChange={handleChangeNombre}
+                            onKeyDown={(event) => enterKey(event, "registerButton")}
                             //maxLength={30}
                         />
                     
@@ -136,6 +137,7 @@ const Register = () => {
                             name="email"
                             value={email}
                             onChange={handleChangeEmail}
+                            onKeyDown={(event) => enterKey(event, "registerButton")}
                             //maxLength={30}
                         />
                     </div>
@@ -153,6 +155,7 @@ const Register = () => {
                             value={password}
                             onChange={handleChangePassword}
                             maxLength={30}
+                            onKeyDown={(event) => enterKey(event, "registerButton")}
                         />
                     </div>
 
@@ -169,11 +172,13 @@ const Register = () => {
                             value={password2}
                             onChange={handleChangePassword2}
                             maxLength={30}
+                            onKeyDown={(event) => enterKey(event, "registerButton")}
                         />
                     </div>
 
                     <div>
                         <button
+                            id="registerButton"
                             type="button"
                             className="mt-2 block w-full p-3 bg-gray-500 text-white"
                             onClick={handleSubmit}
