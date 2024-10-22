@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-const Enlace = ({ url, text, nuevo = false, external = false }) => {
+const Enlace = ({ url, text, alternative='', nuevo = false, external = false }) => {
     return (
         <Link
             href={url}
@@ -18,7 +18,9 @@ const Enlace = ({ url, text, nuevo = false, external = false }) => {
              </svg>
              
             }
-            {" " + text}
+            {" " + alternative && <span className="text-xs text-yellow-500">{alternative}</span>}
+            {text + " "}
+            
         </Link>
     )
 }

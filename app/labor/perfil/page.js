@@ -33,6 +33,13 @@ const PasosPerfil = () => {
             />
             <Enlace
               url={
+                "/tema"
+              }
+              text="Aplicación para generar ideas de temas de proyecto"
+              alternative="(nuevo)"
+            />
+            <Enlace
+              url={
                 "https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EZEAgBCARSdHjtf06-G_KnMBcSQZozfn1Ha4j2PD8-io2w?e=6j1I6H"
               }
               text="Modelo de Solicitud Para Realizar la LCE"

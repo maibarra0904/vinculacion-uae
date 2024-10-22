@@ -3,7 +3,13 @@
 const Regresar = () => {
 
     const handleGoBack = () => {
-        window.history.back()
+        // Verifica si hay un historial anterior
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            // Redirige a la página principal
+            window.location.href = '/'; // Cambia '/' por la ruta de tu página principal si es necesario
+        }
     };
     return (
         <div className="flex justify-start mb-2">
