@@ -80,7 +80,6 @@ const Tema = () => {
     return (
 
         <>
-            <Regresar />
             <div className="flex flex-col justify-center items-center">
                 <h1 className="mb-5 font-bold">App: Idea de Tema de Proyecto</h1>
                 {
