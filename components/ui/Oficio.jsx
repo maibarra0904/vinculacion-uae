@@ -126,6 +126,11 @@ function OficioComponent() {
     ? JSON.parse(localStorage.getItem("fecha"))
     : "";
 
+  const numeroUltimoOficio =
+  typeof window !== "undefined" && localStorage?.getItem("numero")
+    ? JSON.parse(localStorage.getItem("numero"))
+    : "";
+
   const [periodo, guardaPeriodo] = useState("");
   const [periodoAlt, guardaPeriodoAlt] = useState("");
   const [motivo, guardaMotivo] = useState("");
@@ -249,11 +254,8 @@ function OficioComponent() {
       setAlerta({
         type: "error",
         keyWord: "fecha",
-        message: "Ya generó un oficio hoy, comuníquese con el Ing. Mario Ibarra",
+        message: `Ya generó un oficio hoy: Oficio Nro. M-UAE-FCAJBO.V.CC-2024-0${numeroUltimoOficio}.O, si tiene dudas comuníquese con el Ing. Mario Ibarra`,
       });
-      setTimeout(() => {
-        setAlerta({});
-      }, 2000);
       return;
     }
 
@@ -322,6 +324,10 @@ function OficioComponent() {
               localStorage.setItem(
                 "fecha",
                 JSON.stringify(new Date().toLocaleString())
+              );
+              localStorage.setItem(
+                "numero",
+                JSON.stringify(res.data?.data.idApp)
               );
             })
             .catch((error) => {
