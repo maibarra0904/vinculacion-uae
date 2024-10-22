@@ -16,8 +16,6 @@ const Tema = () => {
 
     const [lugar, guardaLugar] = useState('')
 
-    const { auth, setAuth } = useMyContext()
-
     const [alerta, setAlerta] = useState('')
 
     const [loading, setLoading] = useState('')
@@ -40,11 +38,6 @@ const Tema = () => {
         return () => clearInterval(intervalId);
     }, [])
 
-    useEffect(() => {
-        if (auth?.nombre) {
-            window.history.back()
-        }
-    }, [auth])
 
 
 
@@ -167,8 +160,7 @@ const Tema = () => {
                             <label className="text-gray-800" htmlFor="email">
                                 Idea:
                             </label>
-                            <input
-                                type="text"
+                            <textarea
                                 value={output}
                                 readOnly
                                 className="border border-gray-300 rounded-md p-2 bg-gray-200 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
