@@ -21,6 +21,18 @@ const Register = () => {
 
     const [alerta, setAlerta] = useState('')
 
+    const [puntos, setPuntos] = useState(0);
+
+    useEffect(() =>  {
+        // Iniciar el intervalo
+        const intervalId = setInterval(() => {
+                setPuntos((prev) => (prev + 1) % 4); // Alterna entre 0, 1, 2 y 3 puntos
+            }, 500); // Actualiza cada 500 ms
+        
+            // Limpieza al desmontar el componente
+            return () => clearInterval(intervalId);
+    },[])
+
     useEffect(() => {
         console.log(auth)
         if(auth?.nombre) {
@@ -182,7 +194,7 @@ const Register = () => {
                             type="button"
                             className="mt-2 block w-full p-3 bg-gray-500 text-white"
                             onClick={handleSubmit}
-                        >{loading ? 'Registrando...' : 'Registrar'}</button>
+                        >{loading ? `Registrando${'.'.repeat(puntos)}` :'Registrar'}</button>
                     </div>
 
                 </div>

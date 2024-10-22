@@ -19,6 +19,17 @@ const Login = () => {
 
     const [loading, setLoading] = useState('')
 
+    const [puntos, setPuntos] = useState(0);
+
+    useEffect(() =>  {
+        // Iniciar el intervalo
+        const intervalId = setInterval(() => {
+                setPuntos((prev) => (prev + 1) % 4); // Alterna entre 0, 1, 2 y 3 puntos
+            }, 500); // Actualiza cada 500 ms
+        
+            // Limpieza al desmontar el componente
+            return () => clearInterval(intervalId);
+    },[])
         
     useEffect(() => {
         if(auth?.nombre) {
@@ -124,13 +135,13 @@ const Login = () => {
                         />
                     </div>
 
-                    <div>
+                    <div className="flex">
                         <button
                             type="button"
                             id="loginButton"
                             className="flex justify-center items-center mt-2 w-full p-3 bg-gray-500 text-white"
                             onClick={handleSubmit}
-                        >{loading ? 'Validando...' :'Ingresar'}</button>
+                        >{loading ? `Validando${'.'.repeat(puntos)}` :'Ingresar'}</button>
                     </div>
 
                 </div>
