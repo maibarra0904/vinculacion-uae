@@ -74,7 +74,7 @@ const Tema = () => {
 
         <>
             <div className="flex flex-col justify-center items-center">
-                <h1 className="mb-5 font-bold">App: Idea de Tema de Proyecto</h1>
+                <h1 className="mb-5 font-bold">App: Idea de Tema de Proyecto (IA)</h1>
                 {
                     alerta?.msg &&
                     <Alerta msg={alerta?.msg} />
