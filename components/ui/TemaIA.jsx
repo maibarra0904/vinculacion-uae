@@ -163,7 +163,7 @@ const Tema = () => {
                             <textarea
                                 value={output}
                                 readOnly
-                                className="border border-gray-300 rounded-md p-2 bg-gray-200 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                className="border border-gray-300 rounded-md p-2 bg-gray-200 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-700"
                                 rows={1} // Comienza con una sola fila
                                 placeholder="Aquí se presentará la idea..."
                                 style={{ height: `200px` }} // Ajusta la altura según el texto
