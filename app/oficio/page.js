@@ -6,8 +6,7 @@ function Oficio() {
   
   return (
     <Layout>
-      <div>Se está actualizando la numeración, para mayor información comuníquese con el Ing. Ibarra</div>
-      {/* <OficioComponent /> */}
+      <OficioComponent />
     </Layout>
   );
 }

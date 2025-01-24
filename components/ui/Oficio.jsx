@@ -254,7 +254,7 @@ function OficioComponent() {
       setAlerta({
         type: "error",
         keyWord: "fecha",
-        message: `Ya generó un oficio hoy: Oficio Nro. M-UAE-FCAJBO.V.CC-2024-0${numeroUltimoOficio}.O, si tiene dudas comuníquese con el Ing. Mario Ibarra`,
+        message: `Ya generó un oficio hoy: Oficio Nro. M-UAE-FCAJBO.V.CC-2025-0${numeroUltimoOficio}.O, si tiene dudas comuníquese con el Ing. Mario Ibarra`,
       });
       return;
     }
@@ -689,14 +689,14 @@ function OficioComponent() {
                       className="font-bold text-sm bg-cyan-300 p-1 border rounded-md h-10"
                       onClick={() =>
                         copyToClipboard(
-                          `Oficio Nro. M-UAE-FCAJBO.V.CC-2024-${formatNumber(
+                          `Oficio Nro. M-UAE-FCAJBO.V.CC-2025-${formatNumber(
                             parseInt(letterNumber)
                           )}.O`,
                           1
                         )
                       }
                     >
-                      Oficio Nro. M-UAE-FCAJBO.V.CC-2024-
+                      Oficio Nro. M-UAE-FCAJBO.V.CC-2025-
                       {formatNumber(parseInt(letterNumber))}.O
                     </button>
                   </div>
@@ -743,7 +743,7 @@ function OficioComponent() {
                       />
                       <EmailSendStudent
                         email={email}
-                        oficio={`Oficio Nro. M-UAE-FCAJBO.V.CC-2024-
+                        oficio={`Oficio Nro. M-UAE-FCAJBO.V.CC-2025-
                       ${formatNumber(parseInt(letterNumber))}.O`}
                         fecha={`${formatDate(new Date()).toString()}`}
                       />
