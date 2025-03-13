@@ -38,6 +38,14 @@ const InicioPracticas = () => {
             />
             <Enlace
               url={
+                "https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/Ee9o52Qgl0BFiV8rPq2bFtcBydrGI3Qv9hE3SnqZrVJYJA?e=DXQhcM"
+              }
+              text="(nuevo) Modelo de Carta de Intención para entregar a empresas antes de empezar la PPP"
+              nuevo={true}
+              external={true}
+            />
+            <Enlace
+              url={
                 "https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EZAFqFqV0pVFoEPefB2VvKwB2CEVpE3jRpdiOZCxnZY1lg?e=lZPJKg"
               }
               text="Formato de Solicitud Con Carta de Intensión para realizar PP"
