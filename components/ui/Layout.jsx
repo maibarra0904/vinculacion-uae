@@ -44,7 +44,7 @@ const Layout = ({ children }) => {
 
                         <h1 className="flex justify-center mt-2 mb-4 uppercase text-amber-500">Comunicado!</h1>
                         <h2 className="text-indigo-500">Constatar que el nombre de las autoridades sean las indicadas en los formatos facilitados</h2>
-
+                        <h2 className="text-indigo-500">El procedimiento de practicas preprofesionales ha sido actualizado</h2>
                     </Modal>
                 }
 

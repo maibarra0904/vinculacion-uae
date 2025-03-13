@@ -32,7 +32,7 @@ const InicioPracticas = () => {
               url={
                 "https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EVH1EZp0XnRHpK3GAS2YjbkBo54sb3BpFfyuXNqJ4sXGsw?e=3gibyd"
               }
-              text="Formato de Solicitud Con Convenio para realizar PP"
+              text="Formato de SOLICITUD CON CONVENIO para iniciar PP"
               nuevo={true}
               external={true}
             />
@@ -40,7 +40,7 @@ const InicioPracticas = () => {
               url={
                 "https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/Ee9o52Qgl0BFiV8rPq2bFtcBydrGI3Qv9hE3SnqZrVJYJA?e=DXQhcM"
               }
-              text="(nuevo) Modelo de Carta de Intención para entregar a empresas antes de empezar la PPP"
+              text="(nuevo) Modelo de CARTA DE INTENCIÓN para entregar a empresas antes de empezar la PPP"
               nuevo={true}
               external={true}
             />
@@ -48,7 +48,7 @@ const InicioPracticas = () => {
               url={
                 "https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EZAFqFqV0pVFoEPefB2VvKwB2CEVpE3jRpdiOZCxnZY1lg?e=lZPJKg"
               }
-              text="Formato de Solicitud Con Carta de Intensión para realizar PP"
+              text="Formato de SOLICITUD CON CARTA DE INTENCIÓN para iniciar PP"
               nuevo={true}
               external={true}
             />
@@ -56,13 +56,13 @@ const InicioPracticas = () => {
               url={
                 "/oficio"
               }
-              text="Aplicación para solicitar número de oficio"
+              text="APLICACIÓN para solicitar número de oficio"
             />
             <Enlace
               url={
                 "https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EbHAM6Tx9rRCmYy5UZjOk10BrfGo9l4Thh3NInDLaJU2Vg?e=R2G9nm"
               }
-              text="Modelo de Carta de Apertura"
+              text="Modelo de solicitud de OFICIO DE APERTURA"
               nuevo={true}
               external={true}
             />
@@ -71,10 +71,6 @@ const InicioPracticas = () => {
               text="Procedimiento para obtener el HISTORIAL DE MATRICULA"
               nuevo={true}
               external={true}
-            />
-            <Enlace
-              url={"/practica/convenio"}
-              text="Información sobre convenio o carta de intensión"
             />
           </EnlacesRelacionados>
 
@@ -106,14 +102,14 @@ const InicioPracticas = () => {
               url={
                 "/oficio"
               }
-              text="Aplicación para solicitar número de oficio"
+              text="APLICACIÓN para solicitar número de oficio"
               nuevo={true}
             />
             <Enlace
               url={
                 "https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EdPkBvc6kpFPpPz4a0ojBy0BH45ISNni-Y8SivIswgTPAQ?e=9A4lFD"
               }
-              text="Modelo de Carta de Pedido a Decano"
+              text="Modelo de OFICIO DE PEDIDO A DECANO"
               nuevo={true}
               external={true}
             />
