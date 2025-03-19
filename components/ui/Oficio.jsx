@@ -108,6 +108,11 @@ const tutorOptions = [
     email: "rcabezas@uagraria.edu.ec",
     value: false,
   },
+  {
+    name: "BELTRAN ROBAYO NUVIA ARACELLY",
+    email: "nbeltran@uagraria.edu.ec",
+    value: false,
+  }
 ];
 
 function OficioComponent() {
