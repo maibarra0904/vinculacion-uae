@@ -26,7 +26,7 @@ const Tema = () => {
 
     const apiKey = process.env.NEXT_PUBLIC_API_GEMINI_KEY
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro-001' });
 
     useEffect(() => {
         // Iniciar el intervalo
