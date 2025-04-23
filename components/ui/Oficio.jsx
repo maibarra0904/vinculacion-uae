@@ -378,7 +378,7 @@ function OficioComponent() {
     }
   }
 
-
+/*
   return (
     <>
     <div className="uppercase text-2xl font-bold mb-10 flex justify-center items-center text-indigo-800">Fuera de Servicio Temporalmente</div>
@@ -386,9 +386,9 @@ function OficioComponent() {
     <div className="text-green-700 flex justify-center mt-4 uppercase">Se podrá volver a generar número de oficio a partir del <span className="font-bold text-amber-700">14-Abr-2025</span></div>
     </>
   )
-
+*/
   
-  /*
+  
   return ( !loadPage &&
 
          (auth?.nombre ?
@@ -771,7 +771,7 @@ function OficioComponent() {
         <p className="flex justify-center uppercase font-bold">Debe iniciar sesión para acceder a esta aplicación</p>
         </div>
       )
-);*/
+);
 
 }
 
