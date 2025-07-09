@@ -111,6 +111,11 @@ const PasosPerfil = () => {
               external={true}
             />
             <Enlace
+              url={"/otros/planificacion"}
+              text="Aplicación para planificar las fechas de vinculación"
+              nuevo={true}
+            />
+            <Enlace
               url={
                 "https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EYN96-zUDMxPjUMC_d1-fdcB57zbeN_-01sMcwBXTXuJCw?e=e8JwyZ"
               }

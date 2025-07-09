@@ -106,6 +106,11 @@ const InicioPracticas = () => {
               nuevo={true}
             />
             <Enlace
+              url={"/otros/planificacion"}
+              text="Aplicación para planificar las fechas de vinculación"
+              nuevo={true}
+            />
+            <Enlace
               url={
                 "https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EdPkBvc6kpFPpPz4a0ojBy0BH45ISNni-Y8SivIswgTPAQ?e=9A4lFD"
               }
