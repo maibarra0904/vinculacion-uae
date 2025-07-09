@@ -106,9 +106,10 @@ const InicioPracticas = () => {
               nuevo={true}
             />
             <Enlace
-              url={"/otros/planificacion"}
+              url={"https://planificadorfechasvinculacion.netlify.app/"}
               text="Aplicación para planificar las fechas de vinculación"
               nuevo={true}
+              external={true}
             />
             <Enlace
               url={

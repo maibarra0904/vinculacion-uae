@@ -14,8 +14,10 @@ const Otros = () => {
             text="Proceso para solicitar impresión o reimpresión de certificados de vinculación (No requerido en procesos ordinarios)"
           />
           <Enlace
-            url={"/otros/planificacion"}
-            text="Aplicación para planificar las fechas de vinculación"
+              url={"https://planificadorfechasvinculacion.netlify.app/"}
+              text="Aplicación para planificar las fechas de vinculación"
+              nuevo={true}
+              external={true}
           />
           <Enlace
             url={"https://poe.com/VinculaBot"}
