@@ -1,16 +1,30 @@
 
 import { Document, Page, View, Text, StyleSheet, Font } from '@react-pdf/renderer';
 
+// Es crucial registrar las fuentes que @react-pdf/renderer utilizará.
+// Si no se registran, o si se intenta usar una fuente no registrada,
+// la aplicación puede fallar al intentar generar el PDF.
+// Aquí registramos 'Roboto' en sus variantes normal y negrita.
+Font.register({
+  family: 'Roboto',
+  fonts: [
+    { src: 'https://cdnjs.cloudflare.com/ajax/libs/ink/1.0.0/fonts/Roboto/roboto-regular-webfont.ttf', fontWeight: 'normal' },
+    { src: 'https://cdnjs.cloudflare.com/ajax/libs/ink/1.0.0/fonts/Roboto/roboto-bold-webfont.ttf', fontWeight: 'bold' },
+  ],
+});
+
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'column',
     backgroundColor: '#FFFFFF',
     padding: 30,
+    // Asegúrate de que el fontFamily aquí coincida con el nombre de la familia registrada
+    fontFamily: 'Roboto',
   },
   header: {
     fontSize: 24,
     textAlign: 'center',
-    marginBottom: 10, // Ajuste para el subheader de tipo de actividad
+    marginBottom: 10,
     fontWeight: 'bold',
     textTransform: 'uppercase',
   },
@@ -88,7 +102,7 @@ const PlanificacionPdf = ({ activityType, startDate, endDate, requiredHours, wee
   <Document>
     <Page size="A4" style={styles.page}>
       <Text style={styles.header}>Planificación de Actividades</Text>
-      <Text style={styles.activityTypeHeader}>{activityType}</Text> {/* Nuevo */}
+      <Text style={styles.activityTypeHeader}>{activityType}</Text>
 
       <View style={styles.section}>
         <Text style={styles.subheader}>Resumen:</Text>
@@ -109,7 +123,7 @@ const PlanificacionPdf = ({ activityType, startDate, endDate, requiredHours, wee
             <View style={styles.tableColHeader}>
               <Text style={styles.tableCellHeader}>Horario / Observación</Text>
             </View>
-            <View style={styles.tableColHeader}> {/* Nueva columna */}
+            <View style={styles.tableColHeader}>
               <Text style={styles.tableCellHeader}>Horas Acumuladas</Text>
             </View>
           </View>
@@ -121,7 +135,7 @@ const PlanificacionPdf = ({ activityType, startDate, endDate, requiredHours, wee
               <View style={styles.tableCol}>
                 <Text style={styles.tableCell}>{item[1]}</Text>
               </View>
-              <View style={styles.tableCol}> {/* Nueva celda */}
+              <View style={styles.tableCol}>
                 <Text style={styles.tableCell}>{item[2]}</Text>
               </View>
             </View>
