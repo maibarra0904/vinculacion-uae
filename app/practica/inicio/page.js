@@ -53,6 +53,12 @@ const InicioPracticas = () => {
               external={true}
             />
             <Enlace
+              url={"https://planificadorfechasvinculacion.netlify.app/"}
+              text="Aplicación para planificar las fechas de vinculación"
+              nuevo={true}
+              external={true}
+            />
+            <Enlace
               url={
                 "/oficio"
               }
@@ -104,12 +110,6 @@ const InicioPracticas = () => {
               }
               text="APLICACIÓN para solicitar número de oficio"
               nuevo={true}
-            />
-            <Enlace
-              url={"https://planificadorfechasvinculacion.netlify.app/"}
-              text="Aplicación para planificar las fechas de vinculación"
-              nuevo={true}
-              external={true}
             />
             <Enlace
               url={
