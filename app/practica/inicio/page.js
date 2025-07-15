@@ -54,7 +54,7 @@ const InicioPracticas = () => {
             />
             <Enlace
               url={"https://planificadorfechasvinculacion.netlify.app/"}
-              text="Aplicación para planificar las fechas de vinculación"
+              text="Aplicación para planificar las fechas de prácticas preprofesionales"
               nuevo={true}
               external={true}
               alternative="(nuevo)"
