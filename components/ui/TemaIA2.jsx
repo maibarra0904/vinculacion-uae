@@ -237,7 +237,7 @@ const Tema = () => {
                     <div>
                         <div className="mb-4">
                             <label className="text-indigo-600 text-sm italic mb-1 block" htmlFor="tema">
-                                <span className="text-red-500">Nota Aclaratoria:</span> Esta app sirve para cuando el estudiante ha realizado el diagnóstico del proyecto, es decir, tiene clara la herramienta que capacitará, donde lo hará y a quién va dirigido pero quiere ideas para plantear el tema de labor comunitaria en el perfil del proyecto a presentar.
+                                <span className="text-red-500">Nota Aclaratoria:</span> Esta app sirve para cuando el estudiante ha realizado el diagnóstico del proyecto, es decir, tiene clara la herramienta que capacitará, donde lo hará y a quién va dirigido pero quiere ideas para la redacción del tema de labor comunitaria en el perfil del proyecto a presentar.
                             </label>
                         </div>
                         <div className="mb-4">
