@@ -1,6 +1,6 @@
 import Layout from '@/components/ui/Layout'
 import Login from '@/components/ui/Login'
-import Tema from '@/components/ui/TemaIA'
+import Tema from '@/components/ui/TemaIA2'
 import React from 'react'
 
 const TemaPage = () => {

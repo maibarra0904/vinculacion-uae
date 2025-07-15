@@ -57,6 +57,7 @@ const InicioPracticas = () => {
               text="Aplicación para planificar las fechas de vinculación"
               nuevo={true}
               external={true}
+              alternative="(nuevo)"
             />
             <Enlace
               url={
