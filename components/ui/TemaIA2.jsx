@@ -157,7 +157,7 @@ const Tema = () => {
 
         try {
             // Construye el prompt para el modelo de IA
-            const prompt = `Muestra una idea de tema de capacitación que contenga sin excepción todas las siguientes temáticas: ${tema} incluyendo el siguiente lugar donde se realizará el proyecto: ${lugar} y también el hecho que la capacitación está dirigida a: ${beneficiarios}, por ultimo la ideas debe decir qué se va a hacer y para qué se va a hacer en el mismo tema, quita comillas, asteriscos, dos puntos u otros simbolos especiales y dedicate solo a mostrar el tema en un solo parrafo y ninguna cosa mas. La extension maxima del tema debe ser de 35 palabras.`;
+            const prompt = `Muestra una idea de tema de capacitación que contenga sin excepción todas las siguientes temáticas: ${tema} incluyendo el siguiente lugar donde se realizará el proyecto: ${lugar} y también el hecho que la capacitación está dirigida a: ${beneficiarios}, por ultimo la ideas debe decir qué se va a hacer y para qué se va a hacer en el mismo tema, quita comillas, asteriscos, dos puntos u otros simbolos especiales y dedicate solo a mostrar el tema en un solo parrafo y ninguna cosa mas. La extension maxima del tema debe ser de 20 palabras.`;
 
             // Configuración de la llamada a la API de Groq (Llama 3)
             const payload = {
