@@ -20,8 +20,9 @@ LABOR COMUNITARIA ESTUDIANTIL (LCE):
 - Etapas: 1) PERFIL DEL PROYECTO (requiere convenio), 2) INFORME FINAL
 - Las labores comunitarias pueden ser individuales (un solo estudiante) o ser grupales (máximo 4 estudiantes)
 - El plazo para la aprobación del informe final es de 28 días calendario después de la finalización del último día programado de la actividad.
+- De acuerdo a la reglamentación interna de la facultad de ciencias agrarias, no se puede arrastrar más de una labor comunitaria, por tanto, debe hacérsele o en el año en curso o máximo el siguiente año. Si no se la hace oportunamente, pueden existir problemas de matriculación o incluso su denegación.
 
-PROCESO DE PERFIL LC:
+PROCESO DE PERFIL DE LABOR COMUNITARIA ESTUDIANTIL (LCE):
 PASO 1:
 - Solicitar número de oficio (Motivo: PASO 1 - PERFIL LC)
 - Llenar SOLICITUD PARA REALIZAR LA LCE con adjuntos
@@ -41,7 +42,7 @@ PASO 2:
 - Revisión final Responsable Vinculación
 - Entrega en Secretaría Decanato o Departamento Labor Comunitaria Guayaquil
 
-INFORME FINAL LC:
+INFORME FINAL DE LABOR COMUNITARIA ESTUDIANTIL (LCE):
 - Llenar FORMATOS DE INFORME junto con CARÁTULA
 - Adjuntar copia del OFICIO DEL PERFIL APROBADO (llegó por correo)
 - Carpeta amarilla con vincha plástica en orden establecido
@@ -56,6 +57,7 @@ PRÁCTICAS PREPROFESIONALES (PP):
 - Etapas: 1) DOCUMENTOS DE INICIO, 2) EJECUCIÓN, 3) INFORME FINAL
 - Convenio opcional (puede usar carta de intención)
 - Evidencias obligatorias: 2 fotos por día con GPS Map Camera
+- De acuerdo a la reglamentación interna de la Facultad de Ciencias Agrarias, no se puede arrastrar más de una labor comunitaria, por tanto, debe hacérsele o en el año en curso o máximo el siguiente año. Si no se la hace oportunamente, pueden existir problemas de matriculación o incluso su denegación.
 
 PROCESO DOCUMENTOS INICIO DE PRACTICAS PREPROFESIONALES (PP):
 PASO 1:
