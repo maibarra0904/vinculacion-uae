@@ -426,12 +426,12 @@ Respuesta:`;
                                 <div
                                     className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
                                         message.type === 'user'
-                                            ? 'bg-green-600 text-white'
-                                            : 'bg-white text-gray-800 shadow-md border'
+                                            ? 'bg-green-600'
+                                            : 'bg-white shadow-md border'
                                     }`}
                                 >
-                                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-                                    <span className="text-xs opacity-70 mt-1 block">
+                                    <p className="text-sm whitespace-pre-wrap text-black">{message.content}</p>
+                                    <span className="text-xs opacity-70 mt-1 block text-black">
                                         {message.timestamp.toLocaleTimeString('es-ES', { 
                                             hour: '2-digit', 
                                             minute: '2-digit',
@@ -444,8 +444,8 @@ Respuesta:`;
                         
                         {loading && (
                             <div className="flex justify-start">
-                                <div className="bg-white text-gray-800 shadow-md border px-4 py-2 rounded-lg">
-                                    <p className="text-sm">Escribiendo{'.'.repeat(puntos)}</p>
+                                <div className="bg-white shadow-md border px-4 py-2 rounded-lg">
+                                    <p className="text-sm text-black">Escribiendo{'.'.repeat(puntos)}</p>
                                 </div>
                             </div>
                         )}
@@ -506,7 +506,7 @@ Respuesta:`;
 
                     {/* Sugerencias rápidas */}
                     <div className="p-4 bg-gray-100 border-t">
-                        <p className="text-sm font-medium text-gray-700 mb-2">Sugerencias rápidas:</p>
+                        <p className="text-sm font-medium text-black mb-2">Sugerencias rápidas:</p>
                         <div className="flex flex-wrap gap-2">
                             {[
                                 "¿Cómo hago el informe final de Labor Comunitaria?",
@@ -518,7 +518,7 @@ Respuesta:`;
                                 <button
                                     key={index}
                                     onClick={() => setUserInput(suggestion)}
-                                    className="text-xs bg-white border border-gray-300 px-2 py-1 rounded-md hover:bg-gray-50 transition-colors"
+                                    className="text-xs bg-white border border-gray-300 px-2 py-1 rounded-md hover:bg-gray-50 transition-colors text-black"
                                     disabled={loading || !canGenerate}
                                 >
                                     {suggestion}
