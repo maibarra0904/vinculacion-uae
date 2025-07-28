@@ -18,6 +18,7 @@ LABOR COMUNITARIA ESTUDIANTIL (LCE):
 - Objetivo: Contribuir al desarrollo de la comunidad y promover compromiso social
 - Requisitos: Convenio aprobado (obligatorio), máximo 4 estudiantes por grupo
 - Etapas: 1) PERFIL DEL PROYECTO (requiere convenio), 2) INFORME FINAL
+- Las labores comunitarias pueden ser individuales (un solo estudiante) o ser grupales (máximo 4 estudiantes)
 
 PROCESO DE PERFIL LC:
 PASO 1:
