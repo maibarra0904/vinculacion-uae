@@ -20,9 +20,8 @@ const Otros = () => {
               external={true}
           />
           <Enlace
-            url={"https://poe.com/VinculaBot"}
+            url={"/chat"}
             text="VinculaBot: Realiza consultas acerca de los procesos de vinculación"
-            external={true}
             nuevo={true}
           />
         </EnlacesRelacionados>
