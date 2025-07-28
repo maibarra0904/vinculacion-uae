@@ -19,6 +19,7 @@ LABOR COMUNITARIA ESTUDIANTIL (LCE):
 - Requisitos: Convenio aprobado (obligatorio), máximo 4 estudiantes por grupo
 - Etapas: 1) PERFIL DEL PROYECTO (requiere convenio), 2) INFORME FINAL
 - Las labores comunitarias pueden ser individuales (un solo estudiante) o ser grupales (máximo 4 estudiantes)
+- El plazo para la aprobación del informe final es de 28 días calendario después de la finalización del último día programado de la actividad.
 
 PROCESO DE PERFIL LC:
 PASO 1:
@@ -56,7 +57,7 @@ PRÁCTICAS PREPROFESIONALES (PP):
 - Convenio opcional (puede usar carta de intención)
 - Evidencias obligatorias: 2 fotos por día con GPS Map Camera
 
-PROCESO DOCUMENTOS INICIO PP:
+PROCESO DOCUMENTOS INICIO DE PRACTICAS PREPROFESIONALES (PP):
 PASO 1:
 - Elegir: Convenio existente/nuevo O Carta de Intención
 - Si carta intención: firmar con Responsable Vinculación, tomar recibido empresa
@@ -77,8 +78,8 @@ PASO 2 PP:
 - Escanear y enviar al correo mibarra@uagraria.edu.ec
 - Proceder con inicio en fecha programada
 
-INFORME FINAL PP:
-- Plazo para la entrega del informe final luego de haber terminado las practicas preprofesionales: 28 días calendario (sino queda ANULADA)
+INFORME FINAL DE PRACTICAS PREPROFESIONALES (PP):
+- Plazo para la entrega del informe final luego de haber terminado el último día programado de las practicas preprofesionales: 28 días calendario (sino queda ANULADA)
 - Llenar formatos de documentación disponibles en este sitio en el apartado correspondiente
 - Tutor sumilla todas las páginas
 - Carpeta amarilla con documentación de inicio
