@@ -460,7 +460,7 @@ Respuesta:`;
                                 onChange={(e) => setUserInput(e.target.value)}
                                 onKeyPress={handleKeyPress}
                                 placeholder="Pregúntame sobre procedimientos LC/PP, informes finales, certificado de desglose, documentos, convenios..."
-                                className="flex-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
+                                className="flex-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 resize-none text-black"
                                 rows="2"
                                 disabled={loading || !canGenerate}
                             />
