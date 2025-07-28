@@ -22,7 +22,6 @@ const Otros = () => {
           <Enlace
             url={"/chat"}
             text="VinculaBot: Realiza consultas acerca de los procesos de vinculación"
-            nuevo={true}
           />
         </EnlacesRelacionados>
       </Layout>
