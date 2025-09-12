@@ -1,3 +1,5 @@
+ [build]
+   image = "jammy"
 [[headers]]
   for = "/*"
   [headers.values]
