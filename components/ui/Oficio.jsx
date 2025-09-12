@@ -118,6 +118,8 @@ const tutorOptions = [
 ];
 
 function OficioComponent() {
+  // Estado para controlar si el tutor fue notificado
+  const [tutorNotificado, setTutorNotificado] = useState(false);
 
     const {auth, setAuth, loadPage} = useMyContext();
 
@@ -209,8 +211,10 @@ function OficioComponent() {
 
     if (e.target.value.includes("PASO 2")) {
       setTutor(true);
+  setTutorNotificado(false);
     } else {
       setTutor(false);
+  setTutorNotificado(false);
     }
   };
 
@@ -604,21 +608,32 @@ function OficioComponent() {
                       Debe contactarse previamente con el Ing. Mario Ibarra para
                       que el le asigne el tutor, no lo puede elegir Ud.
                       arbritariamente. Luego de Generar el Número de oficio debe
-                      hacer la{" "}
-                      <span className="font-bold uppercase">
-                        notificación al correo
-                      </span>{" "}
-                      del tutor usando el enlace que se muestra a posterior.
+                      hacer la <span className="font-bold uppercase">notificación al correo</span> del tutor usando el enlace que se muestra a posterior.
                     </p>
-
+                    {/* Solo para PASO 2: mostrar EmailLink y controlar notificación */}
+                    {motivo.includes("PASO 2") && emailTutor && (
+                      <div className="mt-4 flex flex-col items-center">
+                        <span className="mb-2">Notificar al tutor por correo:</span>
+                        <EmailLink
+                          emailTutor={emailTutor}
+                          nombre={nombre}
+                          semestre={semestre}
+                          onClick={() => setTutorNotificado(true)}
+                        />
+                        {!tutorNotificado && (
+                          <span className="text-indigo-600 mt-2">Debes notificar al tutor antes de generar el número de oficio.</span>
+                        )}
+                      </div>
+                    )}
                   </div>
                 )}
 
 
                 <input
                   type="submit"
-                  className="mt-5 w-full bg-indigo-600 p-2 text-white font-bold text-lg cursor-pointer rounded"
+                  className={`mt-5 w-full bg-indigo-600 p-2 text-white font-bold text-lg cursor-pointer rounded ${tutor && motivo.includes("PASO 2") && !tutorNotificado ? 'opacity-50 cursor-not-allowed' : ''}`}
                   value="Generar Número de Oficio"
+                  disabled={tutor && motivo.includes("PASO 2") && !tutorNotificado}
                 />
               </div>
             </form>
@@ -661,7 +676,7 @@ function OficioComponent() {
         ) : (
           letterNumber && (
             <>
-            {tutor && (
+            {/* {tutor && (
                 <div className="flex justify-center items-center">
                   <div className="mt-10 bg-amber-200 pl-2 pr-2 pt-2 pb-5 w-96 rounded-lg">
                     <div className="flex justify-center items-center ">
@@ -682,7 +697,7 @@ function OficioComponent() {
                     </div>
                   </div>
                 </div>
-              )}
+              )} */}
               <div className="flex justify-center items-center">
                 <div className="mt-10 bg-amber-200 pl-2 pr-2 pt-2 pb-5 w-96 rounded-lg">
                   <h1 className="mt-5 mb-5 flex justify-center items-center">

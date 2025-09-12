@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const EmailLink = ({emailTutor, nombre, semestre}) => {
+const EmailLink = ({emailTutor, nombre, semestre, onClick}) => {
   const recipientEmail = emailTutor;
   const ccEmail = "mibarra@uagraria.edu.ec";
   const subject = 'Asignación de tutor';
@@ -21,6 +21,7 @@ const EmailLink = ({emailTutor, nombre, semestre}) => {
     <a 
       href={mailtoLink}
       className="p-2 m-2 bg-indigo-600 text-white rounded-lg"
+      onClick={onClick}
     >
       Notificar por Correo
     </a>
@@ -31,6 +32,7 @@ EmailLink.propTypes = {
     emailTutor: PropTypes.string.isRequired,
     nombre: PropTypes.string.isRequired,
     semestre: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
   };
 
 export default EmailLink;
