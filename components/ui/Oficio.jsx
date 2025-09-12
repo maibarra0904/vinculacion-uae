@@ -36,6 +36,8 @@ const periodoOptions = [
   { name: "2022-2023", value: false },
   { name: "2023-2024", value: false },
   { name: "2024-2025", value: false },
+  { name: "2025-2026", value: false },
+  { name: "2026-2027", value: false },
   { name: "OTRO", value: false },
   { name: "NO APLICA", value: false },
 ];
