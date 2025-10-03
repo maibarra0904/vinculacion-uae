@@ -171,7 +171,7 @@ const Tema = () => {
             };
 
             // URL de la API de Groq
-            const apiUrl = `https://api.groq.com/openai/v1/chat/completions`;
+            const apiUrl = "/api/groq";
 
             // Realiza la llamada a la API
             const response = await fetch(apiUrl, {
