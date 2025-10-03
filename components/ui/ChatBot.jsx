@@ -312,7 +312,7 @@ Respuesta:`;
             };
 
             // Usar fetch para llamar a Groq API
-            const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+            const response = await fetch('/api/groq', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
