@@ -306,7 +306,7 @@ Respuesta:`;
                         content: systemPrompt,
                     },
                 ],
-                model: "llama3-8b-8192", // Modelo Llama 3 de Groq
+                model: "llama-3.1-8b-instant", // Modelo Llama 3 de Groq
                 max_tokens: 300,
                 temperature: 0.7,
             };

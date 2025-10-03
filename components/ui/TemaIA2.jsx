@@ -167,7 +167,7 @@ const Tema = () => {
                         content: prompt,
                     },
                 ],
-                model: "llama3-8b-8192", // Modelo Llama 3 de Groq
+                model: "llama-3.1-8b-instant", // Modelo Llama 3 de Groq
             };
 
             // URL de la API de Groq
