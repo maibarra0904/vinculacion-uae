@@ -114,6 +114,11 @@ const tutorOptions = [
     name: "BELTRAN ROBAYO NUVIA ARACELLY",
     email: "nbeltran@uagraria.edu.ec",
     value: false,
+  },
+  {
+    name: "ALEXIS ALVARADO DOLZ",
+    email: "asalvarado@uagraria.edu.ec",
+    value: false,
   }
 ];
 
