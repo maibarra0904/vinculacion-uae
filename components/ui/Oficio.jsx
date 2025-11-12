@@ -116,7 +116,7 @@ const tutorOptions = [
     value: false,
   },
   {
-    name: "ALEXIS ALVARADO DOLZ",
+    name: "ALVARADO DOLZ ALEXIS STALYN",
     email: "asalvarado@uagraria.edu.ec",
     value: false,
   }
