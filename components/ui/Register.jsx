@@ -7,6 +7,7 @@ import Alerta from "./Alerta"
 import Link from "next/link"
 import { redirectToUrl } from "@/utils/redirectToUrl"
 import { enterKey } from "@/utils/enterKey"
+import emailService from "../../services/emailService"
 
 const Register = () => {
 
@@ -86,20 +87,35 @@ const Register = () => {
 
         try {
             const {data} = await axios.post(`${process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND}/auth/register`, info)
-            
-            if (data?.msg) {
-                setAlerta({msg: 'Usuario Creado. Confirme su cuenta en el correo registrado. Revise su bandeja de Spam o Correo No Deseado si no le llegó en la Bandeja de entrada. Si tiene problemas de confirmación realícelo desde una PC y no de su smartphone.', err:false})
+            console.log('[Register] backend response:', data)
+
+            // Si el backend devolvió token, intentar enviar email de confirmación desde frontend
+            if (data?.msg && data?.token) {
+                try {
+                    await emailService.sendConfirmationEmail({ toEmail: email, toName: nombre, token: data.token })
+                    setAlerta({msg: 'Usuario Creado. Confirme su cuenta en el correo registrado. Revise su bandeja de Spam o Correo No Deseado si no le llegó en la Bandeja de entrada.', err:false})
+                } catch (mailErr) {
+                    console.error('[Register] Error enviando email de confirmación desde frontend:', mailErr)
+                    setAlerta({msg: `Usuario creado. Error al enviar email: ${mailErr?.message || 'revisar consola'}`, err:true})
+                }
                 setLoading(false)
                 guardaEmail('')
                 return
-              }
-          
-              if (data?.err) {
+            }
+
+            // Si el backend devolvió sólo mensaje sin token
+            if (data?.msg && !data?.token) {
+                setAlerta({msg: 'Usuario Creado. Confirme su cuenta en el correo registrado (si no llega, contacte al administrador).', err:false})
+                setLoading(false)
+                guardaEmail('')
+                return
+            }
+
+            if (data?.err) {
                 setAlerta({ msg: 'Ya existe un usuario con ese email. Inicie sesión o restaure su contraseña.' })
                 setLoading(false)
                 return
-          
-              }
+            }
  
         } catch (error) {
             console.log(error)
