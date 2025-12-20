@@ -30,7 +30,7 @@ const Final = () => {
       </EnlacesRelacionados>
       <EnlacesRelacionados text="Otros enlaces de Interés">
         <Enlace
-          url={"https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/EZB6wtSbBT5MvuYWZbaiacUBMfSwqYQuW8pRJezwLFBqIA"}
+          url={"https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/IQDCmpdgFunhR5zqkkgNjeojAVhnzYmXlPtOJ2KRlWOg_-A?e=vHIjl0"}
           text="Ejemplo de informe aprobado"
           nuevo={true}
           external={true}

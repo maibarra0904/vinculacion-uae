@@ -60,9 +60,7 @@ const InicioPracticas = () => {
               alternative="(nuevo)"
             />
             <Enlace
-              url={
-                "/oficio"
-              }
+              url={"/oficio"}
               text="APLICACIÓN para solicitar número de oficio"
             />
             <Enlace
@@ -74,7 +72,9 @@ const InicioPracticas = () => {
               external={true}
             />
             <Enlace
-              url={"https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/EYRvqBrwcjJNiEkajCWSxKoBY93wICYpN8FFbBG6pYw8uA?e=f30peC"}
+              url={
+                "https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/EYRvqBrwcjJNiEkajCWSxKoBY93wICYpN8FFbBG6pYw8uA?e=f30peC"
+              }
               text="Procedimiento para obtener el HISTORIAL DE MATRICULA"
               nuevo={true}
               external={true}
@@ -87,13 +87,17 @@ const InicioPracticas = () => {
               text="Información general sobre Prácticas Preprofesionales"
             />
             <Enlace
-              url={"https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/Ec4jvOXjUBtLqLTcaA2tF0QBatL05w7dHFg8QdPkWRGcgA?e=UoNQKy"}
+              url={
+                "https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/Ec4jvOXjUBtLqLTcaA2tF0QBatL05w7dHFg8QdPkWRGcgA?e=UoNQKy"
+              }
               text="Ejemplo de Documentación de Inicio con Convenio"
               nuevo={true}
               external={true}
             />
             <Enlace
-              url={"https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/ERhGF0_GeZ5JjV0aCKlcGkoB4M9psk3spbqvUJQLztfnvw?e=OcHBiu"}
+              url={
+                "https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/ERhGF0_GeZ5JjV0aCKlcGkoB4M9psk3spbqvUJQLztfnvw?e=OcHBiu"
+              }
               text="Ejemplo de Documentación de Inicio con Carta de Intension"
               nuevo={true}
               external={true}
@@ -105,10 +109,17 @@ const InicioPracticas = () => {
           <Paso2 />
 
           <EnlacesRelacionados>
-          <Enlace
+            <Enlace
               url={
-                "/oficio"
+                "https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/IQA4IN0xSqLERJcEzDZOQe_-ARnBoUSeWAhkL3g6iEWIixI?e=4PmZVe"
               }
+              text="Modelo de CARTA DE NOTIFICACIÓN AL TUTOR"
+              nuevo={true}
+              external={true}
+            />
+
+            <Enlace
+              url={"/oficio"}
               text="APLICACIÓN para solicitar número de oficio"
               nuevo={true}
             />
@@ -128,13 +139,17 @@ const InicioPracticas = () => {
               text="Información general sobre Prácticas Preprofesionales"
             />
             <Enlace
-              url={"https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/Ec4jvOXjUBtLqLTcaA2tF0QBatL05w7dHFg8QdPkWRGcgA?e=UoNQKy"}
+              url={
+                "https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/Ec4jvOXjUBtLqLTcaA2tF0QBatL05w7dHFg8QdPkWRGcgA?e=UoNQKy"
+              }
               text="Ejemplo de Documentación de Inicio con Convenio"
               nuevo={true}
               external={true}
             />
             <Enlace
-              url={"https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/ERhGF0_GeZ5JjV0aCKlcGkoB4M9psk3spbqvUJQLztfnvw?e=OcHBiu"}
+              url={
+                "https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/ERhGF0_GeZ5JjV0aCKlcGkoB4M9psk3spbqvUJQLztfnvw?e=OcHBiu"
+              }
               text="Ejemplo de Documentación de Inicio con Carta de Intension"
               nuevo={true}
               external={true}
