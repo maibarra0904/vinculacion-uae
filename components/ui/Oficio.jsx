@@ -38,6 +38,7 @@ const periodoOptions = [
   { name: "2024-2025", value: false },
   { name: "2025-2026", value: false },
   { name: "2026-2027", value: false },
+  { name: "2027-2028", value: false },
   { name: "OTRO", value: false },
   { name: "NO APLICA", value: false },
 ];
@@ -270,7 +271,7 @@ function OficioComponent() {
       setAlerta({
         type: "error",
         keyWord: "fecha",
-        message: `Ya generó un oficio hoy: Oficio Nro. M-UAE-FCAJBO.V.CC-2025-0${numeroUltimoOficio}.O, si tiene dudas comuníquese con el Ing. Mario Ibarra`,
+        message: `Ya generó un oficio hoy: Oficio Nro. M-UAE-FCA.V.CC-2026-0${numeroUltimoOficio}.O, si tiene dudas comuníquese con el Ing. Mario Ibarra`,
       });
       return;
     }
@@ -717,7 +718,7 @@ function OficioComponent() {
                       className="font-bold text-sm bg-cyan-300 p-1 border rounded-md h-10"
                       onClick={() =>
                         copyToClipboard(
-                          `Oficio Nro. M-UAE-FCAJBO.V.CC-2025-${formatNumber(
+                          `Oficio Nro. M-UAE-FCA.V.CC-2026-${formatNumber(
                             parseInt(letterNumber)
                           )}.O`,
                           1
