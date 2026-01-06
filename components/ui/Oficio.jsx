@@ -725,7 +725,7 @@ function OficioComponent() {
                         )
                       }
                     >
-                      Oficio Nro. M-UAE-FCAJBO.V.CC-2025-
+                      Oficio Nro. M-UAE-FCA.V.CC-2026-
                       {formatNumber(parseInt(letterNumber))}.O
                     </button>
                   </div>
@@ -772,7 +772,7 @@ function OficioComponent() {
                       />
                       <EmailSendStudent
                         email={email}
-                        oficio={`Oficio Nro. M-UAE-FCAJBO.V.CC-2025-
+                        oficio={`Oficio Nro. M-UAE-FCA.V.CC-2026-
                       ${formatNumber(parseInt(letterNumber))}.O`}
                         fecha={`${formatDate(new Date()).toString()}`}
                       />
