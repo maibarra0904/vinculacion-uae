@@ -23,6 +23,12 @@ const Otros = () => {
             url={"/chat"}
             text="VinculaBot: Realiza consultas acerca de los procesos de vinculación"
           />
+          <Enlace
+              url={"https://uagrariaec-my.sharepoint.com/:p:/g/personal/mibarra_uagraria_edu_ec/IQCKJf7L_-N9S77GccFx4XjAAV_xO2e4iC3gRA6K8g_EdFQ?e=OVffXh"}
+              text="Presentación de cursos para convalidad LC y PPP - Marzo 2026"
+              nuevo={true}
+              external={true}
+          />
         </EnlacesRelacionados>
       </Layout>
     </>
