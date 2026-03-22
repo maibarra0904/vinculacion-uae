@@ -1,7 +1,8 @@
-'use client'
+'use client';
 
-import { useEffect, useState } from "react"
+import { GoogleLogin } from '@react-oauth/google';
 import { useMyContext } from "../context/myContext"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import Alerta from "./Alerta"
 import Link from "next/link"
@@ -30,6 +31,32 @@ const Login = () => {
 
     const handleChangeEmail = (e) => guardaEmail(e.target.value.trim())
     const handleChangePassword = (e) => guardaPassword(e.target.value.trim())
+
+    const handleGoogleSuccess = async (response) => {
+        setLoading(true);
+        try {
+            const { credential } = response;
+            const { data } = await axios.post(`${process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND}/auth/google`, { idToken: credential });
+
+            if (data?.msg) {
+                setAlerta(data);
+                setTimeout(() => setAlerta({}), 2000);
+                return;
+            }
+
+            if (data?.data) {
+                localStorage.setItem('usuario', JSON.stringify(data.data));
+                setAuth(data.data);
+            } else {
+                setAlerta({ msg: 'Hubo un error del servidor' });
+            }
+        } catch (error) {
+            setAlerta({ msg: 'Error al conectar con el asistente de Google' });
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const handleSubmit = async () => {
         setLoading(true)
@@ -113,6 +140,25 @@ const Login = () => {
                         {loading ? `Validando${'.'.repeat(puntos)}` : 'Ingresar'}
                     </button>
                 </form>
+
+                <div className="flex items-center my-4 space-x-2">
+                    <div className="flex-1 border-t border-gray-100 dark:border-gray-800"></div>
+                    <span className="text-gray-400 text-[11px] uppercase tracking-wider">O inicia con</span>
+                    <div className="flex-1 border-t border-gray-100 dark:border-gray-800"></div>
+                </div>
+
+                <div className="flex justify-center mb-4">
+                    <GoogleLogin
+                        type='standard'
+                        theme='outline'
+                        width='320'
+                        shape='pill'
+                        onSuccess={handleGoogleSuccess}
+                        onError={() => {
+                            setAlerta({ msg: 'Error de autenticación con Google' });
+                        }}
+                    />
+                </div>
 
                 <div className="border-t border-gray-100 dark:border-gray-800 my-6"></div>
 

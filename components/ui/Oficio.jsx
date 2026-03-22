@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Link from "next/link";
 import swal from "sweetalert";
 import { useMyContext } from "../context/myContext";
 import { userFromEmail } from "@/utils/takeuserFromemail";
@@ -165,6 +166,8 @@ function OficioComponent() {
 
   const [showTooltip, setShowTooltip] = useState(false);
   const [showTooltip2, setShowTooltip2] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [pendingSubmit, setPendingSubmit] = useState(null);
   const screenWidth = typeof window !== "undefined" ? window.innerWidth : 768;
 
 
@@ -261,6 +264,43 @@ function OficioComponent() {
       }
     }, 1000);
   }
+  const executeGeneration = async () => {
+    setIsOpenModal(false);
+    setLoading(true);
+    countdown();
+
+    try {
+      const res = await axios.post(process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND, pendingSubmit);
+      setLetterNumber(res.data?.data.idApp);
+      setLoading(false);
+      localStorage.setItem(
+        "nombre",
+        JSON.stringify(nombre.toLowerCase())
+      );
+      localStorage.setItem(
+        "fecha",
+        JSON.stringify(new Date().toLocaleString())
+      );
+      localStorage.setItem(
+        "numero",
+        JSON.stringify(res.data?.data.idApp)
+      );
+    } catch (error) {
+      console.log(error);
+      setLoading(null);
+      setAlerta({
+        type: "error",
+        keyWord: "bd",
+        message: "Hubo un problema con el servidor",
+      });
+      setTimeForOut(80);
+      setTimeout(() => {
+        setAlerta({});
+        localStorage.removeItem("usuario")
+        setAuth({})
+      }, 2000);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -298,9 +338,6 @@ function OficioComponent() {
         message: "Todos los campos son obligatorios",
       });
 
-      console.log(tutor===true)
-      console.log(emailTutor)
-
       setTimeout(() => {
         setAlerta({});
       }, 2000);
@@ -310,63 +347,15 @@ function OficioComponent() {
     if(tutor && emailTutor==='') { 
       setShowTooltip2(!showTooltip2)
 
-    setTimeout(() => {
-      setShowTooltip2(false)
-    }, 2000);
-    return;
-  
-  }
-
-    try {
-      swal({
-        title: "Desea Generar el Número de Oficio?",
-        text: "¿Le falta SOLO el número de oficio para entregar la documentación? Si aún tiene pendientes NO genere el número y ocúpese de llenar primero la documentación de la gestión que le corresponda hacer (Paso 1, Paso 2, etc), válido por 72 horas a partir de su emisión!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      }).then(async (willDelete) => {
-        if (willDelete) {
-          setLoading(true);
-          countdown();
-
-          await axios
-            .post(process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND, userData)
-            .then((res) => {
-              setLetterNumber(res.data?.data.idApp);
-              setLoading(false);
-              localStorage.setItem(
-                "nombre",
-                JSON.stringify(nombre.toLowerCase())
-              );
-              localStorage.setItem(
-                "fecha",
-                JSON.stringify(new Date().toLocaleString())
-              );
-              localStorage.setItem(
-                "numero",
-                JSON.stringify(res.data?.data.idApp)
-              );
-            })
-            .catch((error) => {
-              console.log(error);
-              setLoading(null);
-              setAlerta({
-                type: "error",
-                keyWord: "bd",
-                message: "Hubo un problema con el servidor",
-              });
-              setTimeForOut(80);
-              setTimeout(() => {
-                setAlerta({});
-                localStorage.removeItem("usuario")
-                setAuth({})
-              }, 2000);
-            });
-        }
-      });
-    } catch (error) {
-      console.log(error);
+      setTimeout(() => {
+        setShowTooltip2(false)
+      }, 2000);
+      return;
     }
+
+    // Abrir modal personalizado
+    setPendingSubmit(userData);
+    setIsOpenModal(true);
   };
 
   function copyToClipboard(text, el) {
@@ -592,12 +581,56 @@ function OficioComponent() {
                   >
                     <span>M-UAE-FCA.V.CC-2026-{formatNumber(parseInt(letterNumber))}.O</span>
                   </button>
-                  {copied && <span className="text-[10px] text-emerald-600 mt-1">Copiado!</span>}
+                  {copied && <span className="text-[10px] text-emerald-600 mt-1">¡Copiado!</span>}
+
+                  {/* Detalle de la Fecha */}
+                  <div className="mt-3 text-center">
+                    <p className="text-[11px] text-gray-500 dark:text-gray-400 font-medium">
+                      Fecha de generación: <span className="font-bold text-emerald-600 dark:text-emerald-400">{new Date().toLocaleDateString()}</span>
+                    </p>
+                  </div>
+
+                  {/* Botón para compartir por WhatsApp */}
+                  <a
+                    href={`https://wa.me/?text=${encodeURIComponent(`Hola, mi número de Oficio Generado es: M-UAE-FCA.V.CC-2026-${formatNumber(parseInt(letterNumber))}.O (Generado el: ${new Date().toLocaleDateString()})`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 flex items-center justify-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-md transition-all hover:scale-[1.02] active:scale-95 w-full max-w-[250px]"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="w-4 h-4" viewBox="0 0 16 16">
+                      <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.856 7.856 0 0 0 -2.327-5.607zM7.994 14.593a6.573 6.573 0 0 1 -3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1 -1.007-3.572c0-3.626 2.957-6.584 6.59-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.23.148-.426.05-.197-.099-.832-.306-1.586-.975-.587-.524-.984-1.172-1.1-1.37-.114-.197-.012-.305.087-.404.089-.089.197-.23.296-.346.1-.114.133-.198.198-.33.065-.134.034-.252-.017-.35-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0 -.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                    </svg>
+                    <span>Compartir por WhatsApp</span>
+                  </a>
                 </div>
               </div>
             )
           )}
         </div>
+
+        {/* Modal de Confirmación Moderno */}
+        {isOpenModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-[2px]">
+            <div className="bg-white dark:bg-gray-900 w-full max-w-sm rounded-2xl p-6 border border-gray-100 dark:border-gray-800 shadow-2xl transform transition-all duration-200 scale-100">
+              <div className="flex justify-center mb-4">
+                <div className="w-12 h-12 bg-amber-50 dark:bg-amber-950/30 rounded-full flex items-center justify-center border border-amber-200 dark:border-amber-800/60">
+                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-amber-500">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 5.376C11.163 17.5 1.5 17 2.18 17h19.64c.68 0 .757.5.157.976l-9.82 11.25a.375.375 0 01-.634 0l-9.82-11.25zM12 15.75h.008v.008H12v-.008z" />
+                   </svg>
+                </div>
+              </div>
+              <h3 className="text-gray-800 dark:text-gray-100 font-black text-center text-base mb-1.5">¿Desea Generar el Número de Oficio?</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-xs text-center leading-relaxed mb-6">
+                ¿Le falta SOLO el número de oficio para entregar la documentación? Si aún tiene pendientes NO genere el número y ocúpese de llenar primero la documentación, válido por 72 horas.
+              </p>
+              <div className="flex gap-3">
+                 <button onClick={() => setIsOpenModal(false)} className="flex-1 py-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold text-xs rounded-xl transition-all">Cancelar</button>
+                 <button onClick={executeGeneration} className="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-md transition-all active:scale-95">OK, Generar</button>
+              </div>
+            </div>
+          </div>
+        )}
+
       </div>
     ) : (
       <div className="min-h-[85vh] flex flex-col justify-center items-center px-4 bg-slate-50 dark:bg-gray-950">

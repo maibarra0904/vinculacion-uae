@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useMyContext } from "../context/myContext"
 import axios from "axios"
 import Alerta from "../ui/Alerta"
+import Link from "next/link"
 import { redirectToUrl } from "@/utils/redirectToUrl"
 import emailService from "../../services/emailService"
 
@@ -95,53 +96,57 @@ const OlvidaPass = () => {
     }
   }
   return (
+    <div className="min-h-[85vh] flex flex-col justify-center items-center px-4 bg-slate-50 dark:bg-gray-950">
+      <div className="w-full max-w-md bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xl shadow-gray-100/50 dark:shadow-none">
+        
+        <div className="flex flex-col items-center mb-6">
+          <h1 className="text-2xl font-black text-gray-800 dark:text-gray-100">Restaura tu Password</h1>
+          <p className="text-sm text-gray-400 mt-1 text-center">Ingresa tu correo para recibir las instrucciones de cambio</p>
+        </div>
 
-    <>
+        {alerta?.msg && <Alerta msg={alerta?.msg} err={alerta?.err} />}
 
-      <div className="flex flex-col justify-center items-center">
-        <h1 className="mb-5 font-bold">Restaura tu Password</h1>
-        {
-          alerta?.msg &&
-          <Alerta msg={alerta?.msg} err={alerta?.err}/>
-        }
-        <form
-          className="min-w-70 bg-amber-200 p-5 rounded-lg m-2 md:w-96"
-        >
+        <form className="space-y-4">
           <div>
-
-
-            <div className="mb-4">
-              <label className="text-gray-800" htmlFor="email">
-                Email:
-              </label>
-              <input
-                id="email"
-                type="text"
-                className="mt-2 text-gray-800 block w-full p-3 bg-gray-50"
-                placeholder="Coloque su email"
-                name="email"
-                value={email}
-                onChange={handleChangeEmail}
-                maxLength={30}
-              />
-            </div>
-
-
-            <div>
-              <button
-                type="button"
-                className="flex justify-center items-center mt-2 w-full p-3 bg-gray-500 text-white"
-                onClick={handleSubmit}
-              >{loading ? 'Validando...' : 'Solicitar Cambio'}</button>
-            </div>
-
+            <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider" htmlFor="email">
+              Correo Electrónico
+            </label>
+            <input
+              id="email"
+              type="email"
+              className="mt-1 text-gray-800 dark:text-gray-200 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all placeholder:text-gray-400 text-sm"
+              placeholder="nombre@ejemplo.com"
+              name="email"
+              value={email}
+              onChange={handleChangeEmail}
+              maxLength={40}
+            />
           </div>
+
+          <button
+            type="button"
+            disabled={loading}
+            className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-600/10 hover:shadow-indigo-600/20 active:scale-[0.98] transition-all duration-150 mt-2 text-sm disabled:opacity-70 disabled:pointer-events-none"
+            onClick={handleSubmit}
+          >
+            {loading ? 'Validando...' : 'Solicitar Cambio'}
+          </button>
         </form>
+
+        <div className="border-t border-gray-100 dark:border-gray-800 my-6"></div>
+
+        <div className="space-y-3 text-center text-sm">
+          <p className="text-gray-600 dark:text-gray-400">
+            ¿Recordaste tu contraseña?{" "}
+            <Link href="/login" className="text-indigo-600 dark:text-indigo-400 font-bold hover:underline">
+              Inicia Sesión
+            </Link>
+          </p>
+        </div>
+
       </div>
-
-
-    </>
-  )
+    </div>
+  );
 }
 
 export default OlvidaPass
