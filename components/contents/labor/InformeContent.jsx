@@ -1,4 +1,5 @@
 import Enlace from "@/components/ui/Enlace";
+import { CONTACTOS } from "@/utils/constants";
 
 export default function InformeContent() {
   return (
@@ -27,71 +28,73 @@ export default function InformeContent() {
         </span>
       </p>
 
-
-      <div className="space-y-4">
-        {/* Step List */}
-        <div className="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <ul className="space-y-4">
-            <li className="flex gap-3">
-              <span className="font-bold text-green-600">a.</span>
-              <p className="text-gray-700 dark:text-gray-300">
-                Se deberá llenar los{" "}
-                <Enlace 
-                  url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/Ea7ZQHpMKa1PhPccnv6f_SsBbqNapitPEpkglhF3v8qToQ?e=cX92lC" 
-                  text="Formatos de Informe" 
-                  inline={true} 
-                  external={true} 
-                  nuevo={true} 
-                />{" "}
-                junto con la{" "}
-                <Enlace 
-                  url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EdWUpFyqjDRHmMZ_2ogHrmwBQegpZsvtcdFLhGuecYvnTQ?e=RGV2qa" 
-                  text="Carátula" 
-                  inline={true} 
-                  external={true} 
-                  nuevo={true} 
-                />. 
-                La documentación una vez llena, deberá ser revisada y firmada por su tutor en los documentos que correspondan.
-              </p>
-            </li>
-
-            <li className="flex gap-3">
-              <span className="font-bold text-green-600">b.</span>
-              <p className="text-gray-700 dark:text-gray-300">
-                Adicional a los formatos citados, el estudiante debe anexar a la documentación la copia del <span className="font-medium text-gray-900 dark:text-white">OFICIO DEL PERFIL APROBADO</span> por la coordinación de labor comunitaria, mismo que tuvo que haber llegado a su correo cuando se aprobó el proyecto.
-              </p>
-            </li>
-
-            <li className="flex gap-3">
-              <span className="font-bold text-green-600">c.</span>
-              <p className="text-gray-700 dark:text-gray-300">
-                Toda la documentación deberá ser insertada en una carpeta plástica de color <span className="underline decoration-yellow-500 font-semibold text-yellow-600 dark:text-yellow-400">amarilla</span> (con vincha plástica) en el orden suministrado en los formatos anteriores.
-              </p>
-            </li>
-
-            <li className="flex gap-3">
-              <span className="font-bold text-green-600">d.</span>
-              <p className="text-gray-700 dark:text-gray-300">
-                El tutor deberá <span className="underline">revisar y sumillar</span> TODAS las páginas que conforman la documentación.
-              </p>
-            </li>
-
-            <li className="flex gap-3">
-              <span className="font-bold text-green-600">e.</span>
-              <p className="text-gray-700 dark:text-gray-300">
-                Deberá luego acercarse al responsable de vinculación (Ing. Mario Ibarra), para que le de la última firma a la documentación.
-              </p>
-            </li>
-
-            <li className="flex gap-3">
-              <span className="font-bold text-green-600">f.</span>
-              <p className="text-gray-700 dark:text-gray-300">
-                Esta carpeta, debe ser entregada a la <span className="font-medium text-gray-900 dark:text-white">Secretaría de Decanato (Lcda. Jahely Mora)</span> y deberá tomar un recibido de parte de esta Secretaría. <span className="italic block mt-1 text-xs text-gray-500">(Esta es su constancia, se recomienda escanear y guardar)</span>
-              </p>
-            </li>
-          </ul>
+      <div className="grid gap-4 md:grid-cols-2">
+        {/* Step A */}
+        <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-sm">
+          <span className="text-sm font-bold text-green-500 block mb-1">a. Formatos de Informe</span>
+          <p className="text-sm text-gray-700 dark:text-gray-300">
+            Se deberá llenar los{" "}
+            <Enlace 
+              url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/Ea7ZQHpMKa1PhPccnv6f_SsBbqNapitPEpkglhF3v8qToQ?e=cX92lC" 
+              text="Formatos de Informe" 
+              inline={true} 
+              external={true} 
+              nuevo={true} 
+            />{" "}
+            junto con la{" "}
+            <Enlace 
+              url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EdWUpFyqjDRHmMZ_2ogHrmwBQegpZsvtcdFLhGuecYvnTQ?e=RGV2qa" 
+              text="Carátula" 
+              inline={true} 
+              external={true} 
+              nuevo={true} 
+            />. 
+            La documentación una vez llena, deberá ser revisada y firmada por su tutor en los documentos que correspondan.
+          </p>
         </div>
 
+        {/* Step B */}
+        <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-sm">
+          <span className="text-sm font-bold text-green-500 block mb-1">b. Oficio del Perfil Aprobado</span>
+          <p className="text-sm text-gray-700 dark:text-gray-300">
+            Adicional a los formatos citados, el estudiante debe anexar a la documentación la copia del <span className="font-medium text-gray-900 dark:text-white">OFICIO DEL PERFIL APROBADO</span> por la coordinación de labor comunitaria, mismo que tuvo que haber llegado a su correo cuando se aprobó el proyecto.
+          </p>
+        </div>
+
+        {/* Step C */}
+        <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-sm">
+          <span className="text-sm font-bold text-green-500 block mb-1">c. Carpeta Amarilla</span>
+          <p className="text-sm text-gray-700 dark:text-gray-300">
+            Toda la documentación deberá ser insertada en una carpeta plástica de color <span className="underline decoration-yellow-500 font-semibold text-yellow-600 dark:text-yellow-400">amarilla</span> (con vincha plástica) en el orden suministrado en los formatos anteriores.
+          </p>
+        </div>
+
+        {/* Step D */}
+        <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-sm">
+          <span className="text-sm font-bold text-green-500 block mb-1">d. Revisión y Sumilla</span>
+          <p className="text-sm text-gray-700 dark:text-gray-300">
+            El tutor deberá <span className="underline">revisar y sumillar</span> TODAS las páginas que conforman la documentación.
+          </p>
+        </div>
+
+        {/* Step E */}
+        <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-sm">
+          <span className="text-sm font-bold text-green-500 block mb-1">e. Firma del Responsable</span>
+          <p className="text-sm text-gray-700 dark:text-gray-300">
+            Deberá luego acercarse al responsable de vinculación (Ing. Mario Ibarra), para que le de la última firma a la documentación.
+          </p>
+        </div>
+
+        {/* Step F */}
+        <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-sm">
+          <span className="text-sm font-bold text-green-500 block mb-1">f. Entrega en Coordinación</span>
+          <p className="text-sm text-gray-700 dark:text-gray-300">
+            La carpeta se debe entregar con la <span className="font-medium text-gray-900 dark:text-white">Coordinación de Vinculación en Milagro (Ing. Johanna Ramos)</span> y deberá tomar un recibido como constancia. <span className="italic block mt-1 text-xs text-gray-400 dark:text-gray-500">(Se recomienda escanear y guardar)</span>
+          </p>
+        </div>
+      </div>
+
+      <div className="space-y-4 mt-4">
         {/* Note Alert */}
         <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-900/50 p-4 rounded-xl text-sm mt-4">
           <p className="text-gray-700 dark:text-gray-300">
