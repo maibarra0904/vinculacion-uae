@@ -1,13 +1,13 @@
-'use client'
-import Layout from '@/components/ui/Layout'
-import GeneralPage from '../../components/contents/general.mdx';
+"use client";
+import Layout from "@/components/ui/Layout";
+import GeneralContent from "@/components/contents/GeneralContent";
 
 const General = () => {
   return (
     <Layout>
-               <GeneralPage />
+      <GeneralContent />
     </Layout>
-  )
-}
+  );
+};
 
-export default General
+export default General;

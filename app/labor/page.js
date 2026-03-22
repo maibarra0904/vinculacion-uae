@@ -1,36 +1,14 @@
 "use client";
 import Layout from "@/components/ui/Layout";
-import MyPage from "../../components/contents/labor.mdx";
-import EnlacesRelacionados from "@/components/ui/EnlacesRelacionados";
-import Enlace from "@/components/ui/Enlace";
+import LaborContent from "@/components/contents/LaborContent";
 
 const LaborComunitaria = () => {
   return (
     <Layout>
-      <MyPage />
-
-      <EnlacesRelacionados>
-      <Enlace
-          url={
-            "/convenio"
-          }
-          text="Información sobre convenios"
-        />
-        <Enlace
-          url={
-            "/labor/perfil"
-          }
-          text="Pasos para elaboración de Perfil de Labor Comunitaria"
-        />
-        <Enlace
-          url={
-            "/labor/informe"
-          }
-          text="Pasos para elaboración de Informe Final de Labor Comunitaria"
-        />
-      </EnlacesRelacionados>
+      <LaborContent />
     </Layout>
   );
 };
 
 export default LaborComunitaria;
+

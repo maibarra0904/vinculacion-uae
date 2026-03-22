@@ -55,47 +55,32 @@ const OrderSidebar = () => {
     }
 
     return (
-        <aside className="pt-5 pb-2 md:w-72 md:h-screen bg-white">
-            <Logo image='/logo.jpg'/>
-            <p className="flex justify-center items-center font-bold text-indigo-800">Universidad Agraria del Ecuador</p>
-            <p className="flex justify-center items-center font-bold text-indigo-800">Vinculación - Computación</p>
-            <p className="flex justify-center items-center font-bold text-indigo-800">Milagro</p>
+        <aside className="pt-6 pb-4 md:w-72 md:h-screen bg-slate-50 dark:bg-gray-950 border-r border-gray-100 dark:border-gray-800 flex flex-col">
+            <div className="flex flex-col items-center">
+                <Logo image='/logo.jpg'/>
+                <p className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-800 dark:from-indigo-400 dark:to-indigo-200 text-sm mt-3">Universidad Agraria del Ecuador</p>
+                <p className="font-bold text-gray-600 dark:text-gray-400 text-xs text-center mt-1">Vinculación y Computación</p>
+                <p className="font-semibold text-gray-500 dark:text-gray-500 text-xs">Milagro</p>
+            </div>
 
-            <LogOptions />
+            {windowSize.width >= 768 && (
+                <>
+                    <div className="border-b border-gray-100 dark:border-gray-800 my-4"></div>
+                    <LogOptions />
+                    <div className="border-b border-gray-100 dark:border-gray-800 my-4"></div>
+                </>
+            )}
 
             {
                 windowSize.width < 768 ?
-                    <>
-                        <div
-                            className={`${showNavBar ? 'ml-4 mr-4 mt-4' : 'm-4'} flex flex-col justify-center items-center border border-gray-200 bg-indigo-200 hover:cursor-pointer`}
-                            onClick={handleShow}
-                        >
-                            <div className={`m-1`}>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
-                                </svg>
-                            </div>
-
-
-
-                        </div>
-
-                        {
-                            showNavBar === true &&
-                            <div
-                                className={`${showNavBar ? 'ml-4 mr-4 mt-0 mb-4 transition duration-500 ease-in-out' : 'transition duration-500 ease-in-out m-4'} justify-center items-center hover:cursor-pointer border border-gray-200`}
-                            >
-                                <BarNav path={path} showNavBar={showNavBar} />
-                            </div>
-                        }
-
-                    </>
+                    <div className="px-2 mt-2">
+                        <LogOptions />
+                    </div>
                     :
                     <BarNav path={path} />
             }
-
         </aside>
     )
 }
 
-export default OrderSidebar
+export default OrderSidebar

@@ -169,10 +169,10 @@ function OficioComponent() {
 
 
   useEffect(() => {
-    
-    guardaNombre(auth?.nombre)
+    guardaNombre(auth?.nombre || '')
 
     const setAuthToken = (token) => {
+
       if (token) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       } else {
@@ -390,411 +390,228 @@ function OficioComponent() {
     }
   }
 
-/*
-  return (
-    <>
-    <div className="uppercase text-2xl font-bold mb-10 flex justify-center items-center text-indigo-800">Fuera de Servicio Temporalmente</div>
-    <Logo image='/warning.png'/>
-    <div className="text-green-700 flex justify-center mt-4 uppercase">Se podrá volver a generar número de oficio a partir del <span className="font-bold text-amber-700">14-Abr-2025</span></div>
-    </>
-  )
-*/
-  
-  
-  return ( !loadPage &&
 
-         (auth?.nombre ?
-      <div className="flex flex-col">
-        <h1 className="uppercase text-2xl font-bold mb-10 flex justify-center items-center">
-          Solicitud de número de Oficio
-        </h1>
-        {alerta?.type && (
-          <Alerta msg={alerta?.message} />
-        )}
-        {loading == null && (
-          <div className="flex justify-center items-center">
-            <form
-              onSubmit={handleSubmit}
-              className="w-96 bg-amber-200 p-5 rounded-lg"
-            >
+   return (!loadPage && (
+    auth?.nombre ? (
+      <div className="min-h-[85vh] flex flex-col justify-center items-center px-4 bg-slate-50 dark:bg-gray-950 py-10">
+        <div className="w-full max-w-md bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xl shadow-gray-100/50 dark:shadow-none flex flex-col items-center">
+          <h1 className="text-2xl font-black text-center text-gray-800 dark:text-gray-100 mb-2">
+            Solicitud de número de Oficio
+          </h1>
+          <p className="text-sm text-gray-400 text-center mb-6">Completa los campos para generar tu oficio</p>
+
+          {alerta?.type && <Alerta msg={alerta?.message} />}
+
+          {loading == null && (
+            <form onSubmit={handleSubmit} className="w-full space-y-4">
               <div>
-                <div className="mb-4">
-                  <label className="text-gray-800" htmlFor="name">
-                    Nombre del Solicitante:
+                <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider" htmlFor="name">
+                  Nombre del Solicitante
+                </label>
+                <input
+                  id="name"
+                  type="text"
+                  className="mt-1 text-gray-400 dark:text-gray-500 block w-full px-4 py-3 bg-gray-100 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 rounded-xl cursor-not-allowed text-sm"
+                  name="name"
+                  value={nombre}
+                  disabled
+                />
+                <p className="text-red-500 text-xs mt-1">{aviso}</p>
+              </div>
+
+              <div>
+                <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider" htmlFor="semestre">
+                  Semestre que cursa
+                </label>
+                <select
+                  id="semestre"
+                  className="mt-1 text-gray-800 dark:text-gray-200 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all text-sm"
+                  name="semestre"
+                  defaultValue="--- SELECCIONE ---"
+                  onChange={handleChangeSemestre}
+                >
+                  {semestreOptions.map((option) => (
+                    <option key={option.name} value={option.name.toString()} disabled={option.value}>
+                      {option.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <div className="flex gap-2 items-center">
+                  <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider" htmlFor="periodo">
+                    Periodo aplica actividad
+                  </label>
+                  <button onClick={handleShowTooltip} type="button" className="text-gray-400 hover:text-indigo-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                    </svg>
+                  </button>
+                </div>
+                {showTooltip && (
+                  <div className="absolute bg-gray-800 text-white py-2 px-3 rounded-lg text-xs z-10 pointer-events-none mt-1 shadow-lg max-w-[280px]">
+                    El período al que aplica la actividad dependera si está arrastrando o adelantando. Ante dudas consulte al Responsable.
+                  </div>
+                )}
+                <select
+                  id="periodo"
+                  className="mt-1 text-gray-800 dark:text-gray-200 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all text-sm"
+                  name="periodo"
+                  defaultValue="--- SELECCIONE ---"
+                  onChange={handleChangePeriodo}
+                >
+                  {periodoOptions.map((option) => (
+                    <option key={option.name} value={option.name.toString()} disabled={option.value}>
+                      {option.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {periodo === "OTRO" && (
+                <div>
+                  <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider" htmlFor="periodoAlt">
+                    Especifique el período
                   </label>
                   <input
-                    id="name"
+                    id="periodoAlt"
                     type="text"
-                    className="mt-2 text-gray-800 block w-full p-3 bg-gray-200 hover:cursor-not-allowed"
-                    placeholder="Coloque un nombre y un apellido"
-                    name="name"
-                    value={nombre}
-                    onChange={handleChangeNombre}
+                    className="mt-1 text-gray-800 dark:text-gray-200 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all text-sm"
+                    placeholder="Periodo"
+                    name="periodoAlt"
+                    value={periodoAlt}
+                    onChange={handleChangePeriodoAlt}
+                  />
+                </div>
+              )}
+
+              <div>
+                <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider" htmlFor="tramite">
+                  Motivo o Paso de Vinculación
+                </label>
+                <select
+                  id="tramite"
+                  className="mt-1 text-gray-800 dark:text-gray-200 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all text-sm"
+                  name="tramite"
+                  defaultValue="--- SELECCIONE ---"
+                  onChange={handleChangeMotivo}
+                >
+                  {availabilityOptions.map((option) => (
+                    <option key={option.name} value={option.name.toString()} disabled={option.value}>
+                      {option.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {motivo === "OTRO" && (
+                <div>
+                  <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider" htmlFor="motivoAlt">
+                    Especifique el motivo
+                  </label>
+                  <input
+                    id="motivoAlt"
+                    type="text"
+                    className="mt-1 text-gray-800 dark:text-gray-200 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all text-sm"
+                    placeholder="Motivo del Oficio"
+                    name="motivoAlt"
+                    value={motivoAlt}
+                    onChange={handleChangeMotivoAlt}
                     maxLength={30}
-                    disabled
                   />
-                  <p className="text-red-500">{aviso}</p>
                 </div>
+              )}
 
-                <div className="mb-4">
-                  <label className="text-gray-800" htmlFor="semestre">
-                    Semestre que cursa:
+              {tutor && (
+                <div className="space-y-2 border-t border-gray-100 dark:border-gray-800 pt-3 mt-3">
+                  <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider flex justify-between" htmlFor="tutor">
+                    <span>Tutor Asignado</span>
+                    {showTooltip2 && <span className="text-red-500 capitalize tracking-normal">Debes escoger un tutor</span>}
                   </label>
                   <select
-                    id="semestre"
-                    className="mt-2 text-gray-800 block w-full p-3 bg-gray-50"
-                    name="semestre"
+                    id="tutor"
+                    className="mt-1 text-gray-800 dark:text-gray-200 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all text-sm"
+                    name="tutor"
                     defaultValue="--- SELECCIONE ---"
-                    onChange={handleChangeSemestre}
+                    onChange={handleChangeEmail}
                   >
-                    {semestreOptions.map((option) => (
-                      <option
-                        key={option.name}
-                        value={option.name.toString()}
-                        disabled={option.value}
-                      >
+                    {tutorOptions.map((option) => (
+                      <option key={option.name} value={option.name.toString()} disabled={option.value}>
                         {option.name}
                       </option>
                     ))}
                   </select>
-                </div>
-
-                <div className="mb-4">
-                  <div className="flex gap-2 items-center">
-                    <label className="text-gray-800" htmlFor="periodo">
-                      Periodo al que aplica la actividad:
-                    </label>
-                    <div
-                      title=""
-                      onClick={handleShowTooltip}
-                      className=" hover:cursor-pointer"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="icon icon-tabler icon-tabler-info-hexagon-filled"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="#2c3e50"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path
-                          d="M10.425 1.414a3.33 3.33 0 0 1 3.026 -.097l.19 .097l6.775 3.995l.096 .063l.092 .077l.107 .075a3.224 3.224 0 0 1 1.266 2.188l.018 .202l.005 .204v7.284c0 1.106 -.57 2.129 -1.454 2.693l-.17 .1l-6.803 4.302c-.918 .504 -2.019 .535 -3.004 .068l-.196 -.1l-6.695 -4.237a3.225 3.225 0 0 1 -1.671 -2.619l-.007 -.207v-7.285c0 -1.106 .57 -2.128 1.476 -2.705l6.95 -4.098zm1.575 9.586h-1l-.117 .007a1 1 0 0 0 0 1.986l.117 .007v3l.007 .117a1 1 0 0 0 .876 .876l.117 .007h1l.117 -.007a1 1 0 0 0 .876 -.876l.007 -.117l-.007 -.117a1 1 0 0 0 -.764 -.857l-.112 -.02l-.117 -.006v-3l-.007 -.117a1 1 0 0 0 -.876 -.876l-.117 -.007zm.01 -3l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007z"
-                          strokeWidth="0"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
+                  <div className="bg-blue-50 dark:bg-blue-950/40 p-3 rounded-xl border border-blue-100 dark:border-blue-900/50 text-xs text-blue-700 dark:text-blue-300 leading-relaxed">
+                    Corrobore el tutor asignado por el Ing. Mario Ibarra antes de continuar.
                   </div>
-                  {showTooltip && (
-                    <div
-                      className="absolute bg-gray-800 text-white py-2 px-3 rounded text-sm z-10 pointer-events-none"
-                      style={{
-                        left: "50%",
-                        transform:
-                          screenWidth <= 768
-                            ? "translateX(-50%)"
-                            : "translateX(-11%)",
-                        marginTop: "0.5rem",
-                        width: "345px",
-                      }}
-                    >
-                      El período al que aplica la actividad, NO es
-                      necesariamente el período de estudio que está cursando
-                      porque dependerá si está arrastrando, si está al día o si
-                      está adelantando la actividad de vinculación. En caso de
-                      dudas comunicarse con el Responsable de Vinculación.
+                  {motivo.includes("PASO 2") && emailTutor && (
+                    <div className="mt-4 flex flex-col items-center gap-2 bg-gray-50 dark:bg-gray-800/50 p-3 rounded-xl border border-gray-100 dark:border-gray-700">
+                      <span className="text-xs font-bold text-gray-700 dark:text-gray-300">Notificar al tutor por correo:</span>
+                      <EmailLink
+                        emailTutor={emailTutor}
+                        nombre={nombre}
+                        semestre={semestre}
+                        onClick={() => setTutorNotificado(true)}
+                      />
+                      {!tutorNotificado && (
+                        <span className="text-indigo-600 dark:text-indigo-400 text-xs text-center">Debes notificar al tutor antes de generar el número.</span>
+                      )}
                     </div>
                   )}
-                  <select
-                    id="periodo"
-                    className="mt-2 block text-gray-800 w-full p-3 bg-gray-50"
-                    name="periodo"
-                    defaultValue="--- SELECCIONE ---"
-                    onChange={handleChangePeriodo}
-                  >
-                    {periodoOptions.map((option) => (
-                      <option
-                        key={option.name}
-                        value={option.name.toString()}
-                        disabled={option.value}
-                      >
-                        {option.name}
-                      </option>
-                    ))}
-                  </select>
                 </div>
+              )}
 
-                {periodo === "OTRO" && (
-                  <div className="mb-4">
-                    <label className="text-gray-800" htmlFor="periodoAlt">
-                      Especifique el período:
-                    </label>
-                    <input
-                      id="periodoAlt"
-                      type="text"
-                      className="mt-2 block text-gray-800 w-full p-3 bg-gray-50"
-                      placeholder="Periodo al que aplica"
-                      name="periodoAlt"
-                      value={periodoAlt}
-                      onChange={handleChangePeriodoAlt}
-                    />
-                  </div>
-                )}
-
-                <div className="mb-4">
-                  <label className="text-gray-800" htmlFor="tramite">
-                    Motivo:
-                  </label>
-                  <select
-                    id="tramite"
-                    className="mt-2 block w-full text-gray-800 p-3 bg-gray-50"
-                    name="tramite"
-                    defaultValue="--- SELECCIONE ---"
-                    onChange={handleChangeMotivo}
-                  >
-                    {availabilityOptions.map((option) => (
-                      <option
-                        key={option.name}
-                        value={option.name.toString()}
-                        disabled={option.value}
-                      >
-                        {option.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {motivo === "OTRO" && (
-                  <div className="mb-4">
-                    <label className="text-gray-800" htmlFor="motivoAlt">
-                      Especifique el motivo:
-                    </label>
-                    <input
-                      id="motivoAlt"
-                      type="text"
-                      className="mt-2 block text-gray-800 w-full p-3 bg-gray-50"
-                      placeholder="Motivo del Oficio"
-                      name="motivoAlt"
-                      value={motivoAlt}
-                      onChange={handleChangeMotivoAlt}
-                      maxLength={30}
-                    />
-                  </div>
-                )}
-
-                {tutor && (
-                  <div className="mb-4">
-                    <label className="text-gray-800" htmlFor="tutor">
-                      Tutor:
-                    </label>
-                    {showTooltip2 && <p className="text-indigo-500">Debes escoger un tutor</p>}
-                    <select
-                      id="tutor"
-                      className="mt-2 block w-full text-gray-800 p-3 bg-gray-50"
-                      name="tutor"
-                      defaultValue="--- SELECCIONE ---"
-                      onChange={handleChangeEmail}
-                    >
-                      {tutorOptions.map((option) => (
-                        <option
-                          key={option.name}
-                          value={option.name.toString()}
-                          disabled={option.value}
-                        >
-                          {option.name}
-                        </option>
-                      ))}
-                    </select>
-                    <p className="text-red-500">
-                      Debe contactarse previamente con el Ing. Mario Ibarra para
-                      que el le asigne el tutor, no lo puede elegir Ud.
-                      arbritariamente. Luego de Generar el Número de oficio debe
-                      hacer la <span className="font-bold uppercase">notificación al correo</span> del tutor usando el enlace que se muestra a posterior.
-                    </p>
-                    {/* Solo para PASO 2: mostrar EmailLink y controlar notificación */}
-                    {motivo.includes("PASO 2") && emailTutor && (
-                      <div className="mt-4 flex flex-col items-center">
-                        <span className="mb-2">Notificar al tutor por correo:</span>
-                        <EmailLink
-                          emailTutor={emailTutor}
-                          nombre={nombre}
-                          semestre={semestre}
-                          onClick={() => setTutorNotificado(true)}
-                        />
-                        {!tutorNotificado && (
-                          <span className="text-indigo-600 mt-2">Debes notificar al tutor antes de generar el número de oficio.</span>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                )}
-
-
-                <input
-                  type="submit"
-                  className={`mt-5 w-full bg-indigo-600 p-2 text-white font-bold text-lg cursor-pointer rounded ${tutor && motivo.includes("PASO 2") && !tutorNotificado ? 'opacity-50 cursor-not-allowed' : ''}`}
-                  value="Generar Número de Oficio"
-                  disabled={tutor && motivo.includes("PASO 2") && !tutorNotificado}
-                />
-              </div>
+              <input
+                type="submit"
+                className={`w-full py-3 bg-indigo-600 p-2 text-white font-bold rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all mt-4 text-sm cursor-pointer ${tutor && motivo.includes("PASO 2") && !tutorNotificado ? 'opacity-50 cursor-not-allowed' : ''}`}
+                value="Generar Número de Oficio"
+                disabled={tutor && motivo.includes("PASO 2") && !tutorNotificado}
+              />
             </form>
-          </div>
-        )}
+          )}
 
-        {loading ? (
-          <>
-            {timeForOut > 0 ? (
-              <>
-                <div className="flex justify-center items-center mt-5">
-                  <p className="p-2 font-bold">Generando numero de oficio...</p>
-                </div>
-                <div className="flex justify-center items-center mt-5">
-                  <p className="p-2 font-bold">
-                    Tiempo de espera estimado:{" "}
-                    <span className="text-red-400">
-                      {" "}
-                      {timeForOut} segundo(s){" "}
-                    </span>
-                  </p>
-                </div>
-                <div className="flex justify-center items-center mt-5">
-                  <Image
-                    width={80}
-                    height={80}
-                    alt="loader"
-                    src="/spinner.gif"
-                  />
-                </div>
-              </>
-            ) : (
-              <div className="flex justify-center items-center mt-5">
-                <p className="p-2 font-bold">
-                  Tiempo de espera agotado... Se sugiere recargar la página
-                </p>
+          {loading ? (
+            <div className="text-center py-6">
+              <div className="flex justify-center mb-4">
+                <Image width={60} height={60} alt="loader" src="/spinner.gif" className="dark:invert" />
               </div>
-            )}
-          </>
-        ) : (
-          letterNumber && (
-            <>
-            {/* {tutor && (
-                <div className="flex justify-center items-center">
-                  <div className="mt-10 bg-amber-200 pl-2 pr-2 pt-2 pb-5 w-96 rounded-lg">
-                    <div className="flex justify-center items-center ">
-                      <div>
-                        <h1 className="mt-5 mb-5 flex justify-center items-center">
-                          Notificar al tutor
-                        </h1>
-                        <div className="flex justify-center items-center">
-                          <div className="w-50 mt-5">
-                            <EmailLink
-                              emailTutor={emailTutor}
-                              nombre={nombre}
-                              semestre={semestre}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )} */}
-              <div className="flex justify-center items-center">
-                <div className="mt-10 bg-amber-200 pl-2 pr-2 pt-2 pb-5 w-96 rounded-lg">
-                  <h1 className="mt-5 mb-5 flex justify-center items-center">
-                    Cópialo
-                  </h1>
-
-                  <div className="flex justify-center items-center">
-                    <p className="mb-5">Su numero de oficio es: {"  "}</p>
-                  </div>
-                  <div className="flex justify-center items-center">
-                    <button
-                      className="font-bold text-sm bg-cyan-300 p-1 border rounded-md h-10"
-                      onClick={() =>
-                        copyToClipboard(
-                          `Oficio Nro. M-UAE-FCA.V.CC-2026-${formatNumber(
-                            parseInt(letterNumber)
-                          )}.O`,
-                          1
-                        )
-                      }
-                    >
-                      Oficio Nro. M-UAE-FCA.V.CC-2026-
-                      {formatNumber(parseInt(letterNumber))}.O
-                    </button>
-                  </div>
-                  {copied && (
-                    <div className="flex justify-center items-center">
-                      <p className="text-red-500">Copiado al portapapeles!</p>
-                    </div>
-                  )}
-                  <div className="flex justify-center items-center">
-                    <p className="mt-5 mb-5">
-                      La fecha del oficio debe ser: {"  "}
-                    </p>
-                  </div>
-                  <div className="flex justify-center items-center">
-                    <button
-                      className="font-bold bg-cyan-300 p-2 border text-sm rounded-md"
-                      onClick={() =>
-                        copyToClipboard(`${formatDate(new Date())}`, 2)
-                      }
-                    >
-                      {formatDate(new Date())}
-                    </button>
-                  </div>
-                  {copied2 && (
-                    <p className="text-red-500 flex justify-center items-center">
-                      Copiado al portapapeles!
-                    </p>
-                  )}
+              <p className="font-bold text-gray-800 dark:text-gray-200">Generando oficio...</p>
+              <p className="text-xs text-gray-500 mt-1">Tiempo estimado: <span className="text-red-500 font-bold">{timeForOut} s</span></p>
+            </div>
+          ) : (
+            letterNumber && (
+              <div className="w-full space-y-4">
+                <div className="bg-emerald-50 dark:bg-emerald-950/30 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-900/40 text-center flex flex-col items-center">
+                  <h3 className="text-emerald-800 dark:text-emerald-400 font-black text-lg">¡Oficio Generado!</h3>
+                  <p className="text-emerald-600 text-xs mt-0.5">Cópialo para usarlo en tus plantillas</p>
+                  
+                  <button
+                    onClick={() => copyToClipboard(`Oficio Nro. M-UAE-FCA.V.CC-2026-${formatNumber(parseInt(letterNumber))}.O`, 1)}
+                    className="mt-4 px-4 py-2.5 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-bold text-xs rounded-xl border border-emerald-200 shadow-sm flex items-center gap-2"
+                  >
+                    <span>M-UAE-FCA.V.CC-2026-{formatNumber(parseInt(letterNumber))}.O</span>
+                  </button>
+                  {copied && <span className="text-[10px] text-emerald-600 mt-1">Copiado!</span>}
                 </div>
               </div>
-
-              <div className="flex justify-center items-center">
-                <div className="mt-10 bg-amber-200 pl-2 pr-2 pt-2 pb-5 w-96 rounded-lg">
-                  <div className="flex justify-center items-center ">
-                    <div>
-                      <h1 className="mt-5 mb-5 flex justify-center items-center">
-                        ó Envíalo a tu Correo
-                      </h1>
-                      <input
-                        className="p-2 m-2 w-80"
-                        type="text"
-                        placeholder="Ingresa tu email"
-                        onChange={handleChangeEmailStudent}
-                      />
-                      <EmailSendStudent
-                        email={email}
-                        oficio={`Oficio Nro. M-UAE-FCA.V.CC-2026-
-                      ${formatNumber(parseInt(letterNumber))}.O`}
-                        fecha={`${formatDate(new Date()).toString()}`}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              
-            </>
-          )
-        )}
-      </div>
-        :
-        <div className="flex flex-col">
-        <h1 className="uppercase text-2xl font-bold mb-10 flex justify-center items-center">
-          Solicitud de número de Oficio
-        </h1>
-        <p className="flex justify-center uppercase font-bold">Debe iniciar sesión para acceder a esta aplicación</p>
+            )
+          )}
         </div>
-      )
-);
+      </div>
+    ) : (
+      <div className="min-h-[85vh] flex flex-col justify-center items-center px-4 bg-slate-50 dark:bg-gray-950">
+        <div className="w-full max-w-md bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xl text-center">
+          <h1 className="text-2xl font-black mb-2">Acceso Denegado</h1>
+          <p className="text-sm text-gray-500 mb-6">Debe iniciar sesión para solicitar un número de oficio</p>
+          <Link href="/login" className="inline-block px-6 py-2 bg-indigo-600 text-white rounded-xl text-sm">
+            Iniciar Sesión
+          </Link>
+        </div>
+      </div>
+    ))
+  );
+
 
 }
 

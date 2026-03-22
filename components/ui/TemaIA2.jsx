@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 // import { useMyContext } from "../context/myContext"; // No se usa en este componente, se puede quitar si no es necesario
 // import Alerta from "./Alerta"; // Asegúrate de que este componente exista y funcione correctamente
 // import { enterKey } from "@/utils/enterKey"; // Asegúrate de que esta utilidad exista y funcione correctamente
-// import Regresar from "./Regresar"; // Asegúrate de que este componente exista y funcione correctamente
 
 // Componente de Alerta (simplificado para este ejemplo, asegúrate de usar tu implementación real)
 const Alerta = ({ msg }) => {
@@ -224,8 +223,8 @@ const Tema = () => {
     };
 
     return (
-        <>
-            <div className="flex flex-col justify-center items-center p-4">
+        <div className="p-4 max-w-lg mx-auto w-full">
+            <div className="flex flex-col justify-center items-center">
                 <h1 className="mb-5 text-2xl font-bold text-gray-800">App: Idea de Tema de Proyecto de Labor Comunitaria con IA</h1>
                 {/* Muestra la alerta si hay un mensaje */}
                 {alerta?.msg && <Alerta msg={alerta?.msg} />}
@@ -335,7 +334,7 @@ const Tema = () => {
                     </div>
                 </form>
             </div>
-        </>
+        </div>
     );
 };
 

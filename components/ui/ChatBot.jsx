@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from "react"
 import { useMyContext } from "../context/myContext"
 import Alerta from "./Alerta"
 import { enterKey } from "@/utils/enterKey"
-import Regresar from "./Regresar";
 
 // Contexto de conocimiento actualizado sobre proyectos de vinculación comunitaria
 const KNOWLEDGE_CONTEXT = `
@@ -390,10 +389,8 @@ Respuesta:`;
     };
 
     return (
-        <>
-            <Regresar />
-            <div className="flex flex-col justify-center items-center p-4 max-w-4xl mx-auto">
-                <div className="w-full bg-white rounded-lg shadow-xl overflow-hidden">
+        <div className="p-4 max-w-4xl mx-auto w-full">
+            <div className="w-full bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-800">
                     {/* Header del chatbot */}
                     <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-4">
                         <div className="flex justify-between items-center">
@@ -531,8 +528,7 @@ Respuesta:`;
                         </div>
                     </div>
                 </div>
-            </div>
-        </>
+        </div>
     );
 }
 
