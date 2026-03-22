@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { Desglose } from '../../models';
+import { Desglose } from '../../../models';
 
 export async function POST(req) {
   try {
