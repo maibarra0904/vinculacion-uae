@@ -56,7 +56,7 @@ const OrderSidebar = () => {
     }
 
     return (
-        <aside className="pt-6 pb-4 md:w-72 md:h-screen bg-white dark:bg-gray-950 border-r border-gray-200/60 dark:border-gray-800 flex flex-col shadow-lg shadow-slate-900/5 dark:shadow-none z-10">
+        <aside className="pt-6 pb-4 md:w-72 md:h-screen md:overflow-y-auto bg-white dark:bg-gray-950 border-r border-gray-200/60 dark:border-gray-800 flex flex-col shadow-lg shadow-slate-900/5 dark:shadow-none z-10">
             <div className="px-4 mb-4">
                 <Breadcrumbs />
             </div>

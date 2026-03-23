@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
 
     return (
         <MyContext.Provider value={{ auth, setAuth, confirmed, setConfirmed, loadPage, setLoadPage }}>
-            <div className="md:flex bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 min-h-screen">
+            <div className="md:flex bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 min-h-screen md:h-screen md:overflow-hidden">
                 {
                     !viewModal &&
                     <Modal isOpen={isModalOpen} onClose={closeModal}>
@@ -71,7 +71,7 @@ const Layout = ({ children }) => {
 
                 <OrderSidebar />
 
-                <div className="p-5 md:flex-1 md:h-screen md:overflow-y-scroll bg-slate-100 dark:bg-slate-900/40">
+                <div className="p-5 md:flex-1 md:h-full md:overflow-y-auto bg-slate-100 dark:bg-slate-900/40">
                     <div className="max-w-6xl mx-auto w-full">
                         {children}
                     </div>

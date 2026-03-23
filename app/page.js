@@ -8,7 +8,7 @@ export default function Home({children}) {
 
   return (
 
-            <main className="md:flex-1 md:h-screen md:overflow-y-scroll p-5">
+            <main className="md:flex-1 md:h-full md:overflow-y-auto p-5">
               <div className="md:flex">
               <OrderSidebar />
                 {children}
