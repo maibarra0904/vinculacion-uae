@@ -15,6 +15,18 @@ const Login = () => {
     const [alerta, setAlerta] = useState('')
     const [loading, setLoading] = useState(false)
     const [puntos, setPuntos] = useState(0)
+    const [googleWidth, setGoogleWidth] = useState('320')
+
+    useEffect(() => {
+        const updateWidth = () => {
+            setGoogleWidth(window.innerWidth < 420 ? '250' : '320');
+        };
+        if (typeof window !== 'undefined') {
+            updateWidth();
+            window.addEventListener('resize', updateWidth);
+            return () => window.removeEventListener('resize', updateWidth);
+        }
+    }, []);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -88,7 +100,7 @@ const Login = () => {
 
     return (
         <div className="min-h-[85vh] flex flex-col justify-center items-center px-4 bg-slate-50 dark:bg-gray-950">
-            <div className="w-full max-w-md bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xl shadow-gray-100/50 dark:shadow-none">
+            <div className="w-full max-w-md bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xl shadow-gray-100/50 dark:shadow-none">
                 <div className="flex flex-col items-center mb-6">
                     <h1 className="text-2xl font-black text-gray-800 dark:text-gray-100">Bienvenido de nuevo</h1>
                     <p className="text-sm text-gray-400 mt-1">Ingresa tus credenciales para continuar</p>
@@ -151,7 +163,7 @@ const Login = () => {
                     <GoogleLogin
                         type='standard'
                         theme='outline'
-                        width='320'
+                        width={googleWidth}
                         shape='pill'
                         onSuccess={handleGoogleSuccess}
                         onError={() => {
