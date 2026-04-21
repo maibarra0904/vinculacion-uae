@@ -6,6 +6,7 @@ import Paginacion from "@/components/ui/Paginacion";
 import React, { useState } from "react";
 
 const Solicitudes = () => {
+  const encargado = process.env.NEXT_PUBLIC_DEPARTAMENTO_ENCARGADO || "Ing. Johanna Ramos";
   
   return (
     <Layout>
@@ -23,44 +24,37 @@ const Solicitudes = () => {
 
       <div className="space-y-6 mt-6">
         <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
-          <span className="text-sm font-bold text-green-500 block mb-1">1. Descarga de Solicitud</span>
+          <span className="text-sm font-bold text-green-500 block mb-1">1. Descarga y Llenado de Carta de Solicitud</span>
           <p className="text-sm text-gray-700 dark:text-gray-300">
-            Descargue y llene la <Enlace url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EWHTsE0nIJNGlwaBRQTBGqoBNiGxYDz4K9fl_BILyoTezw?e=gaX9gc" text="Solicitud de Estudiante" inline={true} external={true} nuevo={true} />.
+            Dependiendo de su caso, descargue y llene una de las siguientes cartas:
+          </p>
+          <ul className="list-disc list-inside mt-2 space-y-2 text-sm text-gray-700 dark:text-gray-300">
+            <li>
+              <Enlace url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/IQDQfm7XwESRSZiREzmCV7t-AV7Mvl8qOL6OJQ7LBtolEag?e=2rwlfZ" text="Carta para solicitar rectificación del certificado" inline={true} external={true} nuevo={true} />: 
+              Se utiliza cuando ha habido algún error en la carrera, sede, nombres o apellidos del estudiante.
+            </li>
+            <li>
+              <Enlace url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/IQC5WaUFsUrmTY5jJoWBb9TIAQtE6T0cRRq7nhZbP2Hi43I?e=2kWsAI" text="Carta por pérdida en secretaría" inline={true} external={true} nuevo={true} />: 
+              Se utiliza cuando el certificado (emitido físicamente) se ha perdido en secretaría.
+            </li>
+            <li>
+              <Enlace url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/IQB-XnlYpUR-RoKBcMplyx8NAbKM-QHHvyhrYRX1LiwIBOQ?e=skzcb0" text="Carta por extravío, robo o deterioro" inline={true} external={true} nuevo={true} />: 
+              Se utiliza cuando el certificado ha sido extraviado, fue objeto de robo o simplemente está en estado deteriorado.
+            </li>
+          </ul>
+        </div>
+
+        <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+          <span className="text-sm font-bold text-green-500 block mb-1">2. Revisión del Responsable</span>
+          <p className="text-sm text-gray-700 dark:text-gray-300">
+            Una vez llena la carta, el estudiante debe solicitar la revisión del responsable de vinculación de su carrera para verificar que la información ingresada sea correcta.
           </p>
         </div>
 
         <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
-          <span className="text-sm font-bold text-green-500 block mb-1">2. Código de Número de Oficio</span>
+          <span className="text-sm font-bold text-green-500 block mb-1">3. Firma y Entrega Directa</span>
           <p className="text-sm text-gray-700 dark:text-gray-300">
-            Solicite número de oficio en la <Enlace url="/oficio" text="Aplicación" inline={true} /> (en Motivo seleccione <span className="font-bold">OTRO</span> y luego Especifique el motivo digitando: <span className="italic">SOLICITUD DE IMPRESION</span>).
-          </p>
-        </div>
-
-        <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
-          <span className="text-sm font-bold text-green-500 block mb-1">3. Oficio del Responsable</span>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            Descargue y llene el <Enlace url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EQqKMoq2dSVKp2U3ByGBl4kB8f78WSASKIn3W836QV_PAg?e=LaCl55" text="Oficio del Responsable" inline={true} external={true} nuevo={true} />.
-          </p>
-        </div>
-
-        <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
-          <span className="text-sm font-bold text-green-500 block mb-1">4. Impresión</span>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            Imprima el oficio del responsable (<span className="font-semibold text-gray-900 dark:text-white">2 copias</span>), la solicitud de estudiante (<span className="font-semibold text-gray-900 dark:text-white">1 copia</span>) y sus adjuntos (<span className="font-semibold text-gray-900 dark:text-white">1 copia</span>).
-          </p>
-        </div>
-
-        <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
-          <span className="text-sm font-bold text-green-500 block mb-1">5. Firmas y Entrega</span>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            Firmar la solicitud de estudiante, tomar la firma al responsable (mostrando el adjunto: evidencia) y entregar a Secretaría del Decanato en sobre manila tomando un <span className="font-semibold text-blue-600 dark:text-blue-400">recibido</span> en la segunda copia del oficio del responsable.
-          </p>
-        </div>
-
-        <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
-          <span className="text-sm font-bold text-green-500 block mb-1">6. Entrega al Responsable</span>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            Entregar el oficio con el recibido de Secretaría al responsable de vinculación.
+            Finalmente, tras validar que todo es correcto, el estudiante debe proceder con su firma manual y entregar la carta directamente en el departamento de labor comunitaria (Vinculación) con la <span className="font-bold text-blue-600 dark:text-blue-400">{encargado}</span>.
           </p>
         </div>
       </div>

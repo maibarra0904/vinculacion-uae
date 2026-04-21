@@ -28,7 +28,7 @@ const Otros = () => {
           {/* Card 1: Certificados */}
           <LinkCard 
             title="Certificados de Vinculación"
-            description="Proceso para solicitar la impresión o reimpresión de certificados. (No requerido en flujos ordinarios)."
+            description="Procesos para solicitar la rectificación por errores, entrega por pérdida en secretaría, robo, extravío o deterioro de certificados físicos."
             url="/otros/solicitudes"
             icon={
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -63,17 +63,14 @@ const Otros = () => {
             }
           />
 
-          {/* Card 4: Cursos */}
+          {/* Card 5: Gestión de Cambios */}
           <LinkCard 
-            title="Convalidación de Cursos (Marzo 2026)"
-            description="Revisa el listado de cursos y materias complementarias que aplican para homologación."
-
-            url="https://uagrariaec-my.sharepoint.com/:p:/g/personal/mibarra_uagraria_edu_ec/IQCKJf7L_-N9S77GccFx4XjAAV_xO2e4iC3gRA6K8g_EdFQ?e=OVffXh"
-            external={true}
-            nuevo={true}
+            title="Gestión de Cambios en Proyectos"
+            description="Formatos para retiro/adición de integrantes, cambios de cronograma o de tutor guía en labor comunitaria."
+            url="/otros/cambios"
             icon={
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.174L10.74 13.5m-6.48-3.326a2.25 2.25 0 012.122-1.426H17.62a2.25 2.25 0 012.123 1.426m-15.483 3.326a2.25 2.25 0 002.122 1.426H17.62a2.25 2.25 0 002.123-1.426M4.26 10.174L3 11.25m18-1.076l1.125.992M10.74 13.5l6.48-3.326M10.74 13.5V21h3V13.5" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
               </svg>
             }
           />
