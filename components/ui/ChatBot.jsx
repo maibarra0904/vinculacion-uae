@@ -96,6 +96,23 @@ CERTIFICADO DE DESGLOSE (Para egresados):
 - Certifica realización de todas las actividades de vinculación
 - Proceso: 1) SOLICITUD DE ESTUDIANTE, 2) Evidencias (oficios aprobados LC/PP), 3) APLICACIÓN GENERAR CERTIFICADO, 4) Especie valorada, 5) Firmas: estudiante, Responsable Vinculación, Decano, Secretario CCAA
 
+IMPRESIÓN O REIMPRESIÓN DE CERTIFICADO DE VINCULACIÓN:
+- Aplica para LABOR COMUNITARIA y PRÁCTICAS PREPROFESIONALES.
+- Casos: rectificación por errores (carrera, sede, nombres), pérdida en secretaría, robo, extravío o deterioro.
+- Proceso:
+  1) Descargar y llenar carta de solicitud según el caso (disponibles en la web).
+  2) Revisión informativa con el responsable de vinculación de la carrera para validar datos.
+  3) Firma manual del estudiante y entrega en el Departamento de Vinculación con la Ing. Johanna Ramos.
+
+GESTIÓN DE CAMBIOS EN PROYECTOS (SOLO LABOR COMUNITARIA):
+- Estos procesos NO aplican para Prácticas Preprofesionales.
+- Casos contemplados:
+  A) Retiro de Estudiante: Solicitud del estudiante + formato firmado por el responsable.
+  B) Adición de Estudiante: Solicitud dirigida al responsable + formato firmado por el mismo.
+  C) Cambio de Cronograma: Solicitud de integrantes + carta firmada por docente responsable.
+  D) Cambio de Tutor Guía: Solicitud de los estudiantes + formato firmado por el responsable.
+- Todos los formatos están disponibles en la sección "Gestión de Cambios".
+
 CONVENIOS:
 - Acuerdo entre UAE y empresa/organización beneficiaria
 - En labor comunitaria es un Requisito obligatorio
@@ -129,6 +146,7 @@ APLICACIONES DISPONIBLES:
 - Planificar fechas de vinculación
 - Generar certificado de desglose
 - Generar ideas de temas de proyectos (disponible en esta plataforma)
+- Gestión de cambios en proyectos (retiros, adiciones, cronogramas, tutores)
 
 DIRECTRICES PARA RESPUESTAS:
 - Usa un tono amigable y profesional

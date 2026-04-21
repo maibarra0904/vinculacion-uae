@@ -66,7 +66,7 @@ const Otros = () => {
           {/* Card 5: Gestión de Cambios */}
           <LinkCard 
             title="Gestión de Cambios en Proyectos"
-            description="Formatos para retiro/adición de integrantes, cambios de cronograma o de tutor guía en labor comunitaria."
+            description="Formatos para retiro/adición de integrantes, cambios de cronograma o de tutor guía (Solo para Labor Comunitaria)."
             url="/otros/cambios"
             icon={
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
