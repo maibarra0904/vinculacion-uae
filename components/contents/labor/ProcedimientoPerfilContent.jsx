@@ -213,6 +213,11 @@ export default function ProcedimientoPerfilContent() {
                 className="w-full text-center"
               />
             </div>
+
+            {/* Note Step 8 */}
+            <div className="bg-blue-50 dark:bg-blue-950/20 p-3.5 rounded-xl border border-blue-100/80 dark:border-blue-900/40 text-xs text-blue-700 dark:text-blue-300 leading-relaxed mt-4">
+              <span className="font-bold">Nota:</span> Deben sacarse <span className="font-semibold text-blue-900 dark:text-blue-200">dos (2) copias</span> del oficio (una para que quede archivada en la carpeta física y otra copia adicional para tomar un recibido formal al momento de entregar la carpeta).
+            </div>
           </div>
         </div>
 
@@ -241,6 +246,11 @@ export default function ProcedimientoPerfilContent() {
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
               Proceda a realizar la entrega física de la carpeta organizada en el Departamento de Vinculación (encargada: <span className="font-semibold text-gray-800 dark:text-white">{CONTACTOS.DEPARTAMENTO.NOMBRE}</span>) a la espera de la resolución final y aprobación formal del perfil del proyecto de labor comunitaria.
             </p>
+
+            {/* Note Step 9 */}
+            <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-xl border border-amber-100/80 dark:border-amber-900/40 text-xs text-amber-900 dark:text-amber-300 mt-4 leading-relaxed">
+              <span className="font-bold">Nota de Recibido:</span> En la copia adicional del Formato 6, no olvide tomar el respectivo sello y firma de <span className="font-bold text-amber-950 dark:text-amber-200">recibido</span> por parte del departamento de labor comunitaria.
+            </div>
           </div>
         </div>
 
