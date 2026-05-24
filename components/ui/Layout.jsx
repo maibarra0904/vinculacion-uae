@@ -54,10 +54,10 @@ const Layout = ({ children }) => {
 
                             <div className="bg-indigo-50 dark:bg-indigo-950/30 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900/40 text-center w-full space-y-3">
                                 <p className="text-gray-800 dark:text-gray-200 text-sm font-bold">
-                                    Nuevos Procedimientos de Prácticas
+                                    Procedimientos Actualizados
                                 </p>
                                 <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
-                                    Se han actualizado los procesos de <span className="font-bold text-gray-800 dark:text-gray-100">prácticas preprofesionales</span>. Ahora el inicio y la entrega del informe se gestionan en un único paso simplificado, eliminando flujos complejos.
+                                    Se han actualizado los procesos y formatos oficiales tanto de las <span className="font-bold text-gray-800 dark:text-gray-100">prácticas preprofesionales</span> como de la <span className="font-bold text-gray-800 dark:text-gray-100">labor comunitaria</span>. Los trámites de inicio y entrega de informes ahora se gestionan bajo flujos unificados y simplificados.
                                 </p>
                             </div>
 
