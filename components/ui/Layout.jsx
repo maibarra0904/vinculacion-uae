@@ -54,10 +54,10 @@ const Layout = ({ children }) => {
 
                             <div className="bg-indigo-50 dark:bg-indigo-950/30 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900/40 text-center w-full space-y-3">
                                 <p className="text-gray-800 dark:text-gray-200 text-sm font-bold">
-                                    Bienvenido a la renovación visual
+                                    Nuevos Procedimientos de Prácticas
                                 </p>
                                 <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
-                                    Se ha actualizado la interfaz para ofrecerte una experiencia más moderna y minimalista. <span className="font-bold text-gray-800 dark:text-gray-100">De momento, los procedimientos y flujos siguen siendo exactamente los mismos</span>.
+                                    Se han actualizado los procesos de <span className="font-bold text-gray-800 dark:text-gray-100">prácticas preprofesionales</span>. Ahora el inicio y la entrega del informe se gestionan en un único paso simplificado, eliminando flujos complejos.
                                 </p>
                             </div>
 

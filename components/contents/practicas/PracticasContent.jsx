@@ -21,7 +21,7 @@ export default function PracticasContent() {
             Es la primera etapa que debe cumplirse. Se indican la empresa, docente tutor, fechas y cronograma. Puede o no requerir convenio. Debe pasar por un proceso aprobatorio.
           </p>
           <div className="border-t pt-4 mt-auto">
-            <Enlace url="/practica/inicio" text="Pasos para Iniciar" inline={false} className="w-full" />
+            <Enlace url="/practica/inicio" text="Procedimiento para iniciar" inline={false} className="w-full" />
           </div>
         </div>
 
@@ -63,7 +63,7 @@ export default function PracticasContent() {
             En esta etapa se presenta el informe de las actividades asociadas a la documentación de inicio, y cuáles fueron los resultados. Debe pasar por un proceso aprobatorio.
           </p>
           <div className="border-t pt-4 mt-auto">
-            <Enlace url="/practica/informe" text="Pasos para elaborar Informe" inline={false} className="w-full" />
+            <Enlace url="/practica/informe" text="Procedimiento para el informe final" inline={false} className="w-full" />
           </div>
         </div>
       </div>

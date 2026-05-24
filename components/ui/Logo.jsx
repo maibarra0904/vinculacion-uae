@@ -7,12 +7,13 @@ const Logo = ({image}) => {
     <div className="flex justify-center md:mt-5">
 
         <div className="relative w-40 h-40">
-            <Link href={'/'}>
+            <Link href={'/'} className="relative block w-full h-full">
             <Image 
                 fill
+                sizes="160px"
                 alt="Logotipo Vinculacion"
                 src={image}
-                priority="true"
+                priority
             />
             
             </Link>
