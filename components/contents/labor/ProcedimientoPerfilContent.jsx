@@ -255,6 +255,21 @@ export default function ProcedimientoPerfilContent() {
         </div>
 
       </div>
+
+      {/* Importante / Nota Box */}
+      <div className="bg-amber-50 dark:bg-amber-950/20 border-l-4 border-amber-500 p-5 rounded-2xl text-sm space-y-2 shadow-sm">
+        <h4 className="font-bold text-amber-800 dark:text-amber-400 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 5.376C11.163 17.5 1.5 17 2.18 17h19.64c.68 0 .757.5.157.976l-9.82 11.25a.375.375 0 01-.634 0l-9.82-11.25zM12 15.75h.008v.008H12v-.008z" />
+          </svg>
+          Información y Notas Importantes
+        </h4>
+        <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+          <li>
+            <span className="font-semibold text-gray-900 dark:text-white">Remisión Digital de Recibido:</span> Habiendo entregado la carpeta física en el departamento, es de carácter <span className="font-semibold">obligatorio</span> enviar la copia del <span className="font-bold text-amber-800 dark:text-amber-400">Formato 6 escaneada con el sello de recibido</span> al correo electrónico: <span className="font-mono text-xs font-semibold">{CONTACTOS.RESPONSABLE.EMAIL}</span>.
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
