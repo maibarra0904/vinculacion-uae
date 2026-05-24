@@ -43,15 +43,15 @@ export default function InformePracticasContent() {
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
-              Gestionar los Documentos Habilitantes (Anexos del Formato 1)
+              Gestionar los Documentos Habilitantes (Anexos del Formato 4)
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Gestione los documentos habilitantes necesarios para la entrega de su informe final. Esto incluye todos los anexos del Formato 1 correspondientes al seguimiento, evaluación, certificación de empresa, cronograma de actividades y el informe final de la práctica.
+              Gestione los documentos habilitantes necesarios para la entrega de su informe final. Esto incluye todos los anexos del Formato 4 correspondientes al seguimiento y evaluación de la práctica.
             </p>
             <div className="max-w-xs text-xs font-semibold">
               <Enlace
                 url="https://uagrariaec-my.sharepoint.com/:f:/g/personal/mibarra_uagraria_edu_ec/IgAN50CN8yf5Qai6BEARuhXNAWmlqxTZ98St-X6tzCRbNG0"
-                text="Descargar Anexos del Formato 1"
+                text="Descargar Anexos del Formato 4"
                 inline={false}
                 external={true}
                 nuevo={true}
@@ -68,20 +68,20 @@ export default function InformePracticasContent() {
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
-              Gestionar la Declaración de Revisión del Tutor (Formato 1)
+              Gestionar la Declaración de Revisión del Tutor (Formato 4)
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Gestione la declaración de revisión de su informe final con su docente tutor asignado, adjuntando la carpeta completa de anexos habilitantes obtenidos en el paso anterior.
+              Gestione la declaración de revisión de su informe final con su docente tutor asignado, adjuntando la carpeta completa de anexos habilitantes obtenidos en el paso anterior (Formato 4).
             </p>
 
             <div className="bg-indigo-50 dark:bg-indigo-950/20 p-4 rounded-xl border border-indigo-100/80 dark:border-indigo-900/40 text-xs text-indigo-900 dark:text-indigo-300 mb-4 leading-relaxed">
-              <span className="font-bold">Nota de Revisión:</span> El docente tutor es el responsable de revisar exhaustivamente los contenidos de toda la documentación. Por ende, <span className="underline">deberá sumillar cada una de las páginas</span> de los Anexos del Formato 1 para validar formalmente dicha revisión (en aquellas hojas que no requieran su firma directa).
+              <span className="font-bold">Nota de Revisión:</span> El docente tutor es el responsable de revisar exhaustivamente los contenidos de toda la documentación. Por ende, <span className="underline">deberá sumillar cada una de las páginas</span> de los Anexos del Formato 4 para validar formalmente dicha revisión (en aquellas hojas que no requieran su firma directa).
             </div>
 
             <div className="max-w-xs text-xs font-semibold">
               <Enlace
                 url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/IQAn4b5Ub8NTRazyYPPOUHzaAfSNlvNrc6rDkZ9p1zycPWI?e=LEG5xw"
-                text="Descargar Formato 1"
+                text="Descargar Formato 4"
                 inline={false}
                 external={true}
                 nuevo={true}
@@ -101,12 +101,12 @@ export default function InformePracticasContent() {
               Obtener un Número de Oficio en la Aplicación
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Solicite y obtenga un número de oficio único utilizando el sistema interno de la aplicación.
+              Solicite y obtenga un número de oficio único utilizando el sistema interno de la aplicación para completar el Formato 5.
             </p>
             <div className="max-w-xs text-xs font-semibold">
               <Enlace
                 url="/oficio"
-                text="Solicitar Número de Oficio"
+                text="Solicitar Número de Oficio (Formato 5)"
                 inline={false}
                 className="w-full text-center"
               />
@@ -121,20 +121,27 @@ export default function InformePracticasContent() {
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
-              Gestionar el Oficio del Responsable de Vinculación (Formato 2)
+              Ordenar la Carpeta y Gestionar el Oficio del Responsable (Formato 5)
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Complete el oficio de entrega del informe del Responsable de Vinculación. Se deben imprimir <span className="font-semibold text-gray-900 dark:text-white">dos (2) copias</span> del Formato 2, y adicionalmente adjuntar <span className="font-semibold text-gray-900 dark:text-white">una (1) copia</span> de la cédula de identidad del estudiante.
+              Ordene todos los documentos físicos dentro de una <span className="font-semibold text-gray-900 dark:text-white">carpeta plástica de color AMARILLA</span> y gestione el oficio de entrega de informe del Responsable de Vinculación (Formato 5). Se imprimen dos (2) copias de este formato y, adicionalmente, una (1) copia de la cédula del estudiante.
             </p>
 
-            <div className="bg-blue-50 dark:bg-blue-950/20 p-4 rounded-xl border border-blue-100/80 dark:border-blue-900/40 text-xs text-blue-900 dark:text-blue-300 mb-4 leading-relaxed">
-              <span className="font-bold">Verificación:</span> El responsable de vinculación será el encargado de verificar detalladamente que la documentación esté completa y realizará observaciones generales si las amerita.
+            <div className="bg-indigo-50 dark:bg-indigo-950/20 p-4 rounded-xl border border-indigo-100/80 dark:border-indigo-900/40 text-xs text-indigo-900 dark:text-indigo-300 mb-4 leading-relaxed">
+              <span className="font-bold block mb-2">Verificación y Orden de la Carpeta Física:</span>
+              <p className="mb-2">El responsable de vinculación es quien verificará que la documentación esté completa y realizará observaciones generales si las amerita. El orden riguroso de la carpeta debe ser el siguiente:</p>
+              <ol className="list-decimal pl-4 space-y-1 font-semibold text-indigo-950 dark:text-indigo-200">
+                <li><span className="font-bold">Formato 5</span> (Oficio de entrega del informe final por el Responsable de Vinculación).</li>
+                <li><span className="font-bold">Formato 4</span> (Declaración de revisión del tutor).</li>
+                <li><span className="font-bold">Anexos del Formato 4</span> (Seguimiento, evaluaciones y anexos completos).</li>
+                <li><span className="font-bold">Documentos de Inicio</span> (Formatos del 1 al 3 correspondientes a la etapa de inicio).</li>
+              </ol>
             </div>
 
             <div className="max-w-xs text-xs font-semibold">
               <Enlace
                 url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/IQBWUV4Fo1THS7J9cfCTTHNVAVYE2cEH-DYN_t9AVqigfuk?e=odJChD"
-                text="Descargar Formato 2"
+                text="Descargar Formato 5"
                 inline={false}
                 external={true}
                 nuevo={true}
@@ -154,7 +161,7 @@ export default function InformePracticasContent() {
               Entregar Documentación a Secretaría de Decanato
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              Entregue una (1) copia física del Formato 2 junto con una (1) copia de su cédula a la Secretaría de Decanato (encargada: <span className="font-semibold text-gray-800 dark:text-white">{CONTACTOS.SECRETARIA.NOMBRE}</span>). En la otra copia original del Formato 2, solicite que le coloquen el respectivo sello y firma de <span className="font-semibold text-green-600 dark:text-green-400">recibido</span>.
+              Entregue una (1) copia física del Formato 5 junto con una (1) copia de su cédula a la Secretaría de Decanato (encargada: <span className="font-semibold text-gray-800 dark:text-white">{CONTACTOS.SECRETARIA.NOMBRE}</span>). En la otra copia original del Formato 5, solicite que le coloquen el respectivo sello y firma de <span className="font-semibold text-green-600 dark:text-green-400">recibido</span>.
             </p>
           </div>
         </div>
@@ -169,7 +176,7 @@ export default function InformePracticasContent() {
               Remitir Documentación por Correo Electrónico y de manera Física
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
-              Escanee toda la documentación generada en los pasos anteriores (incluyendo la carpeta de inicio y el Formato 2 con el sello de recibido del Decanato) y envíela por correo a:
+              Escanee toda la documentación generada en los pasos anteriores (incluyendo la carpeta de inicio y el Formato 5 con el sello de recibido del Decanato) y envíela por correo a:
             </p>
             <div className="inline-block bg-gray-50 dark:bg-gray-800/60 px-3 py-2 rounded-xl border border-gray-100 dark:border-gray-700/60 font-mono text-xs font-semibold text-green-600 dark:text-green-400">
               {CONTACTOS.RESPONSABLE.EMAIL}
@@ -180,11 +187,11 @@ export default function InformePracticasContent() {
 
             {/* Document Ordering Note */}
             <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-xl border border-amber-100/80 dark:border-amber-900/40 text-xs text-amber-900 dark:text-amber-300 mt-4 leading-relaxed">
-              <span className="font-bold block mb-2">Ordenamiento de la Documentación Física en la Carpeta:</span>
+              <span className="font-bold block mb-2">Ordenamiento de la Documentación Física en la Carpeta AMARILLA:</span>
               <ol className="list-decimal pl-4 space-y-1 font-medium">
-                <li><span className="font-bold">Formato 2 con el recibido de Secretaría</span> (Oficio de entrega de informe final por Responsable de Vinculación).</li>
-                <li><span className="font-bold">Formato 1 con Anexos</span> en el orden especificado (Revisión documental del tutor + Anexos 1 al 6).</li>
-                <li><span className="font-bold">Documentación completa de inicio</span>.</li>
+                <li><span className="font-bold">Formato 5 con el recibido de Secretaría</span> (Oficio de entrega de informe final por Responsable de Vinculación).</li>
+                <li><span className="font-bold">Formato 4 con Anexos</span> en el orden especificado (Revisión documental del tutor + Anexos del Formato 4).</li>
+                <li><span className="font-bold">Documentos de Inicio</span> (Formatos del 1 al 3 correspondientes a la etapa de inicio).</li>
               </ol>
             </div>
           </div>
