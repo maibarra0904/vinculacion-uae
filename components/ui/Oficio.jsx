@@ -15,11 +15,11 @@ import { formatDate, formatNumber } from "@/utils/formatFunctions";
 
 const availabilityOptions = [
   { name: "--- SELECCIONE ---", value: true },
-  { name: "PASO 1 - PERFIL LC", value: false },
-  { name: "PASO 2 - PERFIL LC", value: false },
-  { name: "PASO 1 - INICIO PP", value: false },
-  { name: "PASO 2 - INICIO PP", value: false },
-  { name: "INFORME - PP", value: false },
+  { name: "Formato 2 - PERFIL Labor Comunitaria", value: false },
+  { name: "Formato 6 - PERFIL Labor Comunitaria", value: false },
+  { name: "Formato 11 - INFORME Labor Comunitaria", value: false },
+  { name: "Formato 3 - INICIO Práctica Preprofesional", value: false },
+  { name: "Formato 5 - INFORME Práctica Preprofesional", value: false },
   { name: "OTRO", value: false },
 ];
 
@@ -128,7 +128,7 @@ function OficioComponent() {
   // Estado para controlar si el tutor fue notificado
   const [tutorNotificado, setTutorNotificado] = useState(false);
 
-    const {auth, setAuth, loadPage} = useMyContext();
+  const { auth, setAuth, loadPage } = useMyContext();
 
   const [nombre, guardaNombre] = useState('');
   const [aviso, setAviso] = useState("");
@@ -138,14 +138,14 @@ function OficioComponent() {
       : "";
 
   const fechaUltimoOficio =
-  typeof window !== "undefined" && localStorage?.getItem("fecha")
-    ? JSON.parse(localStorage.getItem("fecha"))
-    : "";
+    typeof window !== "undefined" && localStorage?.getItem("fecha")
+      ? JSON.parse(localStorage.getItem("fecha"))
+      : "";
 
   const numeroUltimoOficio =
-  typeof window !== "undefined" && localStorage?.getItem("numero")
-    ? JSON.parse(localStorage.getItem("numero"))
-    : "";
+    typeof window !== "undefined" && localStorage?.getItem("numero")
+      ? JSON.parse(localStorage.getItem("numero"))
+      : "";
 
   const [periodo, guardaPeriodo] = useState("");
   const [periodoAlt, guardaPeriodoAlt] = useState("");
@@ -184,7 +184,7 @@ function OficioComponent() {
     };
 
     setAuthToken(auth.token);
-  },[auth])
+  }, [auth])
 
   const handleChangeNombre = (e) => {
     e.preventDefault();
@@ -220,10 +220,10 @@ function OficioComponent() {
 
     if (e.target.value.includes("PASO 2")) {
       setTutor(true);
-  setTutorNotificado(false);
+      setTutorNotificado(false);
     } else {
       setTutor(false);
-  setTutorNotificado(false);
+      setTutorNotificado(false);
     }
   };
 
@@ -264,7 +264,8 @@ function OficioComponent() {
       }
     }, 1000);
   }
-  const executeGeneration = async () => {
+
+  const executeGeneration = async () => {
     setIsOpenModal(false);
     setLoading(true);
     countdown();
@@ -307,7 +308,7 @@ function OficioComponent() {
 
     const fechaActual = new Date().toLocaleDateString();
 
-    if(fechaUltimoOficio.split(',')[0] === fechaActual){
+    if (fechaUltimoOficio.split(',')[0] === fechaActual) {
       setAlerta({
         type: "error",
         keyWord: "fecha",
@@ -320,7 +321,7 @@ function OficioComponent() {
       name: nombre.toString() ?? "",
       tramite: motivoAlt !== "" ? motivoAlt?.toString() : motivo?.toString(),
       periodo: periodoAlt !== "" ? periodoAlt?.toString() : periodo?.toString(),
-      status: emailTutor!=="" ? userFromEmail(emailTutor) : "utilizado"
+      status: emailTutor !== "" ? userFromEmail(emailTutor) : "utilizado"
     };
 
     if (
@@ -328,10 +329,10 @@ function OficioComponent() {
         nombre.toString(),
         motivoAlt !== "" ? motivoAlt?.toString() : motivo?.toString(),
         periodoAlt !== "" ? periodoAlt?.toString() : periodo?.toString(),
-      ].includes("") 
+      ].includes("")
     ) {
 
-      
+
       setAlerta({
         type: "error",
         keyWord: "vacios",
@@ -344,7 +345,7 @@ function OficioComponent() {
       return;
     }
 
-    if(tutor && emailTutor==='') { 
+    if (tutor && emailTutor === '') {
       setShowTooltip2(!showTooltip2)
 
       setTimeout(() => {
@@ -380,7 +381,7 @@ function OficioComponent() {
   }
 
 
-   return (!loadPage && (
+  return (!loadPage && (
     auth?.nombre ? (
       <div className="min-h-[85vh] flex flex-col justify-center items-center px-4 bg-slate-50 dark:bg-gray-950 py-10">
         <div className="w-full max-w-md bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xl shadow-gray-100/50 dark:shadow-none flex flex-col items-center">
@@ -574,7 +575,7 @@ function OficioComponent() {
                 <div className="bg-emerald-50 dark:bg-emerald-950/30 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-900/40 text-center flex flex-col items-center">
                   <h3 className="text-emerald-800 dark:text-emerald-400 font-black text-lg">¡Oficio Generado!</h3>
                   <p className="text-emerald-600 text-xs mt-0.5">Cópialo para usarlo en tus plantillas</p>
-                  
+
                   <button
                     onClick={() => copyToClipboard(`Oficio Nro. M-UAE-FCA.V.CC-2026-${formatNumber(parseInt(letterNumber))}.O`, 1)}
                     className="mt-4 px-4 py-2.5 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-bold text-xs rounded-xl border border-emerald-200 shadow-sm flex items-center gap-2"
@@ -598,7 +599,7 @@ function OficioComponent() {
                     className="mt-4 flex items-center justify-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-md transition-all hover:scale-[1.02] active:scale-95 w-full max-w-[250px]"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="w-4 h-4" viewBox="0 0 16 16">
-                      <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.856 7.856 0 0 0 -2.327-5.607zM7.994 14.593a6.573 6.573 0 0 1 -3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1 -1.007-3.572c0-3.626 2.957-6.584 6.59-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.23.148-.426.05-.197-.099-.832-.306-1.586-.975-.587-.524-.984-1.172-1.1-1.37-.114-.197-.012-.305.087-.404.089-.089.197-.23.296-.346.1-.114.133-.198.198-.33.065-.134.034-.252-.017-.35-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0 -.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                      <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.856 7.856 0 0 0 -2.327-5.607zM7.994 14.593a6.573 6.573 0 0 1 -3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1 -1.007-3.572c0-3.626 2.957-6.584 6.59-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.23.148-.426.05-.197-.099-.832-.306-1.586-.975-.587-.524-.984-1.172-1.1-1.37-.114-.197-.012-.305.087-.404.089-.089.197-.23.296-.346.1-.114.133-.198.198-.33.065-.134.034-.252-.017-.35-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0 -.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
                     </svg>
                     <span>Compartir por WhatsApp</span>
                   </a>
@@ -614,9 +615,9 @@ function OficioComponent() {
             <div className="bg-white dark:bg-gray-900 w-full max-w-sm rounded-2xl p-6 border border-gray-100 dark:border-gray-800 shadow-2xl transform transition-all duration-200 scale-100">
               <div className="flex justify-center mb-4">
                 <div className="w-12 h-12 bg-amber-50 dark:bg-amber-950/30 rounded-full flex items-center justify-center border border-amber-200 dark:border-amber-800/60">
-                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-amber-500">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 5.376C11.163 17.5 1.5 17 2.18 17h19.64c.68 0 .757.5.157.976l-9.82 11.25a.375.375 0 01-.634 0l-9.82-11.25zM12 15.75h.008v.008H12v-.008z" />
-                   </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-amber-500">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 5.376C11.163 17.5 1.5 17 2.18 17h19.64c.68 0 .757.5.157.976l-9.82 11.25a.375.375 0 01-.634 0l-9.82-11.25zM12 15.75h.008v.008H12v-.008z" />
+                  </svg>
                 </div>
               </div>
               <h3 className="text-gray-800 dark:text-gray-100 font-black text-center text-base mb-1.5">¿Desea Generar el Número de Oficio?</h3>
@@ -624,8 +625,8 @@ function OficioComponent() {
                 ¿Le falta SOLO el número de oficio para entregar la documentación? Si aún tiene pendientes NO genere el número y ocúpese de llenar primero la documentación, válido por 72 horas.
               </p>
               <div className="flex gap-3">
-                 <button onClick={() => setIsOpenModal(false)} className="flex-1 py-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold text-xs rounded-xl transition-all">Cancelar</button>
-                 <button onClick={executeGeneration} className="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-md transition-all active:scale-95">OK, Generar</button>
+                <button onClick={() => setIsOpenModal(false)} className="flex-1 py-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold text-xs rounded-xl transition-all">Cancelar</button>
+                <button onClick={executeGeneration} className="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-md transition-all active:scale-95">OK, Generar</button>
               </div>
             </div>
           </div>
