@@ -35,7 +35,7 @@ export default function LaborContent() {
             Es la primera etapa que debe cumplirse. Como requisito deberá contar con un convenio aprobado. Se indican la empresa, integrantes (máx 4), actividades y docente tutor.
           </p>
           <div className="border-t pt-4 mt-auto">
-            <Enlace url="/labor/perfil" text="Pasos para elaborar Perfil" inline={false} className="w-full" />
+            <Enlace url="/labor/perfil" text="Procedimiento para el perfil" inline={false} className="w-full" />
           </div>
         </div>
 
