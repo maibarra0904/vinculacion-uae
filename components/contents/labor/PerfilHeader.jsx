@@ -18,17 +18,6 @@ export default function PerfilHeader() {
           alternative="(nuevo)" 
         />.
       </p>
-      <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-2">
-        También puede revisar un{" "}
-        <Enlace 
-          url="https://uagrariaec-my.sharepoint.com/:b:/g/personal/mibarra_uagraria_edu_ec/Ee81ntrXu8NAtzSSDxOMkJQBEjMjMVX0H98hNFaVBh6r2Q?e=5NY6rl" 
-          text="Ejemplo de un perfil aprobado" 
-          inline={true} 
-          external={true} 
-          nuevo={true} 
-        />{" "}
-        para guiarse en su proceso.
-      </p>
     </div>
   );
 }
