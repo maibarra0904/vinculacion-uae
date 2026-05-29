@@ -16,6 +16,7 @@ import { formatDate, formatNumber } from "@/utils/formatFunctions";
 const availabilityOptions = [
   { name: "--- SELECCIONE ---", value: true },
   { name: "Formato 2 - PERFIL Labor Comunitaria", value: false },
+  { name: "Formato 3 - DESIGNACIÓN Labor Comunitaria", value: false },
   { name: "Formato 6 - PERFIL Labor Comunitaria", value: false },
   { name: "Formato 11 - INFORME Labor Comunitaria", value: false },
   { name: "Formato 3 - INICIO Práctica Preprofesional", value: false },
