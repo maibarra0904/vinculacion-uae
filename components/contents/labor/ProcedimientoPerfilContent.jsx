@@ -111,6 +111,21 @@ export default function ProcedimientoPerfilContent() {
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
+              Solicitar Asignación de Tutor al Responsable de Vinculación
+            </h3>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Realice la solicitud verbal al <strong>Responsable de Vinculación ({CONTACTOS.RESPONSABLE.NOMBRE})</strong> para que le indique quién será el docente tutor o tutora asignado que guiará el desarrollo de su labor comunitaria. Este paso es un prerrequisito para proceder con el llenado de la documentación siguiente.
+            </p>
+          </div>
+        </div>
+
+        {/* Step 6 */}
+        <div className="relative pl-8 md:pl-10">
+          <span className="absolute -left-4 md:-left-5 top-0.5 flex items-center justify-center w-8 h-8 rounded-xl bg-green-600 text-white font-extrabold text-sm shadow-md shadow-green-500/20">
+            6
+          </span>
+          <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
+            <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
               Gestionar Designación y Declaración Compromiso del Tutor
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
@@ -143,10 +158,10 @@ export default function ProcedimientoPerfilContent() {
           </div>
         </div>
 
-        {/* Step 6 */}
+        {/* Step 7 */}
         <div className="relative pl-8 md:pl-10">
           <span className="absolute -left-4 md:-left-5 top-0.5 flex items-center justify-center w-8 h-8 rounded-xl bg-green-600 text-white font-extrabold text-sm shadow-md shadow-green-500/20">
-            6
+            7
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
@@ -168,10 +183,10 @@ export default function ProcedimientoPerfilContent() {
           </div>
         </div>
 
-        {/* Step 7 */}
+        {/* Step 8 */}
         <div className="relative pl-8 md:pl-10">
           <span className="absolute -left-4 md:-left-5 top-0.5 flex items-center justify-center w-8 h-8 rounded-xl bg-green-600 text-white font-extrabold text-sm shadow-md shadow-green-500/20">
-            7
+            8
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
@@ -191,10 +206,10 @@ export default function ProcedimientoPerfilContent() {
           </div>
         </div>
 
-        {/* Step 8 */}
+        {/* Step 9 */}
         <div className="relative pl-8 md:pl-10">
           <span className="absolute -left-4 md:-left-5 top-0.5 flex items-center justify-center w-8 h-8 rounded-xl bg-green-600 text-white font-extrabold text-sm shadow-md shadow-green-500/20">
-            8
+            9
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
@@ -214,17 +229,17 @@ export default function ProcedimientoPerfilContent() {
               />
             </div>
 
-            {/* Note Step 8 */}
+            {/* Note Step 9 */}
             <div className="bg-blue-50 dark:bg-blue-950/20 p-3.5 rounded-xl border border-blue-100/80 dark:border-blue-900/40 text-xs text-blue-700 dark:text-blue-300 leading-relaxed mt-4">
               <span className="font-bold">Nota:</span> Deben sacarse <span className="font-semibold text-blue-900 dark:text-blue-200">dos (2) copias</span> del oficio (una para que quede archivada en la carpeta física y otra copia adicional para tomar un recibido formal al momento de entregar la carpeta).
             </div>
           </div>
         </div>
 
-        {/* Step 9 */}
+        {/* Step 10 */}
         <div className="relative pl-8 md:pl-10">
           <span className="absolute -left-4 md:-left-5 top-0.5 flex items-center justify-center w-8 h-8 rounded-xl bg-green-600 text-white font-extrabold text-sm shadow-md shadow-green-500/20">
-            9
+            10
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
@@ -247,7 +262,7 @@ export default function ProcedimientoPerfilContent() {
               Proceda a realizar la entrega física de la carpeta organizada en el Departamento de Vinculación (encargada: <span className="font-semibold text-gray-800 dark:text-white">{CONTACTOS.DEPARTAMENTO.NOMBRE}</span>) a la espera de la resolución final y aprobación formal del perfil del proyecto de labor comunitaria.
             </p>
 
-            {/* Note Step 9 */}
+            {/* Note Step 10 */}
             <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-xl border border-amber-100/80 dark:border-amber-900/40 text-xs text-amber-900 dark:text-amber-300 mt-4 leading-relaxed">
               <span className="font-bold">Nota de Recibido:</span> En la copia adicional del Formato 6, no olvide tomar el respectivo sello y firma de <span className="font-bold text-amber-950 dark:text-amber-200">recibido</span> por parte del departamento de labor comunitaria.
             </div>
