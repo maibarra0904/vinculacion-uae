@@ -26,9 +26,17 @@ export default function Paso1PracticaContent() {
 
         {/* Step B */}
         <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-sm">
-          <span className="text-sm font-bold text-green-500 block mb-1">b. Carta de Intención</span>
+          <span className="text-sm font-bold text-green-500 block mb-1">b. Acercamiento con Formato 0 (Solo para Carta de Intención)</span>
           <p className="text-sm text-gray-700 dark:text-gray-300">
-             Remitir la{" "}
+             Si opta por Carta de Intención, debe primero realizar un acercamiento con la empresa mediante el{" "}
+             <Enlace 
+               url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/IQDcsdZn7SfvQ63Q49hP__NPAbrfZq2FxyobrNL75mYwtOI?e=O1CjxZ" 
+               text="Formato 0 (Carta de Acercamiento)" 
+               inline={true} 
+               external={true} 
+               nuevo={true} 
+             />{" "}
+             <span className="font-semibold text-amber-600 dark:text-amber-400">obligatoriamente antes de llenar la solicitud (Paso c)</span>, a fin de obtener los datos y la documentación requerida de la empresa. Posteriormente, remita la{" "}
              <Enlace 
                url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/Ee9o52Qgl0BFiV8rPq2bFtcBydrGI3Qv9hE3SnqZrVJYJA?e=DXQhcM" 
                text="Carta de Intención" 
@@ -36,7 +44,7 @@ export default function Paso1PracticaContent() {
                external={true} 
                nuevo={true} 
              />{" "}
-              a la empresa, luego de que se haya realizado el acercamiento. Debe ir firmada por el Responsable de Vinculación y tomarle un recibido.
+              a la empresa, firmada por el Responsable de Vinculación, y obtenga el debido recibido.
           </p>
         </div>
 
@@ -60,7 +68,10 @@ export default function Paso1PracticaContent() {
                external={true} 
                nuevo={true} 
              />{" "}
-             dependiendo de la forma como se vaya a realizar la práctica.
+             dependiendo de la forma como se vaya a realizar la práctica.{" "}
+             <span className="text-xs text-amber-600 dark:text-amber-400 block mt-2 font-medium">
+               * Nota: Para la vía de Carta de Intención, este paso se realiza únicamente después de completar el acercamiento con el Formato 0 (Paso b).
+             </span>
           </p>
         </div>
 

@@ -218,7 +218,7 @@ function OficioComponent() {
     e.preventDefault();
     guardaMotivo(e.target.value);
 
-    if (e.target.value.includes("PASO 2")) {
+    if (e.target.value.includes("PASO 2") || e.target.value.includes("Formato 3")) {
       setTutor(true);
       setTutorNotificado(false);
     } else {
@@ -535,7 +535,7 @@ function OficioComponent() {
                   <div className="bg-blue-50 dark:bg-blue-950/40 p-3 rounded-xl border border-blue-100 dark:border-blue-900/50 text-xs text-blue-700 dark:text-blue-300 leading-relaxed">
                     Corrobore el tutor asignado por el Ing. Mario Ibarra antes de continuar.
                   </div>
-                  {motivo.includes("PASO 2") && emailTutor && (
+                  {(motivo.includes("PASO 2") || motivo.includes("Formato 3")) && emailTutor && (
                     <div className="mt-4 flex flex-col items-center gap-2 bg-gray-50 dark:bg-gray-800/50 p-3 rounded-xl border border-gray-100 dark:border-gray-700">
                       <span className="text-xs font-bold text-gray-700 dark:text-gray-300">Notificar al tutor por correo:</span>
                       <EmailLink
@@ -554,9 +554,9 @@ function OficioComponent() {
 
               <input
                 type="submit"
-                className={`w-full py-3 bg-indigo-600 p-2 text-white font-bold rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all mt-4 text-sm cursor-pointer ${tutor && motivo.includes("PASO 2") && !tutorNotificado ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`w-full py-3 bg-indigo-600 p-2 text-white font-bold rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all mt-4 text-sm cursor-pointer ${tutor && (motivo.includes("PASO 2") || motivo.includes("Formato 3")) && !tutorNotificado ? 'opacity-50 cursor-not-allowed' : ''}`}
                 value="Generar Número de Oficio"
-                disabled={tutor && motivo.includes("PASO 2") && !tutorNotificado}
+                disabled={tutor && (motivo.includes("PASO 2") || motivo.includes("Formato 3")) && !tutorNotificado}
               />
             </form>
           )}
