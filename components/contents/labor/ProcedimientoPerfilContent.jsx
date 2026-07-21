@@ -48,15 +48,15 @@ export default function ProcedimientoPerfilContent() {
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
-              Obtener Número de Oficio en la Aplicación
+              Obtener Número de Memorando en la Aplicación
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Solicite y obtenga un número de oficio utilizando el sistema interno para completar el Formato 2.
+              Solicite y obtenga un número de memorando utilizando el sistema interno para completar el Formato 2.
             </p>
             <div className="max-w-xs text-xs font-semibold">
               <Enlace 
                 url="/oficio" 
-                text="Solicitar Número de Oficio (Formato 2)" 
+                text="Solicitar Número de Memorando (Formato 2)" 
                 inline={false}
                 className="w-full text-center"
               />
@@ -74,7 +74,7 @@ export default function ProcedimientoPerfilContent() {
               Gestionar la Solicitud de Autorización al Decano
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Haciendo uso del número de oficio obtenido en el paso anterior, complete el oficio de solicitud de autorización dirigido al Decano (Formato 2).
+              Haciendo uso del número de memorando obtenido en el paso anterior, complete el memorando de solicitud de autorización dirigido al Decano (Formato 2).
             </p>
             <div className="max-w-xs text-xs font-semibold">
               <Enlace 
@@ -190,15 +190,15 @@ export default function ProcedimientoPerfilContent() {
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
-              Obtener Número de Oficio en la Aplicación
+              Obtener Número de Memorando en la Aplicación
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Solicite y obtenga un nuevo número de oficio utilizando el sistema interno para completar el Formato 6.
+              Solicite y obtenga un nuevo número de memorando utilizando el sistema interno para completar el Formato 6.
             </p>
             <div className="max-w-xs text-xs font-semibold">
               <Enlace 
                 url="/oficio" 
-                text="Solicitar Número de Oficio (Formato 6)" 
+                text="Solicitar Número de Memorando (Formato 6)" 
                 inline={false}
                 className="w-full text-center"
               />
@@ -213,10 +213,10 @@ export default function ProcedimientoPerfilContent() {
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
-              Gestionar el Oficio de Entrega del Perfil
+              Gestionar el Memorando de Entrega del Perfil
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Llene y complete el oficio formal de entrega del perfil del proyecto utilizando el número de oficio obtenido en el paso anterior (Formato 6).
+              Llene y complete el memorando formal de entrega del perfil del proyecto utilizando el número de memorando obtenido en el paso anterior (Formato 6).
             </p>
             <div className="max-w-xs text-xs font-semibold">
               <Enlace 
@@ -231,7 +231,7 @@ export default function ProcedimientoPerfilContent() {
 
             {/* Note Step 9 */}
             <div className="bg-blue-50 dark:bg-blue-950/20 p-3.5 rounded-xl border border-blue-100/80 dark:border-blue-900/40 text-xs text-blue-700 dark:text-blue-300 leading-relaxed mt-4">
-              <span className="font-bold">Nota:</span> Deben sacarse <span className="font-semibold text-blue-900 dark:text-blue-200">dos (2) copias</span> del oficio (una para que quede archivada en la carpeta física y otra copia adicional para tomar un recibido formal al momento de entregar la carpeta).
+              <span className="font-bold">Nota:</span> Deben sacarse <span className="font-semibold text-blue-900 dark:text-blue-200">dos (2) copias</span> del memorando (una para que quede archivada en la carpeta física y otra copia adicional para tomar un recibido formal al momento de entregar la carpeta).
             </div>
           </div>
         </div>
@@ -246,14 +246,14 @@ export default function ProcedimientoPerfilContent() {
               Organizar y Entregar la Carpeta al Departamento
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
-              Coloque todos los documentos físicos dentro de una <span className="font-semibold text-gray-900 dark:text-white">carpeta de color amarillo</span> respetando estrictamente el siguiente ordenamiento:
+              Coloque todos los documentos físicos dentro de una <span className="font-semibold text-gray-900 dark:text-white">carpeta de color amarillo</span> respetando strictly el siguiente ordenamiento:
             </p>
             <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-xl border border-amber-100/80 dark:border-amber-900/40 text-xs text-amber-900 dark:text-amber-300 leading-relaxed mb-3">
               <ol className="list-decimal pl-4 space-y-1 font-medium">
-                <li><span className="font-bold">Formato 6</span> (Oficio de entrega del perfil).</li>
+                <li><span className="font-bold">Formato 6</span> (Memorando de entrega del perfil).</li>
                 <li><span className="font-bold">Formato 5</span> (Perfil del proyecto estructurado).</li>
                 <li><span className="font-bold">Formato 4</span> (Declaración compromiso del tutor).</li>
-                <li><span className="font-bold">Formato 3</span> (Oficio de designación del tutor).</li>
+                <li><span className="font-bold">Formato 3</span> (Memorando de designación del tutor).</li>
                 <li><span className="font-bold">Formato 2</span> (Solicitud de autorización al Decano con la sumilla aprobatoria).</li>
                 <li><span className="font-bold">Formato 1</span> (Solicitud de autorización de inicio de LCE).</li>
               </ol>

@@ -23,7 +23,7 @@ const ExportToExcel = ({ apiData, fileName }) => {
         onClick={() => exportToCSV(apiData, fileName)}
         className='bg-indigo-500 text-white p-4 rounded-lg'
     >
-        Reporte de Oficios
+        Reporte de Memorandos
     </button>
     </div>
   );

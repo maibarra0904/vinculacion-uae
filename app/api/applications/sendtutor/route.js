@@ -7,7 +7,7 @@ export async function POST(req) {
      const { email, oficio, fecha, tutor, emailtutor } = body;
 
      const htmlContent = `
-         <p>El numero de oficio es: <strong>${oficio}</strong></p>
+         <p>El número de memorando es: <strong>${oficio}</strong></p>
          <p>La fecha es: ${fecha}</p>
          <p>El tutor asignado es: ${tutor}</p>
          <p>El email del tutor para contacto es: ${emailtutor}</p>
@@ -16,7 +16,7 @@ export async function POST(req) {
      await sendBrevoEmail({
        to: email,
        cc: emailtutor,
-       subject: 'Numero de Oficio - Tutor Asignado',
+       subject: 'Número de Memorando - Tutor Asignado',
        htmlContent
      });
 

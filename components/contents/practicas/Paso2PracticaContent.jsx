@@ -35,10 +35,10 @@ export default function Paso2PracticaContent() {
 
         {/* Step C */}
         <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-sm">
-          <span className="text-sm font-bold text-green-500 block mb-1">c. Segundo Oficio</span>
+          <span className="text-sm font-bold text-green-500 block mb-1">c. Segundo Memorando</span>
           <p className="text-sm text-gray-700 dark:text-gray-300">
-             Solicitar luego un nuevo número de oficio en la{" "}
-             <Enlace url="/oficio" text="Aplicación para solicitar número de oficio" inline={true} />{" "}
+             Solicitar luego un nuevo número de memorando en la{" "}
+             <Enlace url="/oficio" text="Aplicación para solicitar número de memorando" inline={true} />{" "}
              (En "Motivo" colocar PASO 2 - INICIO PP y en "Tutor" el que le fue asignado)
           </p>
         </div>
@@ -47,10 +47,10 @@ export default function Paso2PracticaContent() {
         <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-sm">
           <span className="text-sm font-bold text-green-500 block mb-1">d. Pedido a Decano</span>
           <p className="text-sm text-gray-700 dark:text-gray-300">
-             Tomar el número de oficio anterior y habiendo planificado su actividad deberá llenar el{" "}
+             Tomar el número de memorando anterior y habiendo planificado su actividad deberá llenar el{" "}
              <Enlace 
                url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EdPkBvc6kpFPpPz4a0ojBy0BH45ISNni-Y8SivIswgTPAQ?e=9A4lFD" 
-               text="Modelo de Oficio de Pedido a Decano" 
+               text="Modelo de Memorando de Pedido a Decano" 
                inline={true} 
                external={true} 
                nuevo={true} 

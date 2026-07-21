@@ -33,7 +33,7 @@ export default function DesgloseContent() {
           <li className="flex gap-4">
             <span className="flex items-center justify-center w-6 h-6 bg-green-100 text-green-600 dark:bg-green-900/40 dark:text-green-400 font-bold rounded-full text-sm">2</span>
             <p className="text-gray-700 dark:text-gray-300">
-              <span className="font-semibold text-gray-800 dark:text-white">Consigue la evidencia de tus actividades de vinculación:</span> En labores comunitarias se solicita el oficio de informe final <span className="underline decoration-green-500 font-medium">aprobado</span>. En prácticas preprofesionales el de informe final con <span className="underline decoration-blue-500 font-medium">recibido</span> de decanato. En cursos especializantes, los diplomas de aprobación.
+              <span className="font-semibold text-gray-800 dark:text-white">Consigue la evidencia de tus actividades de vinculación:</span> En labores comunitarias se solicita el memorando de informe final <span className="underline decoration-green-500 font-medium">aprobado</span>. En prácticas preprofesionales el de informe final con <span className="underline decoration-blue-500 font-medium">recibido</span> de decanato. En cursos especializantes, los diplomas de aprobación.
             </p>
           </li>
 

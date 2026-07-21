@@ -103,15 +103,15 @@ export default function ProcedimientoInicioContent() {
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
-              Obtener un Número de Oficio
+              Obtener un Número de Memorando
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Solicite y obtenga un número de oficio único utilizando el sistema interno de la aplicación. Para este registro, recuerde que <strong>debe ingresar obligatoriamente el nombre del Docente Tutor</strong> asignado en el paso anterior.
+              Solicite y obtenga un número de memorando único utilizando el sistema interno de la aplicación. Para este registro, recuerde que <strong>debe ingresar obligatoriamente el nombre del Docente Tutor</strong> asignado en el paso anterior.
             </p>
             <div className="max-w-xs text-xs font-semibold">
               <Enlace 
                 url="/oficio" 
-                text="Solicitar Número de Oficio" 
+                text="Solicitar Número de Memorando" 
                 inline={false}
                 className="w-full text-center"
               />
@@ -126,10 +126,10 @@ export default function ProcedimientoInicioContent() {
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
-              Llenar Oficio de Solicitud de Docente Responsable
+              Llenar Memorando de Solicitud de Docente Responsable
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
-              Haciendo uso del número de oficio obtenido en el paso anterior, complete el oficio dirigido al docente responsable (<strong>Formato 3</strong>).
+              Haciendo uso del número de memorando obtenido en el paso anterior, complete el memorando dirigido al docente responsable (<strong>Formato 3</strong>).
             </p>
 
             <div className="bg-blue-50 dark:bg-blue-950/30 border-l-4 border-blue-500 p-3 rounded-r-xl text-xs text-blue-900 dark:text-blue-300 mb-4 space-y-2 leading-relaxed">

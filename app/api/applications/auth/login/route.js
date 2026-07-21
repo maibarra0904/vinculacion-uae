@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { User } from '../../../models';
+import { supabase } from '@/utils/supabase';
 import { checkPassword } from '../../../utils/auth';
 
 export async function POST(req) {
@@ -11,7 +12,21 @@ export async function POST(req) {
          return NextResponse.json({ msg: 'Email y Password son obligatorios' });
      }
 
-     const usuario = await User.findOne({ where: { email } });
+     let usuario = null;
+
+     if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+         const { data: dbUser, error } = await supabase
+             .from('users')
+             .select('*')
+             .eq('email', email)
+             .maybeSingle();
+
+         if (error) throw new Error(error.message);
+         usuario = dbUser;
+     } else {
+         usuario = await User.findOne({ where: { email } });
+     }
+
      if (!usuario) {
          return NextResponse.json({ msg: 'No hay un usuario con esas credenciales' });
      }
@@ -31,7 +46,7 @@ export async function POST(req) {
      return NextResponse.json({ data });
 
   } catch (error) {
-      console.error("API_LOGIN_ERROR:", error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
+       console.error("API_LOGIN_ERROR:", error);
+       return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

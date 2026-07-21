@@ -7,13 +7,13 @@ export async function POST(req) {
      const { email, oficio, fecha } = body;
 
      const htmlContent = `
-         <p>Tu numero de oficio es: <strong>${oficio}</strong></p>
+         <p>Tu número de memorando es: <strong>${oficio}</strong></p>
          <p>La fecha es: ${fecha}</p>
      `;
 
      await sendBrevoEmail({
        to: email,
-       subject: 'Numero de Oficio',
+       subject: 'Número de Memorando',
        htmlContent
      });
 

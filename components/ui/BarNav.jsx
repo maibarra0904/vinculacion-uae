@@ -19,6 +19,11 @@ const BarNav = ({ path, showNavBar }) => {
         },
         {
             id: 3,
+            name: "Administrar Memos",
+            slug: "admin-memo"
+        },
+        {
+            id: 4,
             name: 'Otros',
             slug: "otros"
         }
@@ -26,9 +31,7 @@ const BarNav = ({ path, showNavBar }) => {
 
     return (
         <>
-
             <nav className={`${showNavBar ? 'mt-0' : 'mt-10'}`}>
-                {/*  */}
                 {
                     categories.map(category => (
                         <CategoryIcon
@@ -38,8 +41,6 @@ const BarNav = ({ path, showNavBar }) => {
                         />
                     ))
                 }
-
-
             </nav>
         </>
     )

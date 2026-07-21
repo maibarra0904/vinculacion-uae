@@ -1,3 +1,5 @@
+export const API_URL = process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND || '/api/applications';
+
 export const CONTACTOS = {
   RESPONSABLE: {
     NOMBRE: process.env.NEXT_PUBLIC_RESPONSABLE_NOMBRE || "Ing. Mario Ibarra",
@@ -10,3 +12,4 @@ export const CONTACTOS = {
     NOMBRE: process.env.NEXT_PUBLIC_DEPARTAMENTO_ENCARGADO || "Ing. Johanna Ramos"
   }
 };
+

@@ -14,12 +14,12 @@ export default function Paso1Content() {
       <div className="grid gap-4 md:grid-cols-2">
         {/* Step A */}
         <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-sm">
-          <span className="text-sm font-bold text-green-500 block mb-1">a. Solicitud de Oficio</span>
+          <span className="text-sm font-bold text-green-500 block mb-1">a. Solicitud de Memorando</span>
           <p className="text-sm text-gray-700 dark:text-gray-300">
-             Debe solicitar un primer número de oficio en la{" "}
+             Debe solicitar un primer número de memorando en la{" "}
              <Enlace 
                url="/oficio" 
-               text="Aplicación para solicitar número de Oficio" 
+               text="Aplicación para solicitar número de Memorando" 
                inline={true} 
              />.
           </p>

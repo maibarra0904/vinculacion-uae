@@ -122,15 +122,15 @@ export default function InformeContent() {
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
-              Obtener Número de Oficio en la Aplicación
+              Obtener Número de Memorando en la Aplicación
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Solicite y obtenga un número de oficio utilizando el sistema interno para completar el Formato 11.
+              Solicite y obtenga un número de memorando utilizando el sistema interno para completar el Formato 11.
             </p>
             <div className="max-w-xs text-xs font-semibold">
               <Enlace 
                 url="/oficio" 
-                text="Solicitar Número de Oficio (Formato 11)" 
+                text="Solicitar Número de Memorando (Formato 11)" 
                 inline={false}
                 className="w-full text-center"
               />
@@ -145,14 +145,14 @@ export default function InformeContent() {
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
-              Gestionar el Oficio de Entrega de Informe Final
+              Gestionar el Memorando de Entrega de Informe Final
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Complete el oficio formal de entrega de informe final utilizando el número de oficio obtenido anteriormente (Formato 11).
+              Complete el memorando formal de entrega de informe final utilizando el número de memorando obtenido anteriormente (Formato 11).
             </p>
 
             <div className="bg-blue-50 dark:bg-blue-950/20 p-3.5 rounded-xl border border-blue-100/80 dark:border-blue-900/40 text-xs text-blue-700 dark:text-blue-300 leading-relaxed mb-4">
-              <span className="font-bold">Copia del Oficio:</span> Deberá imprimir <span className="font-semibold text-blue-900 dark:text-blue-200">dos (2) copias originales</span> de este oficio (una destinada a quedar archivada dentro de la carpeta física, y la otra para conservar a posterior como el recibido de entrega).
+              <span className="font-bold">Copia del Memorando:</span> Deberá imprimir <span className="font-semibold text-blue-900 dark:text-blue-200">dos (2) copias originales</span> de este memorando (una destinada a quedar archivada dentro de la carpeta física, y la otra para conservar a posterior como el recibido de entrega).
             </div>
 
             <div className="max-w-xs text-xs font-semibold">
@@ -182,7 +182,7 @@ export default function InformeContent() {
             </p>
             <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-xl border border-amber-100/80 dark:border-amber-900/40 text-xs text-amber-900 dark:text-amber-300 leading-relaxed">
               <ol className="list-decimal pl-4 space-y-1 font-semibold">
-                <li><span className="font-bold">Formato 11</span> (Oficio de entrega del informe final).</li>
+                <li><span className="font-bold">Formato 11</span> (Memorando de entrega del informe final).</li>
                 <li><span className="font-bold">Formato 7</span> (Informe final completo desarrollado).</li>
                 <li><span className="font-bold">Formato 8</span> (Informe técnico del tutor UAE).</li>
                 <li><span className="font-bold">Formato 9</span> (Evaluación del tutor UAE).</li>

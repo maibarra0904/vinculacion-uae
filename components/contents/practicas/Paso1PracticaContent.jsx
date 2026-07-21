@@ -93,10 +93,10 @@ export default function Paso1PracticaContent() {
 
         {/* Step E */}
         <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-sm">
-          <span className="text-sm font-bold text-green-500 block mb-1">e. Solicitud de Oficio</span>
+          <span className="text-sm font-bold text-green-500 block mb-1">e. Solicitud de Memorando</span>
           <p className="text-sm text-gray-700 dark:text-gray-300 mb-1">
              Usar la{" "}
-             <Enlace url="/oficio" text="Aplicación para solicitar número de Oficio" inline={true} />.
+             <Enlace url="/oficio" text="Aplicación para solicitar número de Memorando" inline={true} />.
           </p>
           <p className="text-xs text-yellow-600 bg-yellow-50 dark:bg-yellow-900/10 dark:text-yellow-400 px-2 py-1 rounded inline-block">
               * Nota: Colocar <span className="font-semibold">PASO 1 - INICIO PP</span> en "Motivo".
@@ -105,12 +105,12 @@ export default function Paso1PracticaContent() {
 
         {/* Step F */}
         <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-sm">
-          <span className="text-sm font-bold text-green-500 block mb-1">f. Oficio de Apertura</span>
+          <span className="text-sm font-bold text-green-500 block mb-1">f. Memorando de Apertura</span>
           <p className="text-sm text-gray-700 dark:text-gray-300">
              Llenar el{" "}
              <Enlace 
                url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EbHAM6Tx9rRCmYy5UZjOk10BrfGo9l4Thh3NInDLaJU2Vg?e=R2G9nm" 
-               text="Modelo de Oficio de Apertura" 
+               text="Modelo de Memorando de Apertura" 
                inline={true} 
                external={true} 
                nuevo={true} 

@@ -98,15 +98,15 @@ export default function InformePracticasContent() {
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
-              Obtener un Número de Oficio en la Aplicación
+              Obtener un Número de Memorando en la Aplicación
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Solicite y obtenga un número de oficio único utilizando el sistema interno de la aplicación para completar el Formato 5.
+              Solicite y obtenga un número de memorando único utilizando el sistema interno de la aplicación para completar el Formato 5.
             </p>
             <div className="max-w-xs text-xs font-semibold">
               <Enlace
                 url="/oficio"
-                text="Solicitar Número de Oficio (Formato 5)"
+                text="Solicitar Número de Memorando (Formato 5)"
                 inline={false}
                 className="w-full text-center"
               />
@@ -121,17 +121,17 @@ export default function InformePracticasContent() {
           </span>
           <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-100 dark:border-gray-800/80 shadow-md shadow-gray-100/30 dark:shadow-none hover:shadow-lg transition-all">
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
-              Ordenar la Carpeta y Gestionar el Oficio del Responsable (Formato 5)
+              Ordenar la Carpeta y Gestionar el Memorando del Responsable (Formato 5)
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Ordene todos los documentos físicos dentro de una <span className="font-semibold text-gray-900 dark:text-white">carpeta plástica de color AMARILLA</span> y gestione el oficio de entrega de informe del Responsable de Vinculación (Formato 5). Se imprimen dos (2) copias de este formato y, adicionalmente, una (1) copia de la cédula del estudiante.
+              Ordene todos los documentos físicos dentro de una <span className="font-semibold text-gray-900 dark:text-white">carpeta plástica de color AMARILLA</span> y gestione el memorando de entrega de informe del Responsable de Vinculación (Formato 5). Se imprimen dos (2) copias de este formato y, adicionalmente, una (1) copia de la cédula del estudiante.
             </p>
 
             <div className="bg-indigo-50 dark:bg-indigo-950/20 p-4 rounded-xl border border-indigo-100/80 dark:border-indigo-900/40 text-xs text-indigo-900 dark:text-indigo-300 mb-4 leading-relaxed">
               <span className="font-bold block mb-2">Verificación y Orden de la Carpeta Física:</span>
               <p className="mb-2">El responsable de vinculación es quien verificará que la documentación esté completa y realizará observaciones generales si las amerita. El orden riguroso de la carpeta debe ser el siguiente:</p>
               <ol className="list-decimal pl-4 space-y-1 font-semibold text-indigo-950 dark:text-indigo-200">
-                <li><span className="font-bold">Formato 5</span> (Oficio de entrega del informe final por el Responsable de Vinculación).</li>
+                <li><span className="font-bold">Formato 5</span> (Memorando de entrega del informe final por el Responsable de Vinculación).</li>
                 <li><span className="font-bold">Formato 4</span> (Declaración de revisión del tutor).</li>
                 <li><span className="font-bold">Anexos del Formato 4</span> (Seguimiento, evaluaciones y anexos completos).</li>
                 <li><span className="font-bold">Documentos de Inicio</span> (Formatos del 1 al 3 correspondientes a la etapa de inicio).</li>
@@ -189,7 +189,7 @@ export default function InformePracticasContent() {
             <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-xl border border-amber-100/80 dark:border-amber-900/40 text-xs text-amber-900 dark:text-amber-300 mt-4 leading-relaxed">
               <span className="font-bold block mb-2">Ordenamiento de la Documentación Física en la Carpeta AMARILLA:</span>
               <ol className="list-decimal pl-4 space-y-1 font-medium">
-                <li><span className="font-bold">Formato 5 con el recibido de Secretaría</span> (Oficio de entrega de informe final por Responsable de Vinculación).</li>
+                <li><span className="font-bold">Formato 5 con el recibido de Secretaría</span> (Memorando de entrega de informe final por Responsable de Vinculación).</li>
                 <li><span className="font-bold">Formato 4 con Anexos</span> en el orden especificado (Revisión documental del tutor + Anexos del Formato 4).</li>
                 <li><span className="font-bold">Documentos de Inicio</span> (Formatos del 1 al 3 correspondientes a la etapa de inicio).</li>
               </ol>

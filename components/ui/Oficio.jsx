@@ -192,7 +192,7 @@ function OficioComponent() {
     guardaNombre(e.target.value);
     if (e.target.value.toLowerCase() === nombreLocal && e.target.value !== "") {
       setAviso(
-        "Este nombre ha solicitado ya un número de oficio antes en este equipo. Si desea volver a hacer la solicitud omita este mensaje."
+        "Este nombre ha solicitado ya un número de memorando antes en este equipo. Si desea volver a hacer la solicitud omita este mensaje."
       );
       setTimeout(() => {
         setAviso("");
@@ -288,19 +288,18 @@ function OficioComponent() {
         JSON.stringify(res.data?.data.idApp)
       );
     } catch (error) {
-      console.log(error);
+      console.error("OFICIO_ERROR:", error);
       setLoading(null);
+      const errMsg = error.response?.data?.error || error.response?.data?.msg || error.message || "Hubo un problema con el servidor";
       setAlerta({
         type: "error",
         keyWord: "bd",
-        message: "Hubo un problema con el servidor",
+        message: errMsg,
       });
       setTimeForOut(80);
       setTimeout(() => {
         setAlerta({});
-        localStorage.removeItem("usuario")
-        setAuth({})
-      }, 2000);
+      }, 4000);
     }
   };
 
@@ -313,7 +312,7 @@ function OficioComponent() {
       setAlerta({
         type: "error",
         keyWord: "fecha",
-        message: `Ya generó un oficio hoy: Oficio Nro. M-UAE-FCA.V.CC-2026-0${numeroUltimoOficio}.O, si tiene dudas comuníquese con el Ing. Mario Ibarra`,
+        message: `Ya generó un memorando hoy: Memorando Nro. UAE-FCAM.V.C-2026-${formatNumber(parseInt(numeroUltimoOficio))}-M, si tiene dudas comuníquese con el Ing. Mario Ibarra`,
       });
       return;
     }
@@ -387,9 +386,9 @@ function OficioComponent() {
       <div className="min-h-[85vh] flex flex-col justify-center items-center px-4 bg-slate-50 dark:bg-gray-950 py-10">
         <div className="w-full max-w-md bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xl shadow-gray-100/50 dark:shadow-none flex flex-col items-center">
           <h1 className="text-2xl font-black text-center text-gray-800 dark:text-gray-100 mb-2">
-            Solicitud de número de Oficio
+            Solicitud de número de Memorando
           </h1>
-          <p className="text-sm text-gray-400 text-center mb-6">Completa los campos para generar tu oficio</p>
+          <p className="text-sm text-gray-400 text-center mb-6">Completa los campos para generar tu memorando</p>
 
           {alerta?.type && <Alerta msg={alerta?.message} />}
 
@@ -505,7 +504,7 @@ function OficioComponent() {
                     id="motivoAlt"
                     type="text"
                     className="mt-1 text-gray-800 dark:text-gray-200 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all text-sm"
-                    placeholder="Motivo del Oficio"
+                    placeholder="Motivo del Memorando"
                     name="motivoAlt"
                     value={motivoAlt}
                     onChange={handleChangeMotivoAlt}
@@ -556,7 +555,7 @@ function OficioComponent() {
               <input
                 type="submit"
                 className={`w-full py-3 bg-indigo-600 p-2 text-white font-bold rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all mt-4 text-sm cursor-pointer ${tutor && (motivo.includes("PASO 2") || motivo.includes("Formato 3")) && !tutorNotificado ? 'opacity-50 cursor-not-allowed' : ''}`}
-                value="Generar Número de Oficio"
+                value="Generar Número de Memorando"
                 disabled={tutor && (motivo.includes("PASO 2") || motivo.includes("Formato 3")) && !tutorNotificado}
               />
             </form>
@@ -567,21 +566,21 @@ function OficioComponent() {
               <div className="flex justify-center mb-4">
                 <Image width={60} height={60} alt="loader" src="/spinner.gif" className="dark:invert" />
               </div>
-              <p className="font-bold text-gray-800 dark:text-gray-200">Generando oficio...</p>
+              <p className="font-bold text-gray-800 dark:text-gray-200">Generando memorando...</p>
               <p className="text-xs text-gray-500 mt-1">Tiempo estimado: <span className="text-red-500 font-bold">{timeForOut} s</span></p>
             </div>
           ) : (
             letterNumber && (
               <div className="w-full space-y-4">
                 <div className="bg-emerald-50 dark:bg-emerald-950/30 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-900/40 text-center flex flex-col items-center">
-                  <h3 className="text-emerald-800 dark:text-emerald-400 font-black text-lg">¡Oficio Generado!</h3>
+                  <h3 className="text-emerald-800 dark:text-emerald-400 font-black text-lg">¡Memorando Generado!</h3>
                   <p className="text-emerald-600 text-xs mt-0.5">Cópialo para usarlo en tus plantillas</p>
 
                   <button
-                    onClick={() => copyToClipboard(`Oficio Nro. M-UAE-FCA.V.CC-2026-${formatNumber(parseInt(letterNumber))}.O`, 1)}
+                    onClick={() => copyToClipboard(`Memorando Nro. UAE-FCAM.V.C-2026-${formatNumber(parseInt(letterNumber))}-M`, 1)}
                     className="mt-4 px-4 py-2.5 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-bold text-xs rounded-xl border border-emerald-200 shadow-sm flex items-center gap-2"
                   >
-                    <span>M-UAE-FCA.V.CC-2026-{formatNumber(parseInt(letterNumber))}.O</span>
+                    <span>UAE-FCAM.V.C-2026-{formatNumber(parseInt(letterNumber))}-M</span>
                   </button>
                   {copied && <span className="text-[10px] text-emerald-600 mt-1">¡Copiado!</span>}
 
@@ -594,7 +593,7 @@ function OficioComponent() {
 
                   {/* Botón para compartir por WhatsApp */}
                   <a
-                    href={`https://wa.me/?text=${encodeURIComponent(`Hola, mi número de Oficio Generado es: M-UAE-FCA.V.CC-2026-${formatNumber(parseInt(letterNumber))}.O (Generado el: ${new Date().toLocaleDateString()})`)}`}
+                    href={`https://wa.me/?text=${encodeURIComponent(`Hola, mi número de Memorando Generado es: UAE-FCAM.V.C-2026-${formatNumber(parseInt(letterNumber))}-M (Generado el: ${new Date().toLocaleDateString()})`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-4 flex items-center justify-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-md transition-all hover:scale-[1.02] active:scale-95 w-full max-w-[250px]"
@@ -621,9 +620,9 @@ function OficioComponent() {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-gray-800 dark:text-gray-100 font-black text-center text-base mb-1.5">¿Desea Generar el Número de Oficio?</h3>
+              <h3 className="text-gray-800 dark:text-gray-100 font-black text-center text-base mb-1.5">¿Desea Generar el Número de Memorando?</h3>
               <p className="text-gray-500 dark:text-gray-400 text-xs text-center leading-relaxed mb-6">
-                ¿Le falta SOLO el número de oficio para entregar la documentación? Si aún tiene pendientes NO genere el número y ocúpese de llenar primero la documentación, válido por 72 horas.
+                ¿Le falta SOLO el número de memorando para entregar la documentación? Si aún tiene pendientes NO genere el número y ocúpese de llenar primero la documentación, válido por 72 horas.
               </p>
               <div className="flex gap-3">
                 <button onClick={() => setIsOpenModal(false)} className="flex-1 py-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold text-xs rounded-xl transition-all">Cancelar</button>
@@ -638,7 +637,7 @@ function OficioComponent() {
       <div className="min-h-[85vh] flex flex-col justify-center items-center px-4 bg-slate-50 dark:bg-gray-950">
         <div className="w-full max-w-md bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xl text-center">
           <h1 className="text-2xl font-black mb-2">Acceso Denegado</h1>
-          <p className="text-sm text-gray-500 mb-6">Debe iniciar sesión para solicitar un número de oficio</p>
+          <p className="text-sm text-gray-500 mb-6">Debe iniciar sesión para solicitar un número de memorando</p>
           <Link href="/login" className="inline-block px-6 py-2 bg-indigo-600 text-white rounded-xl text-sm">
             Iniciar Sesión
           </Link>

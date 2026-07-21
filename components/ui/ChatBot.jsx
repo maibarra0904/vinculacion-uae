@@ -23,27 +23,27 @@ LABOR COMUNITARIA ESTUDIANTIL (LCE):
 
 PROCESO DE PERFIL DE LABOR COMUNITARIA ESTUDIANTIL (LCE):
 PASO 1:
-- Solicitar número de oficio (Motivo: PASO 1 - PERFIL LC)
+- Solicitar número de memorando (Motivo: PASO 1 - PERFIL LC)
 - Llenar SOLICITUD PARA REALIZAR LA LCE con adjuntos
 - Gestionar CARTA DE AUTORIZACIÓN de la entidad beneficiaria
 - Entregar a Secretaría de Decanato (Lcda. Jahely Mora)
 
 PASO 2:
 - Contactar Responsable de Vinculación (Ing. Mario Ibarra) para asignación de tutor
-- Solicitar segundo número de oficio (Motivo: PASO 2 - PERFIL LC)
-- Llenar OFICIO DE ASIGNACIÓN DE DOCENTE TUTOR (duplicado)
+- Solicitar segundo número de memorando (Motivo: PASO 2 - PERFIL LC)
+- Llenar MEMORANDO DE ASIGNACIÓN DE DOCENTE TUTOR (duplicado)
 - Firmas: Responsable Vinculación + Coordinador de Carrera (Ing. Néstor Vera)
 - Llenar CARTA DE COMPROMISO del docente guía
 - Elaborar CARÁTULA y FORMATO DE PERFIL con tutor
 - Llenar CARTA DE PRESENTACIÓN DE PERFIL
 - Tutor revisa y llena LISTA DE CHEQUEO PARA REVISIÓN DEL PERFIL
-- Carpeta AMARILLA ordenada: Carta presentación, oficio asignación, carta compromiso, carátula, formato perfil, documentos paso 1
+- Carpeta AMARILLA ordenada: Carta presentación, memorando asignación, carta compromiso, carátula, formato perfil, documentos paso 1
 - Revisión final Responsable Vinculación
 - Entrega en Secretaría Decanato o Departamento Labor Comunitaria Guayaquil
 
 INFORME FINAL DE LABOR COMUNITARIA ESTUDIANTIL (LCE):
 - Llenar FORMATOS DE INFORME junto con CARÁTULA
-- Adjuntar copia del OFICIO DEL PERFIL APROBADO (llegó por correo)
+- Adjuntar copia del MEMORANDO DEL PERFIL APROBADO (llegó por correo)
 - Carpeta amarilla con vincha plástica en orden establecido
 - Tutor revisa y sumilla TODAS las páginas
 - Firma Responsable Vinculación (duplicado para recibido)
@@ -64,15 +64,15 @@ PASO 1:
 - Si carta intención: firmar con Responsable Vinculación, tomar recibido empresa
 - Llenar SOLICITUD CON CONVENIO o SOLICITUD CON CARTA DE INTENCIÓN
 - Usar APLICACIÓN PLANIFICAR FECHAS DE VINCULACIÓN
-- Solicitar número oficio (Motivo: PASO 1 - INICIO PP)
-- Llenar OFICIO DE APERTURA con firma Responsable Vinculación
+- Solicitar número memorando (Motivo: PASO 1 - INICIO PP)
+- Llenar MEMORANDO DE APERTURA con firma Responsable Vinculación
 - Obtener HISTORIAL DE MATRICULACIÓN
 - Entregar a Secretaría Decanato (Lcda. Jahely Mora)
 
 PASO 2 PP:
 - Solicitar tutor al Ing. Mario Ibarra
-- Solicitar nuevo número oficio (Motivo: PASO 2 - INICIO PP)
-- Llenar OFICIO DE PEDIDO A DECANO
+- Solicitar nuevo número memorando (Motivo: PASO 2 - INICIO PP)
+- Llenar MEMORANDO DE PEDIDO A DECANO
 - Entregar documentación a Secretaría Decanato
 - Recibir CARTA DE INICIO del Decano (2 copias originales)
 - Entregar una copia a empresa, otra con recibido del representante legal
@@ -86,7 +86,7 @@ INFORME FINAL DE PRACTICAS PREPROFESIONALES (PP):
 - Carpeta amarilla con documentación de inicio
 - Revisión Responsable Vinculación
 - Escanear y enviar por correo (asunto: "Informe de Practicas Preprofesionales")
-- Llenar formato 8 (solicitar número oficio: INFORME PP)
+- Llenar formato 8 (solicitar número memorando: INFORME PP)
 - 2 copias formato 8: una a Secretaría Decanato + cédula, otra para recibido
 - Enviar por correo formato 8 con recibido (asunto: "Aprobación de práctica preprofesional") cc al tutor
 - Entrega física al Responsable Vinculación
@@ -94,7 +94,7 @@ INFORME FINAL DE PRACTICAS PREPROFESIONALES (PP):
 CERTIFICADO DE DESGLOSE (Para egresados):
 - Requisito para graduación
 - Certifica realización de todas las actividades de vinculación
-- Proceso: 1) SOLICITUD DE ESTUDIANTE, 2) Evidencias (oficios aprobados LC/PP), 3) APLICACIÓN GENERAR CERTIFICADO, 4) Especie valorada, 5) Firmas: estudiante, Responsable Vinculación, Decano, Secretario CCAA
+- Proceso: 1) SOLICITUD DE ESTUDIANTE, 2) Evidencias (memorandos aprobados LC/PP), 3) APLICACIÓN GENERAR CERTIFICADO, 4) Especie valorada, 5) Firmas: estudiante, Responsable Vinculación, Decano, Secretario CCAA
 
 IMPRESIÓN O REIMPRESIÓN DE CERTIFICADO DE VINCULACIÓN:
 - Aplica para LABOR COMUNITARIA y PRÁCTICAS PREPROFESIONALES.
@@ -142,7 +142,8 @@ PERSONAL CLAVE:
 - Decano de la Facultad de Ciencias Agrarias: Ing. Ahmed El Salous
 
 APLICACIONES DISPONIBLES:
-- Solicitar número de oficio
+- Solicitar número de memorando
+- Planificar fechas de vinculación
 - Planificar fechas de vinculación
 - Generar certificado de desglose
 - Generar ideas de temas de proyectos (disponible en esta plataforma)

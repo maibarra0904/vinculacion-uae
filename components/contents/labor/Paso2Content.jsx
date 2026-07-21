@@ -23,17 +23,17 @@ export default function Paso2Content() {
 
         {/* Step B */}
         <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-sm">
-          <span className="text-sm font-bold text-green-500 block mb-1">b. Solicitud de Oficio</span>
+          <span className="text-sm font-bold text-green-500 block mb-1">b. Solicitud de Memorando</span>
           <p className="text-sm text-gray-700 dark:text-gray-300">
-            Ya con el tutor asignado debe solicitar un segundo número de oficio en la{" "}
-            <Enlace url="/oficio" text="Solicitud de Número de Oficio" inline={true} />{" "}
+            Ya con el tutor asignado debe solicitar un segundo número de memorando en la{" "}
+            <Enlace url="/oficio" text="Solicitud de Número de Memorando" inline={true} />{" "}
             (En "Motivo" colocar PASO 2 - PERFIL LC).
           </p>
           <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
-            El numero de oficio le servirá para llenar el{" "}
+            El número de memorando le servirá para llenar el{" "}
             <Enlace 
               url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EYJbIxzEjdpPtfBHXfUbemkBfVRZ2bbp2Kn_zlFmZTRdhA?e=MHGYAC" 
-              text="Modelo de Oficio de Asignación de Docente Tutor" 
+              text="Modelo de Memorando de Asignación de Docente Tutor" 
               inline={true} 
               external={true} 
               nuevo={true} 
@@ -61,7 +61,7 @@ export default function Paso2Content() {
         <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-sm">
           <span className="text-sm font-bold text-green-500 block mb-1">d. Entrega Tutor</span>
           <p className="text-sm text-gray-700 dark:text-gray-300">
-            Acercarse al docente tutor y entregarle una copia del oficio de asignación (del literal b.) y tomarle la firma de la carta de compromiso. El estudiante guarda sus copias.
+            Acercarse al docente tutor y entregarle una copia del memorando de asignación (del literal b.) y tomarle la firma de la carta de compromiso. El estudiante guarda sus copias.
           </p>
         </div>
 
@@ -114,7 +114,7 @@ export default function Paso2Content() {
         <div className="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-sm">
           <span className="text-sm font-bold text-green-500 block mb-1">g. Orden de Carpeta</span>
           <p className="text-sm text-gray-700 dark:text-gray-300">
-             Armar en carpeta <span className="underline font-semibold">AMARILLA</span>: Carta presentación, Oficio asignación, Carta compromiso, Carátula, Formato perfil con adjuntos y Docs de Paso 1.
+             Armar en carpeta <span className="underline font-semibold">AMARILLA</span>: Carta presentación, Memorando asignación, Carta compromiso, Carátula, Formato perfil con adjuntos y Docs de Paso 1.
           </p>
         </div>
 

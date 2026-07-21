@@ -37,7 +37,11 @@ const Login = () => {
 
     useEffect(() => {
         if (auth?.nombre) {
-            window.history.back()
+            if (typeof window !== 'undefined' && window.history.length > 2 && document.referrer && document.referrer.includes(window.location.host)) {
+                window.history.back();
+            } else {
+                window.location.href = '/general';
+            }
         }
     }, [auth]);
 
@@ -48,7 +52,8 @@ const Login = () => {
         setLoading(true);
         try {
             const { credential } = response;
-            const { data } = await axios.post(`${process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND}/auth/google`, { idToken: credential });
+            const backendUrl = process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND || '/api/applications';
+            const { data } = await axios.post(`${backendUrl}/auth/google`, { idToken: credential });
 
             if (data?.msg) {
                 setAlerta(data);
@@ -63,8 +68,9 @@ const Login = () => {
                 setAlerta({ msg: 'Hubo un error del servidor' });
             }
         } catch (error) {
-            setAlerta({ msg: 'Error al conectar con el asistente de Google' });
-            console.error(error);
+            const errorMsg = error.response?.data?.msg || error.response?.data?.error || error.message || 'Error al conectar con el asistente de Google';
+            setAlerta({ msg: errorMsg });
+            console.error("LOGIN_ERROR:", error);
         } finally {
             setLoading(false);
         }
@@ -75,7 +81,8 @@ const Login = () => {
         const info = { email, password }
 
         try {
-            const { data } = await axios.post(`${process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND}/auth/login`, info)
+            const backendUrl = process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND || '/api/applications';
+            const { data } = await axios.post(`${backendUrl}/auth/login`, info)
             
             if (data?.msg) {
                 setAlerta(data)
