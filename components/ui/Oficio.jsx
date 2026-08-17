@@ -122,6 +122,11 @@ const tutorOptions = [
     name: "ALVARADO DOLZ ALEXIS STALYN",
     email: "asalvarado@uagraria.edu.ec",
     value: false,
+  },
+  {
+    name: "VERA GALARZA PAUL ENRIQUE",
+    email: "pvera@uagraria.edu.ec",
+    value: false,
   }
 ];
 
