@@ -40,7 +40,7 @@ const InformeTecnico = () => {
   const fetchSeccion = async (key, prompt) => {
     const payload = {
       messages: [{ role: "user", content: prompt }],
-      model: "llama-3.1-8b-instant",
+      model: process.env.NEXT_PUBLIC_GROQ_MODEL || "groq/compound-mini",
     };
 
     try {
