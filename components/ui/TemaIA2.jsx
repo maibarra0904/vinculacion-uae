@@ -166,7 +166,7 @@ const Tema = () => {
                         content: prompt,
                     },
                 ],
-                model: process.env.NEXT_PUBLIC_GROQ_MODEL || "groq/compound-mini",
+                model: process.env.NEXT_PUBLIC_GROQ_MODEL || "qwen/qwen3.8-27b",
             };
 
             // URL de la API de Groq

@@ -3,9 +3,17 @@ import { useEffect, useState, useRef } from "react"
 import { useMyContext } from "../context/myContext"
 import Alerta from "./Alerta"
 import { enterKey } from "@/utils/enterKey"
+import { CONTACTOS } from "@/utils/constants"
 
-// Contexto de conocimiento actualizado sobre proyectos de vinculación comunitaria
-const KNOWLEDGE_CONTEXT = `
+// Generador dinámico del contexto de conocimiento sobre proyectos de vinculación comunitaria
+const getKnowledgeContext = () => {
+    const secretariaNombre = process.env.NEXT_PUBLIC_SECRETARIA_NOMBRE || CONTACTOS?.SECRETARIA?.NOMBRE || "Secretaría de Decanato";
+    const responsableNombre = process.env.NEXT_PUBLIC_RESPONSABLE_NOMBRE || CONTACTOS?.RESPONSABLE?.NOMBRE || "Ing. Mario Ibarra";
+    const responsableEmail = process.env.NEXT_PUBLIC_RESPONSABLE_EMAIL || CONTACTOS?.RESPONSABLE?.EMAIL || "mibarra@uagraria.edu.ec";
+    const deptoEncargado = process.env.NEXT_PUBLIC_DEPARTAMENTO_ENCARGADO || CONTACTOS?.DEPARTAMENTO?.NOMBRE || "Ing. Johanna Ramos";
+    const coordinadoraNombre = process.env.NEXT_PUBLIC_COORDINADORA_NOMBRE || "Ing. Laura Ortega";
+
+    return `
 Eres un asistente especializado en proyectos de vinculación comunitaria de la Universidad Agraria del Ecuador (Carrera de Computación - Milagro). Tu conocimiento oficial y actualizado incluye:
 
 ACTIVIDADES DE VINCULACIÓN OBLIGATORIAS:
@@ -30,20 +38,20 @@ El proceso se puede gestionar en 2 pasos generales o siguiendo la secuencia de F
   2. Llenar Formato 1: Solicitud de autorización de inicio de LCE dirigida al Responsable de Vinculación.
   3. Llenar Formato 2: Solicitud de autorización al Decano con el número de memorando obtenido.
   4. Gestionar Carta de Autorización de la entidad beneficiaria.
-  5. Entregar documentación a Secretaría de Decanato (Ec. Kerly Vera) para el visto bueno y sumilla aprobatoria del Decano en el Formato 2.
+  5. Entregar documentación a Secretaría de Decanato (${secretariaNombre}) para el visto bueno y sumilla aprobatoria del Decano en el Formato 2.
 
 • PASO 2 (Aprobación, Tutor y Formalización):
-  6. Con el visto bueno del Paso 1, contactar al Responsable de Vinculación (Ing. Mario Ibarra) para que asigne el docente tutor.
-  7. Formato 3: Memorando de designación de docente tutor (firmado por Responsable de Vinculación y Coordinadora de Carrera: Ing. Laura Ortega).
+  6. Con el visto bueno del Paso 1, contactar al Responsable de Vinculación (${responsableNombre}) para que asigne el docente tutor.
+  7. Formato 3: Memorando de designación de docente tutor (firmado por Responsable de Vinculación y Coordinadora de Carrera: ${coordinadoraNombre}).
   8. Formato 4: Carta de Declaración y Compromiso firmada por el docente guía asignado. Entregarle copia del memorando y tomar su firma.
   9. Solicitar segundo número de memorando en la aplicación web (/oficio), colocando en motivo: "PASO 2 - PERFIL LC".
   10. Formato 5: Formato de Perfil del Proyecto estructurado junto con el tutor, incluyendo la Carta de Carátula. Se pueden planificar las fechas con la aplicación web de fechas de vinculación.
   11. Formato 6: Memorando de entrega de perfil del proyecto utilizando el segundo número de memorando. Imprimir 2 copias originales (una para la carpeta física y otra para constancia de recibido).
   12. Revisión del tutor: El tutor revisa y sumilla toda la documentación antes de firmar la carta de presentación.
-  13. Revisión del Responsable de Vinculación: Presentar la carpeta al Ing. Mario Ibarra para revisión final y firma.
+  13. Revisión del Responsable de Vinculación: Presentar la carpeta al ${responsableNombre} para revisión final y firma.
   14. Carpeta AMARILLA (Orden estricto): Formato 6 (memorando entrega), Formato 5 (perfil estructurado), Formato 4 (compromiso tutor), Formato 3 (designación tutor), Formato 2 (solicitud al Decano con sumilla), Formato 1 (solicitud de inicio).
-  15. Entrega física: En el Departamento de Vinculación / Labor Comunitaria con la Ing. Johanna Ramos. Tomar sello y firma de RECIBIDO en la segunda copia del Formato 6.
-  16. Remisión Digital Obligatoria: Escanear la constancia del Formato 6 con sello de recibido y enviarla por correo a: mibarra@uagraria.edu.ec.
+  15. Entrega física: En el Departamento de Vinculación / Labor Comunitaria con la ${deptoEncargado}. Tomar sello y firma de RECIBIDO en la segunda copia del Formato 6.
+  16. Remisión Digital Obligatoria: Escanear la constancia del Formato 6 con sello de recibido y enviarla por correo a: ${responsableEmail}.
   17. Aprobación oficial: Esperar la notificación de aprobación u observaciones de la Coordinación de Labor Comunitaria Estudiantil de Guayaquil.
 
 --- B. INFORME FINAL DE LABOR COMUNITARIA (LCE) ---
@@ -60,8 +68,8 @@ El proceso se puede gestionar en 2 pasos generales o siguiendo la secuencia de F
      3) Formato 8 (Informe técnico del tutor).
      4) Formato 9 (Evaluación del tutor UAE).
      5) Formato 10 (Evaluación empresarial/supervisor).
-  7. Entrega física: Entregar la carpeta física en el Departamento de Vinculación (Ing. Johanna Ramos) y tomar obligatoriamente sello y firma de RECIBIDO en la segunda copia del Formato 11.
-  8. Remisión digital obligatoria: Enviar la copia del Formato 11 escaneada con el sello de recibido al correo: mibarra@uagraria.edu.ec.
+  7. Entrega física: Entregar la carpeta física en el Departamento de Vinculación (${deptoEncargado}) y tomar obligatoriamente sello y firma de RECIBIDO en la segunda copia del Formato 11.
+  8. Remisión digital obligatoria: Enviar la copia del Formato 11 escaneada con el sello de recibido al correo: ${responsableEmail}.
 
 • Eventualidades en Labor Comunitaria:
   - Proyecto no culminado: Solicitud de anulación del proyecto.
@@ -86,7 +94,7 @@ El proceso se puede gestionar en 2 pasos generales o siguiendo la secuencia de F
      - Vía Convenio: Llenar Formato 1 (Solicitud con convenio).
      - Vía Carta de Intención: Gestionar Formato 0 (Acercamiento) y luego Formato 2 (Solicitud con carta de intención).
   2. Planificación de fechas: Usar la aplicación web (https://planificadorfechasvinculacion.netlify.app/) para establecer fechas de inicio y fin. Imprimir la planificación y adjuntarla.
-  3. Asignación de tutor: Contactar al Responsable de Vinculación (Ing. Mario Ibarra) para la asignación del docente tutor.
+  3. Asignación de tutor: Contactar al Responsable de Vinculación (${responsableNombre}) para la asignación del docente tutor.
   4. Número de memorando: Solicitar en la aplicación web (/oficio), colocando en motivo: "PASO 1 - INICIO PP" o "PASO 2 - INICIO PP", ingresando obligatoriamente el nombre del tutor asignado.
   5. Formato 3 (Memorando dirigido al docente responsable): Llenar con el número obtenido.
      * REGLA DE IMPRESIÓN (3 copias obligatorias):
@@ -94,10 +102,10 @@ El proceso se puede gestionar en 2 pasos generales o siguiendo la secuencia de F
        - 2da copia: Se entrega al docente tutor asignado para su registro.
        - 3ra copia (Comprobante del estudiante): En esta única hoja se toma la firma y sello de RECIBIDO tanto de Secretaría de Decanato como del docente tutor.
   6. Historial de matriculación: Adjuntar para verificar período y año de estudio correspondiente.
-  7. Entrega en Decanato: Entregar la documentación en Secretaría de Decanato (Ec. Kerly Vera).
+  7. Entrega en Decanato: Entregar la documentación en Secretaría de Decanato (${secretariaNombre}).
   8. Carta de Inicio del Decano: El Decanato emite dos (2) copias originales de la CARTA DE INICIO firmadas por el Decano. Una se entrega a la empresa y en la otra se toma el sello y firma de RECIBIDO del representante legal.
   9. Custodia: El estudiante es el custodio de la documentación original física hasta culminar sus prácticas.
-  10. Remisión digital obligatoria: Escanear TODA la documentación de inicio (incluyendo la Carta de Inicio con recibido de la empresa) y enviarla al correo mibarra@uagraria.edu.ec COMO MÁXIMO HASTA EL DÍA DEL COMIENZO (primer día programado) de la práctica.
+  10. Remisión digital obligatoria: Escanear TODA la documentación de inicio (incluyendo la Carta de Inicio con recibido de la empresa) y enviarla al correo ${responsableEmail} COMO MÁXIMO HASTA EL DÍA DEL COMIENZO (primer día programado) de la práctica.
   11. ¡ADVERTENCIA VITAL!: Si el estudiante comienza la práctica sin haber completado y formalizado estos pasos de inicio, la práctica será ANULADA.
 
 --- B. INFORME FINAL DE PRÁCTICAS PREPROFESIONALES (PP) ---
@@ -106,13 +114,13 @@ El proceso se puede gestionar en 2 pasos generales o siguiendo la secuencia de F
   1. Anexos del Formato 4: Gestionar los documentos habilitantes, bitácoras, control de horas y evaluaciones de desempeño.
   2. Formato 4 (Declaración de revisión del tutor): El tutor docente revisa exhaustivamente y DEBE SUMILLAR CADA UNA DE LAS PÁGINAS de los Anexos del Formato 4.
   3. Número de memorando: Solicitar en la aplicación web (/oficio) el número de memorando para el Formato 5.
-  4. Formato 5 (Memorando de entrega de informe final por Responsable de Vinculación): Llenar con el número obtenido. Imprimir 2 copias originales + 1 copia de cédula del estudiante. El Responsable de Vinculación (Ing. Mario Ibarra) verifica la carpeta completa.
-  5. Entrega en Decanato: Entregar 1 copia del Formato 5 con copia de cédula en Secretaría de Decanato (Ec. Kerly Vera). En la 2da copia del Formato 5 se toma el sello y firma de RECIBIDO.
+  4. Formato 5 (Memorando de entrega de informe final por Responsable de Vinculación): Llenar con el número obtenido. Imprimir 2 copias originales + 1 copia de cédula del estudiante. El Responsable de Vinculación (${responsableNombre}) verifica la carpeta completa.
+  5. Entrega en Decanato: Entregar 1 copia del Formato 5 con copia de cédula en Secretaría de Decanato (${secretariaNombre}). En la 2da copia del Formato 5 se toma el sello y firma de RECIBIDO.
   6. Carpeta AMARILLA (Orden estricto):
      1) Formato 5 con sello de RECIBIDO de Secretaría de Decanato.
      2) Formato 4 con Anexos sumillados por el docente tutor.
      3) Documentos de Inicio (Formatos 1 al 3 de la etapa inicial).
-  7. Culminación formal: Entregar la carpeta física al Responsable de Vinculación (Ing. Mario Ibarra) y enviar toda la documentación escaneada al correo mibarra@uagraria.edu.ec. El proceso NO concluye con la sola entrega en Decanato; debe entregarse al Responsable de Vinculación física y digitalmente.
+  7. Culminación formal: Entregar la carpeta física al Responsable de Vinculación (${responsableNombre}) y enviar toda la documentación escaneada al correo ${responsableEmail}. El proceso NO concluye con la sola entrega en Decanato; debe entregarse al Responsable de Vinculación física y digitalmente.
 
 ============================================================
 3. CONVENIOS
@@ -122,7 +130,7 @@ El proceso se puede gestionar en 2 pasos generales o siguiendo la secuencia de F
 - Opción A (Convenio existente): Consultar la matriz de convenios de LC o PP para verificar si está vigente (columna "Fecha de Fin de Convenio" en LC o "VIGENCIA" en PP). Realizar un acercamiento previo con la entidad antes de decidir.
 - Opción B (Nuevo convenio): Gestionar la firma del formato de nuevo convenio por el representante legal de la empresa + copia de cédula + RUC + nombramiento.
   * LC: Se entrega en el Departamento de Labor Comunitaria en Guayaquil.
-  * PP: Se entrega en Secretaría de Decanato Milagro.
+  * PP: Se entrega en Secretaría de Decanato (${secretariaNombre}) Milagro.
   * En ambos casos tomar constancia de recibido.
 
 ============================================================
@@ -135,7 +143,7 @@ El proceso se puede gestionar en 2 pasos generales o siguiendo la secuencia de F
   3. Generar el certificado en la aplicación web de desglose (https://desglose.netlify.app/) y descargar el archivo PDF.
   4. Comprar una especie valorada e imprimir en el anverso (cara frontal) la solicitud de estudiante y en el reverso (cara posterior) el certificado de desglose generado.
   5. Firmar la solicitud y anexar las evidencias impresas.
-  6. Presentar al Responsable de Vinculación (Ing. Mario Ibarra) para revisión y firma de la solicitud y evidencias.
+  6. Presentar al Responsable de Vinculación (${responsableNombre}) para revisión y firma de la solicitud y evidencias.
   7. Obtener firmas de las autoridades finales en el certificado: Decano de Facultad y Secretario de CCAA.
 
 ============================================================
@@ -149,15 +157,15 @@ El proceso se puede gestionar en 2 pasos generales o siguiendo la secuencia de F
 6. REIMPRESIÓN O RECTIFICACIÓN DE CERTIFICADO DE VINCULACIÓN
 ============================================================
 - Aplica para LC y PP en caso de errores en datos (carrera, sede, nombres), pérdida, robo o deterioro.
-- Proceso: Llenar solicitud, revisión informativa con Ing. Mario Ibarra, firma y entrega física en Departamento de Vinculación con la Ing. Johanna Ramos.
+- Proceso: Llenar solicitud, revisión informativa con ${responsableNombre}, firma y entrega física en Departamento de Vinculación con la ${deptoEncargado}.
 
 ============================================================
 PERSONAL CLAVE Y CONTACTOS OFICIALES:
 ============================================================
-- Responsable de Vinculación (Carrera de Computación - Milagro): Ing. Mario Ibarra (correo: mibarra@uagraria.edu.ec)
-- Secretaría de Decanato (Milagro): Ec. Kerly Vera
-- Coordinadora de Carrera de Computación: Ing. Laura Ortega
-- Departamento de Vinculación / Labor Comunitaria: Ing. Johanna Ramos
+- Responsable de Vinculación (Carrera de Computación - Milagro): ${responsableNombre} (correo: ${responsableEmail})
+- Secretaría de Decanato (Milagro): ${secretariaNombre}
+- Coordinadora de Carrera de Computación: ${coordinadoraNombre}
+- Departamento de Vinculación / Labor Comunitaria: ${deptoEncargado}
 - Decano de la Facultad de Ciencias Agrarias: Ing. Ahmed El Salous
 
 ============================================================
@@ -176,6 +184,7 @@ DIRECTRICES PARA RESPUESTAS:
 - Resalta plazos críticos (ej. los 28 días de entrega de informe final) y advertencias importantes (como no iniciar prácticas sin autorización para evitar anulación).
 - Responde de forma concisa y estructurada (máximo 250 palabras por respuesta cuando sea posible, usando viñetas claras).
 `;
+};
 
 const ChatBotGroq = () => {
     // Estados para el chat
@@ -191,7 +200,8 @@ const ChatBotGroq = () => {
     const [canGenerate, setCanGenerate] = useState(true);
     const [timeUntilReset, setTimeUntilReset] = useState(0);
 
-    const MAX_REQUESTS_PER_MINUTE = 10;
+    // Constantes para el límite de solicitudes
+    const MAX_REQUESTS_PER_MINUTE = 6;
     const ONE_MINUTE_IN_MS = 60 * 1000;
 
     // Referencias para scroll automático
@@ -290,7 +300,7 @@ const ChatBotGroq = () => {
         if (currentCount >= MAX_REQUESTS_PER_MINUTE) {
             const timeLeft = Math.ceil((ONE_MINUTE_IN_MS - (currentTime - currentFirstTime)) / 1000);
             setAlerta({
-                msg: `Has alcanzado el límite de ${MAX_REQUESTS_PER_MINUTE} mensajes por minuto. Podrás continuar chateando en ${timeLeft} segundos.`,
+                msg: `Límite alcanzado: Espera ${timeLeft} segundos antes de enviar otro mensaje`,
                 type: 'error'
             });
             setTimeout(() => setAlerta({}), 4000);
@@ -315,7 +325,7 @@ const ChatBotGroq = () => {
                 content: msg.content
             }));
 
-            const systemPrompt = `${KNOWLEDGE_CONTEXT}
+            const systemPrompt = `${getKnowledgeContext()}
 
 HISTORIAL DE CONVERSACIÓN:
 ${conversationHistory.map(msg => `${msg.role}: ${msg.content}`).join('\n')}
@@ -341,8 +351,8 @@ Respuesta:`;
                         content: systemPrompt,
                     },
                 ],
-                model: process.env.NEXT_PUBLIC_GROQ_MODEL || "groq/compound-mini",
-                max_tokens: 300,
+                model: process.env.NEXT_PUBLIC_GROQ_MODEL || "qwen/qwen3.8-27b",
+                max_tokens: 1000,
                 temperature: 0.7,
             };
 

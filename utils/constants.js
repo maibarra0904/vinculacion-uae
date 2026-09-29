@@ -6,7 +6,7 @@ export const CONTACTOS = {
     EMAIL: process.env.NEXT_PUBLIC_RESPONSABLE_EMAIL || "mibarra@uagraria.edu.ec"
   },
   SECRETARIA: {
-    NOMBRE: process.env.NEXT_PUBLIC_SECRETARIA_NOMBRE || "Lcda. Jahely Mora"
+    NOMBRE: process.env.NEXT_PUBLIC_SECRETARIA_NOMBRE || "Secretaría de Decanato"
   },
   DEPARTAMENTO: {
     NOMBRE: process.env.NEXT_PUBLIC_DEPARTAMENTO_ENCARGADO || "Ing. Johanna Ramos"

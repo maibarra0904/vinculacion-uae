@@ -9,11 +9,11 @@ export default async function handler(req, res) {
     return res.status(401).json({ error: 'API Key de Groq no configurada' });
   }
 
-  const defaultModel = process.env.NEXT_PUBLIC_GROQ_MODEL || process.env.GROQ_MODEL || 'groq/compound-mini';
+  const defaultModel = process.env.NEXT_PUBLIC_GROQ_MODEL || process.env.GROQ_MODEL || 'qwen/qwen3.8-27b';
 
   try {
     let payload = { ...req.body };
-    if (!payload.model || payload.model === 'llama-3.1-8b-instant') {
+    if (!payload.model || payload.model.includes('llama-3.1-8b-instant') || payload.model === 'groq/compound-mini') {
       payload.model = defaultModel;
     }
 
@@ -29,8 +29,8 @@ export default async function handler(req, res) {
     let data = await groqRes.json();
 
     // Si el modelo solicitado no existe o no se tiene acceso, reintentar con el modelo por defecto
-    if (!groqRes.ok && data?.error?.code === 'model_not_found' && payload.model !== 'groq/compound-mini') {
-      payload.model = 'groq/compound-mini';
+    if (!groqRes.ok && data?.error?.code === 'model_not_found' && payload.model !== defaultModel) {
+      payload.model = defaultModel;
       groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
         headers: {
