@@ -38,23 +38,27 @@ const InformeTecnico = () => {
   const apiUrl = "/api/groq";
 
   const fetchSeccion = async (key, prompt) => {
-    const payload = {
-      messages: [{ role: "user", content: prompt }],
-      model: process.env.NEXT_PUBLIC_GROQ_MODEL || "qwen/qwen3.8-27b",
-    };
-
     try {
-      const response = await fetch(apiUrl, {
+      // Intentar primero con Google Gemini
+      let response = await fetch("/api/gemini", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
       });
 
+      // Fallback a /api/groq si Gemini no está configurado o falla
+      if (!response.ok) {
+        response = await fetch("/api/groq", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            messages: [{ role: "user", content: prompt }],
+          }),
+        });
+      }
+
       const result = await response.json();
-      const content = result.choices?.[0]?.message?.content || "";
+      const content = result.text || result.choices?.[0]?.message?.content || "";
       setSecciones((prev) => ({ ...prev, [key]: content }));
     } catch (error) {
       console.error(`Error en sección ${key}:`, error);

@@ -158,41 +158,33 @@ const Tema = () => {
             // Construye el prompt para el modelo de IA
             const prompt = `Muestra una idea de tema de capacitación que contenga sin excepción todas las siguientes temáticas: ${tema} incluyendo el siguiente lugar donde se realizará el proyecto: ${lugar} y también el hecho que la capacitación está dirigida a: ${beneficiarios}, por ultimo la ideas debe decir qué se va a hacer y para qué se va a hacer en el mismo tema, quita comillas, quita asteriscos (*), dos puntos (:) u otros simbolos especiales y dedicate solo a mostrar el tema en un solo parrafo y ninguna cosa mas. Repito no usar (:) sino escribir en un solo parrafo. La extension maxima del tema debe ser de 20 palabras.`;
 
-            // Configuración de la llamada a la API de Groq (Llama 3)
-            const payload = {
-                messages: [
-                    {
-                        role: "user",
-                        content: prompt,
-                    },
-                ],
-                model: process.env.NEXT_PUBLIC_GROQ_MODEL || "qwen/qwen3.8-27b",
-            };
-
-            // URL de la API de Groq
-            const apiUrl = "/api/groq";
-
-            // Realiza la llamada a la API
-            const response = await fetch(apiUrl, {
+            // Llamada a la API (Google Gemini con fallback a Groq)
+            let response = await fetch("/api/gemini", {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiKey}`, // Usa la clave API de Groq
-                },
-                body: JSON.stringify(payload),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt }),
             });
 
-            // Verifica si la respuesta fue exitosa
+            if (!response.ok) {
+                response = await fetch("/api/groq", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        messages: [{ role: "user", content: prompt }],
+                    }),
+                });
+            }
+
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(`Error de la API: ${response.status} - ${errorData.message || 'Error desconocido'}`);
+                throw new Error(`Error de la API: ${response.status} - ${errorData.message || errorData.error || 'Error desconocido'}`);
             }
 
             const result = await response.json();
+            const generatedText = result.text || result.choices?.[0]?.message?.content;
 
-            // Extrae el texto generado de la respuesta de Groq
-            if (result.choices && result.choices.length > 0 && result.choices[0].message && result.choices[0].message.content) {
-                setOutput(result.choices[0].message.content);
+            if (generatedText) {
+                setOutput(generatedText);
 
                 // Actualiza el contador y el tiempo después de una solicitud exitosa
                 const newCount = currentCount + 1;

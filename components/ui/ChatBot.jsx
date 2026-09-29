@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState, useRef } from "react"
-import { useMyContext } from "../context/myContext"
 import Alerta from "./Alerta"
 import { enterKey } from "@/utils/enterKey"
 import { CONTACTOS } from "@/utils/constants"
@@ -14,7 +13,9 @@ const getKnowledgeContext = () => {
     const coordinadoraNombre = process.env.NEXT_PUBLIC_COORDINADORA_NOMBRE || "Ing. Laura Ortega";
 
     return `
-Eres un asistente especializado en proyectos de vinculación comunitaria de la Universidad Agraria del Ecuador (Carrera de Computación - Milagro). Tu conocimiento oficial y actualizado incluye:
+Eres VinculaBot, el asistente inteligente oficial de la Universidad Agraria del Ecuador (UAE) especializado en la gestión de Vinculación con la Sociedad para la Carrera de Computación en el campus Milagro.
+
+Tu misión es orientar con total precisión a estudiantes y egresados sobre normativas, formatos, trámites y plazos oficiales de Vinculación Comunitaria.
 
 ACTIVIDADES DE VINCULACIÓN OBLIGATORIAS:
 - Los estudiantes deben realizar una actividad de vinculación por cada año de estudios.
@@ -26,13 +27,13 @@ ACTIVIDADES DE VINCULACIÓN OBLIGATORIAS:
 ============================================================
 - Objetivo: Contribuir al desarrollo de la comunidad y promover el compromiso social.
 - Modalidad: Pueden ser individuales o grupales (máximo 4 estudiantes por grupo).
-- Requisito indispensable: Convenio aprobado y vigente con la entidad beneficiaria.
+- Requisito indispensable: Convenio institucional aprobado y vigente con la entidad beneficiaria.
 - Beneficiarios mínimos: Se debe acreditar un mínimo de 10 beneficiarios directos. Si asisten menos de 8, debe solicitarse la anulación del proyecto.
 - Etapas: 1) Perfil del Proyecto (requiere convenio), 2) Informe Final.
 - Reglamentación de arrastre: No se puede arrastrar más de una labor comunitaria. Debe hacerse en el año en curso o máximo el siguiente año, para evitar problemas de matriculación o denegación.
 
 --- A. PERFIL DE LABOR COMUNITARIA (LCE) ---
-El proceso se puede gestionar en 2 pasos generales o siguiendo la secuencia de Formatos (1 al 6):
+Secuencia de Formatos (1 al 6):
 • PASO 1 (Preparación y Solicitud):
   1. Solicitar número de memorando en la aplicación web (/oficio), colocando en motivo: "PASO 1 - PERFIL LC".
   2. Llenar Formato 1: Solicitud de autorización de inicio de LCE dirigida al Responsable de Vinculación.
@@ -179,39 +180,108 @@ APLICACIONES WEB DISPONIBLES EN EL ECOSISTEMA:
 - Gestión de cambios y formatos oficiales
 
 DIRECTRICES PARA RESPUESTAS:
-- Mantén un tono amigable, claro, respetuoso y profesional.
+- Mantén un tono amigable, claro, respetuoso, empático y profesional.
 - Ofrece información precisa, citando los números de formato exactos (Formato 0 al 11), responsables y lugares de entrega.
 - Resalta plazos críticos (ej. los 28 días de entrega de informe final) y advertencias importantes (como no iniciar prácticas sin autorización para evitar anulación).
-- Responde de forma concisa y estructurada (máximo 250 palabras por respuesta cuando sea posible, usando viñetas claras).
+- Responde de forma estructurada, usando viñetas y pasos numerados fáciles de seguir.
 `;
 };
 
-const ChatBotGroq = () => {
-    // Estados para el chat
+// Componente para renderizar formato enriquecido (Markdown ligero)
+const FormattedMessage = ({ text }) => {
+    if (!text) return null;
+
+    const renderBoldText = (str) => {
+        const parts = str.split(/(\*\*[^*]+\*\*)/g);
+        return parts.map((part, index) => {
+            if (part.startsWith('**') && part.endsWith('**')) {
+                return (
+                    <strong key={index} className="font-semibold text-gray-900 dark:text-gray-100">
+                        {part.slice(2, -2)}
+                    </strong>
+                );
+            }
+            return part;
+        });
+    };
+
+    const paragraphs = text.split('\n\n');
+
+    return (
+        <div className="space-y-2 text-sm text-gray-800 dark:text-gray-200 leading-relaxed">
+            {paragraphs.map((para, pIdx) => {
+                const lines = para.split('\n');
+                return (
+                    <div key={pIdx} className="space-y-1">
+                        {lines.map((line, lIdx) => {
+                            const trimmed = line.trim();
+
+                            if (trimmed.startsWith('### ') || trimmed.startsWith('## ') || trimmed.startsWith('# ')) {
+                                const cleanHeader = trimmed.replace(/^#+\s*/, '');
+                                return (
+                                    <h4 key={lIdx} className="font-bold text-gray-900 dark:text-white text-base mt-2.5 mb-1 flex items-center gap-1.5">
+                                        <span className="w-1.5 h-4 bg-emerald-500 rounded-full inline-block"></span>
+                                        {cleanHeader}
+                                    </h4>
+                                );
+                            }
+
+                            if (/^[-*•]\s+/.test(trimmed)) {
+                                const content = trimmed.replace(/^[-*•]\s+/, '');
+                                return (
+                                    <div key={lIdx} className="flex items-start space-x-2 pl-2 my-0.5">
+                                        <span className="text-emerald-600 dark:text-emerald-400 mt-1 text-xs">•</span>
+                                        <span className="flex-1">{renderBoldText(content)}</span>
+                                    </div>
+                                );
+                            }
+
+                            const numberedMatch = trimmed.match(/^(\d+)\.\s+(.*)/);
+                            if (numberedMatch) {
+                                return (
+                                    <div key={lIdx} className="flex items-start space-x-2 pl-1.5 my-0.5">
+                                        <span className="text-xs font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/60 px-1.5 py-0.5 rounded">
+                                            {numberedMatch[1]}
+                                        </span>
+                                        <span className="flex-1">{renderBoldText(numberedMatch[2])}</span>
+                                    </div>
+                                );
+                            }
+
+                            if (trimmed === '---' || trimmed === '===') {
+                                return <hr key={lIdx} className="my-2 border-gray-200 dark:border-gray-700" />;
+                            }
+
+                            return <p key={lIdx}>{renderBoldText(line)}</p>;
+                        })}
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
+
+const VinculaBot = () => {
+    // Estados del chat
     const [messages, setMessages] = useState([]);
     const [userInput, setUserInput] = useState('');
     const [loading, setLoading] = useState(false);
     const [puntos, setPuntos] = useState(0);
     const [alerta, setAlerta] = useState({});
+    const [copiedId, setCopiedId] = useState(null);
 
-    // Control de límite de solicitudes
+    // Control de límite de solicitudes (Google Gemini: 15 req/min)
+    const MAX_REQUESTS_PER_MINUTE = 12;
+    const ONE_MINUTE_IN_MS = 60 * 1000;
     const [requestCount, setRequestCount] = useState(0);
     const [firstRequestTime, setFirstRequestTime] = useState(0);
     const [canGenerate, setCanGenerate] = useState(true);
     const [timeUntilReset, setTimeUntilReset] = useState(0);
 
-    // Constantes para el límite de solicitudes
-    const MAX_REQUESTS_PER_MINUTE = 6;
-    const ONE_MINUTE_IN_MS = 60 * 1000;
-
-    // Referencias para scroll automático
+    // Referencias
     const messagesEndRef = useRef(null);
     const chatContainerRef = useRef(null);
 
-    // Configuración de Groq API
-    const apiKey = process.env.NEXT_PUBLIC_API_GROQ_KEY;
-
-    // Efecto para scroll automático al final del chat
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
@@ -220,33 +290,33 @@ const ChatBotGroq = () => {
         scrollToBottom();
     }, [messages]);
 
-    // Efecto para inicializar el mensaje de bienvenida en el cliente
+    // Inicializar mensaje de bienvenida
     useEffect(() => {
         if (messages.length === 0) {
             setMessages([
                 {
                     id: 1,
                     type: 'bot',
-                    content: '¡Hola! Soy tu asistente especializado en proyectos de vinculación comunitaria de la UAE. Puedo ayudarte con procedimientos completos de LC y PP, informes finales, certificado de desglose, documentación necesaria, convenios, y orientación paso a paso. ¿En qué puedo ayudarte hoy?',
+                    content: '¡Hola! 👋 Soy **VinculaBot**, tu asistente oficial impulsado por **Google Gemini** para la Vinculación con la Sociedad de la UAE (Carrera de Computación - Milagro).\n\nPuedo orientarte con precisión sobre:\n- 📋 **Labor Comunitaria (LCE)**: Formatos 1 al 11, perfiles e informes.\n- 💼 **Prácticas Preprofesionales (PP)**: Formato 0, Carta de Intención, convenios y formalización.\n- ⏳ **Plazos reglamentarios**: Plazo de 28 días y requisitos para evitar anulación.\n- 🎓 **Certificado de Desglose** para egresados.\n\n¿En qué puedo orientarte hoy?',
                     timestamp: new Date()
                 }
             ]);
         }
     }, []);
 
-    // Efecto para el indicador de carga animado
+    // Indicador animado de puntos
     useEffect(() => {
         const intervalId = setInterval(() => {
             setPuntos((prev) => (prev + 1) % 4);
-        }, 500);
+        }, 400);
         return () => clearInterval(intervalId);
     }, []);
 
-    // Efecto para controlar límite de solicitudes y countdown
+    // Rate limiting local
     useEffect(() => {
         const checkRateLimitStatus = () => {
-            const storedCount = localStorage.getItem('chatGroqRequestCount');
-            const storedTime = localStorage.getItem('chatGroqFirstRequestTime');
+            const storedCount = localStorage.getItem('vinculaBotRequestCount');
+            const storedTime = localStorage.getItem('vinculaBotFirstRequestTime');
             const currentTime = Date.now();
 
             let currentCountFromStorage = storedCount ? parseInt(storedCount, 10) : 0;
@@ -256,8 +326,8 @@ const ChatBotGroq = () => {
                 setRequestCount(0);
                 setFirstRequestTime(0);
                 setTimeUntilReset(0);
-                localStorage.removeItem('chatGroqRequestCount');
-                localStorage.removeItem('chatGroqFirstRequestTime');
+                localStorage.removeItem('vinculaBotRequestCount');
+                localStorage.removeItem('vinculaBotFirstRequestTime');
                 setCanGenerate(true);
             } else {
                 setRequestCount(currentCountFromStorage);
@@ -273,17 +343,20 @@ const ChatBotGroq = () => {
         return () => clearInterval(intervalId);
     }, []);
 
-    // Función para enviar mensaje con Groq API
-    const handleSendMessage = async () => {
-        if (!userInput.trim()) {
-            setAlerta({ msg: 'Por favor, escribe un mensaje', type: 'error' });
-            setTimeout(() => setAlerta({}), 2000);
-            return;
-        }
+    // Copiar texto al portapapeles
+    const handleCopy = (id, text) => {
+        if (!navigator?.clipboard) return;
+        navigator.clipboard.writeText(text);
+        setCopiedId(id);
+        setTimeout(() => setCopiedId(null), 2000);
+    };
 
-        if (!apiKey) {
-            setAlerta({ msg: 'Error: API key de Groq no configurada. Verifica tu archivo .env.local', type: 'error' });
-            setTimeout(() => setAlerta({}), 4000);
+    // Envío del mensaje
+    const handleSendMessage = async () => {
+        const cleanInput = userInput.trim();
+        if (!cleanInput) {
+            setAlerta({ msg: 'Por favor, escribe tu consulta.', type: 'error' });
+            setTimeout(() => setAlerta({}), 2500);
             return;
         }
 
@@ -300,7 +373,7 @@ const ChatBotGroq = () => {
         if (currentCount >= MAX_REQUESTS_PER_MINUTE) {
             const timeLeft = Math.ceil((ONE_MINUTE_IN_MS - (currentTime - currentFirstTime)) / 1000);
             setAlerta({
-                msg: `Límite alcanzado: Espera ${timeLeft} segundos antes de enviar otro mensaje`,
+                msg: `Límite de solicitudes alcanzado. Espera ${timeLeft} segundos antes del siguiente mensaje.`,
                 type: 'error'
             });
             setTimeout(() => setAlerta({}), 4000);
@@ -310,7 +383,7 @@ const ChatBotGroq = () => {
         const userMessage = {
             id: Date.now(),
             type: 'user',
-            content: userInput,
+            content: cleanInput,
             timestamp: new Date()
         };
 
@@ -319,102 +392,101 @@ const ChatBotGroq = () => {
         setLoading(true);
 
         try {
-            // Construir el contexto de la conversación
-            const conversationHistory = messages.slice(-6).map(msg => ({
+            // Historial de conversación formateado
+            const history = messages.slice(-8).map(msg => ({
                 role: msg.type === 'user' ? 'user' : 'assistant',
                 content: msg.content
             }));
 
-            const systemPrompt = `${getKnowledgeContext()}
-
-HISTORIAL DE CONVERSACIÓN:
-${conversationHistory.map(msg => `${msg.role}: ${msg.content}`).join('\n')}
-
-CONSULTA ACTUAL DEL USUARIO: ${userInput}
-
-INSTRUCCIONES:
-- Responde de manera conversacional y útil
-- Si el usuario pregunta sobre procedimientos, explica los pasos detalladamente
-- Si necesita información sobre documentos, especifica los formatos exactos
-- Si solicita orientación sobre convenios, explica las opciones disponibles
-- Mantén el enfoque en procesos oficiales de la UAE
-- Incluye nombres de responsables y lugares de entrega cuando sea relevante
-- Usa un tono amigable y profesional
-
-Respuesta:`;
-
-            // Configuración de la llamada a la API de Groq
-            const payload = {
-                messages: [
-                    {
-                        role: "user",
-                        content: systemPrompt,
-                    },
-                ],
-                model: process.env.NEXT_PUBLIC_GROQ_MODEL || "qwen/qwen3.8-27b",
-                max_tokens: 1000,
-                temperature: 0.7,
-            };
-
-            // Usar fetch para llamar a Groq API
-            const response = await fetch('/api/groq', {
+            // Llamada a la API de Google Gemini
+            let response = await fetch('/api/gemini', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiKey}`,
                 },
-                body: JSON.stringify(payload),
+                body: JSON.stringify({
+                    messages: [
+                        ...history,
+                        { role: 'user', content: cleanInput }
+                    ],
+                    systemInstruction: getKnowledgeContext(),
+                }),
             });
+
+            // Si la API de Gemini devuelve 401 (sin API key)
+            if (response.status === 401) {
+                const errData = await response.json();
+                setAlerta({
+                    msg: errData.details || 'API Key de Google Gemini no configurada en el archivo .env',
+                    type: 'error'
+                });
+                throw new Error('API Key no configurada');
+            }
+
+            // Fallback a /api/groq si la llamada principal a Gemini falla
+            if (!response.ok) {
+                console.warn("Fallo en /api/gemini, intentando fallback con /api/groq...");
+                response = await fetch('/api/groq', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        messages: [
+                            { role: 'system', content: getKnowledgeContext() },
+                            ...history,
+                            { role: 'user', content: cleanInput }
+                        ],
+                    }),
+                });
+            }
 
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(`Error de la API: ${response.status} - ${errorData.error?.message || 'Error desconocido'}`);
+                throw new Error(errorData.error || errorData.details || 'Error desconocido de la API');
             }
 
             const result = await response.json();
+            const replyText = result.text || result.choices?.[0]?.message?.content;
 
-            if (result.choices && result.choices.length > 0 && result.choices[0].message?.content) {
+            if (replyText) {
                 const botMessage = {
                     id: Date.now() + 1,
                     type: 'bot',
-                    content: result.choices[0].message.content.trim(),
-                    timestamp: new Date()
+                    content: replyText.trim(),
+                    timestamp: new Date(),
+                    model: result.model || 'Gemini'
                 };
 
                 setMessages(prev => [...prev, botMessage]);
 
-                // Actualizar contador de solicitudes
+                // Actualizar límite
                 const newCount = currentCount + 1;
                 setRequestCount(newCount);
                 setFirstRequestTime(currentFirstTime);
-                localStorage.setItem('chatGroqRequestCount', newCount.toString());
-                localStorage.setItem('chatGroqFirstRequestTime', currentFirstTime.toString());
+                localStorage.setItem('vinculaBotRequestCount', newCount.toString());
+                localStorage.setItem('vinculaBotFirstRequestTime', currentFirstTime.toString());
 
                 if (newCount >= MAX_REQUESTS_PER_MINUTE) {
                     setCanGenerate(false);
                 }
             } else {
-                throw new Error('No se pudo generar una respuesta');
+                throw new Error('No se recibió texto en la respuesta del asistente.');
             }
 
         } catch (error) {
-            console.error("Error al generar respuesta:", error);
+            console.error("Error en VinculaBot:", error);
             const errorMessage = {
                 id: Date.now() + 1,
                 type: 'bot',
-                content: 'Disculpa, hubo un error al procesar tu mensaje. Por favor, inténtalo de nuevo.',
+                content: '⚠️ No fue posible procesar tu mensaje en este momento. Si eres administrador, asegúrate de haber configurado tu **GEMINI_API_KEY** en el archivo `.env` del servidor y recarga la aplicación.',
                 timestamp: new Date()
             };
             setMessages(prev => [...prev, errorMessage]);
-
-            setAlerta({ msg: 'Error al conectar con el asistente. Inténtalo de nuevo.', type: 'error' });
-            setTimeout(() => setAlerta({}), 3000);
         } finally {
             setLoading(false);
         }
     };
 
-    // Manejar Enter para enviar mensaje
+    // Manejar Enter
     const handleKeyPress = (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
@@ -422,158 +494,247 @@ Respuesta:`;
         }
     };
 
-    // Limpiar chat
+    // Reiniciar chat
     const clearChat = () => {
         setMessages([
             {
                 id: Date.now(),
                 type: 'bot',
-                content: '¡Hola! Soy tu asistente especializado en proyectos de vinculación comunitaria de la UAE. Puedo ayudarte con todo el proceso completo: perfiles, informes, certificado de desglose y más. ¿En qué puedo ayudarte hoy?',
+                content: '¡Conversación reiniciada! 🔄 ¿Qué duda o proceso de vinculación comunitaria deseas consultar?',
                 timestamp: new Date()
             }
         ]);
     };
 
+    // Sugerencias rápidas categorizadas
+    const quickSuggestions = [
+        "📋 Pasos de Inicio de PP",
+        "📑 Formato 0 y Carta de Intención",
+        "⏳ Plazo de 28 días Informe Final",
+        "📝 Pasos de Perfil de Labor Comunitaria",
+        "🎓 Certificado de Desglose Egresados",
+        "🏢 ¿Dónde se entrega la carpeta física?"
+    ];
+
     return (
-        <div className="p-4 max-w-4xl mx-auto w-full">
-            <div className="w-full bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-800">
-                {/* Header del chatbot */}
-                <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-4">
-                    <div className="flex justify-between items-center">
-                        <div>
-                            <h1 className="text-xl font-bold">VinculaBot</h1>
-                            <p className="text-sm opacity-90">Asistente especializado para la Vinculación Computación Milagro</p>
+        <div className="p-3 sm:p-5 max-w-4xl mx-auto w-full">
+            <div className="w-full bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-800 transition-all flex flex-col">
+                
+                {/* Header Premium de VinculaBot */}
+                <div className="bg-gradient-to-r from-emerald-700 via-teal-700 to-blue-700 text-white p-4 sm:p-5">
+                    <div className="flex flex-wrap gap-3 justify-between items-center">
+                        <div className="flex items-center space-x-3">
+                            <div className="w-11 h-11 rounded-xl bg-white/15 backdrop-blur-md flex items-center justify-center text-2xl shadow-inner border border-white/20">
+                                🤖
+                            </div>
+                            <div>
+                                <div className="flex items-center space-x-2">
+                                    <h1 className="text-xl sm:text-2xl font-bold tracking-tight">VinculaBot</h1>
+                                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-400/20 text-emerald-200 border border-emerald-300/30">
+                                        ✨ Gemini AI
+                                    </span>
+                                </div>
+                                <p className="text-xs sm:text-sm text-emerald-100/90 font-medium">
+                                    Asistente Oficial de Vinculación Comunitaria • UAE Milagro
+                                </p>
+                            </div>
                         </div>
-                        <button
-                            onClick={clearChat}
-                            className="bg-white bg-opacity-20 hover:bg-opacity-30 px-3 py-1 rounded-md text-sm transition-colors"
-                        >
-                            Limpiar Chat
-                        </button>
+
+                        <div className="flex items-center space-x-2">
+                            <div className="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-black/20 text-xs text-white/90">
+                                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span>En línea</span>
+                            </div>
+                            <button
+                                onClick={clearChat}
+                                title="Reiniciar chat"
+                                className="bg-white/15 hover:bg-white/25 active:scale-95 text-white px-3 py-1.5 rounded-lg text-xs font-medium transition-all backdrop-blur-sm flex items-center space-x-1 border border-white/20"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                </svg>
+                                <span>Reiniciar</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                {/* Alertas */}
+                {/* Banner de alerta */}
                 {alerta?.msg && (
-                    <div className="p-4">
+                    <div className="p-3 bg-red-50 dark:bg-red-950/40 border-b border-red-200 dark:border-red-900/50">
                         <Alerta msg={alerta.msg} err={alerta.type === 'error'} />
                     </div>
                 )}
 
-                {/* Área de mensajes */}
+                {/* Contenedor de Mensajes */}
                 <div
                     ref={chatContainerRef}
-                    className="h-96 overflow-y-auto p-4 space-y-4 bg-gray-50"
+                    className="h-[430px] sm:h-[480px] overflow-y-auto p-4 sm:p-5 space-y-4 bg-gray-50 dark:bg-gray-950/50"
                 >
-                    {messages.map((message) => (
-                        <div
-                            key={message.id}
-                            className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
-                        >
+                    {messages.map((message) => {
+                        const isUser = message.type === 'user';
+                        return (
                             <div
-                                className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${message.type === 'user'
-                                    ? 'bg-green-600'
-                                    : 'bg-white shadow-md border'
-                                    }`}
+                                key={message.id}
+                                className={`flex items-start gap-2.5 ${isUser ? 'justify-end' : 'justify-start'}`}
                             >
-                                <p className="text-sm whitespace-pre-wrap text-black">{message.content}</p>
-                                <span className="text-xs opacity-70 mt-1 block text-black">
-                                    {message.timestamp.toLocaleTimeString('es-ES', {
-                                        hour: '2-digit',
-                                        minute: '2-digit',
-                                        hour12: false
-                                    })}
-                                </span>
+                                {!isUser && (
+                                    <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center text-sm shadow-sm flex-shrink-0 mt-0.5">
+                                        🤖
+                                    </div>
+                                )}
+
+                                <div
+                                    className={`relative group max-w-[85%] sm:max-w-xl px-4 py-3 rounded-2xl shadow-sm transition-all ${
+                                        isUser
+                                            ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-tr-none'
+                                            : 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-tl-none'
+                                    }`}
+                                >
+                                    {isUser ? (
+                                        <p className="text-sm whitespace-pre-wrap font-medium">{message.content}</p>
+                                    ) : (
+                                        <>
+                                            <FormattedMessage text={message.content} />
+                                            
+                                            {/* Botón copiar en respuestas del bot */}
+                                            <div className="mt-2.5 pt-2 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between text-xs text-gray-400">
+                                                <span className="flex items-center gap-1 text-[11px]">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
+                                                    Gemini 1.5
+                                                </span>
+                                                <button
+                                                    onClick={() => handleCopy(message.id, message.content)}
+                                                    className="inline-flex items-center gap-1 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors px-1.5 py-0.5 rounded"
+                                                    title="Copiar respuesta"
+                                                >
+                                                    {copiedId === message.id ? (
+                                                        <span className="text-emerald-600 dark:text-emerald-400 font-medium">✓ Copiado</span>
+                                                    ) : (
+                                                        <>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                                            </svg>
+                                                            <span>Copiar</span>
+                                                        </>
+                                                    )}
+                                                </button>
+                                            </div>
+                                        </>
+                                    )}
+
+                                    <div className={`text-[10px] mt-1 text-right ${isUser ? 'text-emerald-100/70' : 'text-gray-400'}`}>
+                                        {message.timestamp?.toLocaleTimeString('es-EC', {
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                            hour12: false
+                                        })}
+                                    </div>
+                                </div>
+
+                                {isUser && (
+                                    <div className="w-8 h-8 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 flex items-center justify-center text-sm shadow-sm flex-shrink-0 mt-0.5">
+                                        👤
+                                    </div>
+                                )}
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
 
                     {loading && (
-                        <div className="flex justify-start">
-                            <div className="bg-white shadow-md border px-4 py-2 rounded-lg">
-                                <p className="text-sm text-black">Escribiendo{'.'.repeat(puntos)}</p>
+                        <div className="flex items-center space-x-2.5">
+                            <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-sm shadow-sm">
+                                🤖
+                            </div>
+                            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 px-4 py-3 rounded-2xl rounded-tl-none shadow-sm flex items-center space-x-2">
+                                <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">
+                                    VinculaBot está respondiendo{'.'.repeat(puntos)}
+                                </span>
+                                <div className="flex space-x-1">
+                                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-bounce"></div>
+                                    <div className="w-1.5 h-1.5 bg-teal-500 rounded-full animate-bounce [animation-delay:0.2s]"></div>
+                                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce [animation-delay:0.4s]"></div>
+                                </div>
                             </div>
                         </div>
                     )}
                     <div ref={messagesEndRef} />
                 </div>
 
-                {/* Área de entrada de texto */}
-                <div className="p-4 border-t bg-white">
-                    <div className="flex space-x-2">
-                        <textarea
-                            value={userInput}
-                            onChange={(e) => setUserInput(e.target.value)}
-                            onKeyPress={handleKeyPress}
-                            placeholder="Pregúntame sobre procedimientos LC/PP, informes finales, certificado de desglose, documentos, convenios..."
-                            className="flex-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 resize-none text-black"
-                            rows="2"
-                            disabled={loading || !canGenerate}
-                        />
-                        <button
-                            onClick={handleSendMessage}
-                            disabled={loading || !canGenerate || !userInput.trim()}
-                            className={`px-6 py-2 rounded-md transition-all duration-300 ${!canGenerate
-                                ? 'bg-red-500 text-white cursor-not-allowed opacity-75 hover:bg-red-600'
-                                : loading || !userInput.trim()
-                                    ? 'bg-gray-400 text-white cursor-not-allowed opacity-50'
-                                    : 'bg-green-600 text-white hover:bg-green-700'
-                                }`}
-                        >
-                            {loading ? (
-                                'Enviando...'
-                            ) : !canGenerate ? (
-                                `Espera ${timeUntilReset}s`
-                            ) : (
-                                'Enviar'
-                            )}
-                        </button>
-                    </div>
-
-                    {/* Información del límite */}
-                    <div className="mt-2 text-xs text-center">
-                        {canGenerate ? (
-                            <span className="text-gray-500">
-                                {requestCount}/{MAX_REQUESTS_PER_MINUTE} mensajes enviados este minuto
-                            </span>
-                        ) : (
-                            <div className="space-y-1">
-                                <span className="text-red-600 font-medium">
-                                    ⏳ Límite alcanzado: {requestCount}/{MAX_REQUESTS_PER_MINUTE} mensajes
-                                </span>
-                                <div className="text-orange-600">
-                                    Podrás continuar en {timeUntilReset} segundos
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-
-                {/* Sugerencias rápidas */}
-                <div className="p-4 bg-gray-100 border-t">
-                    <p className="text-sm font-medium text-black mb-2">Sugerencias rápidas:</p>
-                    <div className="flex flex-wrap gap-2">
-                        {[
-                            "¿Cómo hago el informe final de Labor Comunitaria?",
-                            "¿Cuáles son los pasos para el PASO 2 de PP?",
-                            "¿Qué pasa si no termino mi proyecto a tiempo?",
-                            "¿Cómo obtengo el certificado de desglose?",
-                            "¿Qué documentos necesito para el informe de PP?"
-                        ].map((suggestion, index) => (
+                {/* Preguntas frecuentes / Sugerencias rápidas */}
+                <div className="p-3 bg-gray-100 dark:bg-gray-900/70 border-t border-gray-200 dark:border-gray-800">
+                    <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-2 flex items-center gap-1">
+                        <span>💡</span> Consultas frecuentes:
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                        {quickSuggestions.map((suggestion, index) => (
                             <button
                                 key={index}
-                                onClick={() => setUserInput(suggestion)}
-                                className="text-xs bg-white border border-gray-300 px-2 py-1 rounded-md hover:bg-gray-50 transition-colors text-black"
-                                disabled={loading || !canGenerate}
+                                onClick={() => {
+                                    setUserInput(suggestion);
+                                }}
+                                disabled={loading}
+                                className="text-xs bg-white dark:bg-gray-800 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 text-gray-700 dark:text-gray-200 hover:text-emerald-700 dark:hover:text-emerald-300 border border-gray-200 dark:border-gray-700 hover:border-emerald-300 px-2.5 py-1 rounded-lg transition-all active:scale-95 disabled:opacity-50"
                             >
                                 {suggestion}
                             </button>
                         ))}
                     </div>
                 </div>
+
+                {/* Entrada de texto */}
+                <div className="p-3 sm:p-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+                    <div className="flex items-end space-x-2">
+                        <textarea
+                            value={userInput}
+                            onChange={(e) => setUserInput(e.target.value)}
+                            onKeyDown={handleKeyPress}
+                            placeholder="Escribe tu consulta sobre formatos, pasos, fechas, convenios o informe final..."
+                            className="flex-1 p-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:focus:ring-emerald-400 resize-none text-sm text-gray-900 dark:text-white bg-transparent transition-all placeholder:text-gray-400"
+                            rows="2"
+                            disabled={loading}
+                        />
+                        <button
+                            onClick={handleSendMessage}
+                            disabled={loading || !canGenerate || !userInput.trim()}
+                            className={`px-4 sm:px-6 py-3 rounded-xl font-medium text-sm transition-all duration-200 flex items-center space-x-1.5 flex-shrink-0 shadow-sm ${
+                                !canGenerate
+                                    ? 'bg-amber-500 text-white cursor-not-allowed opacity-80'
+                                    : loading || !userInput.trim()
+                                    ? 'bg-gray-200 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed'
+                                    : 'bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white shadow-emerald-500/20'
+                            }`}
+                        >
+                            {loading ? (
+                                <>
+                                    <svg className="animate-spin h-4 w-4 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    <span className="hidden sm:inline">Enviando</span>
+                                </>
+                            ) : !canGenerate ? (
+                                <span>{timeUntilReset}s</span>
+                            ) : (
+                                <>
+                                    <span className="hidden sm:inline">Enviar</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transform rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                    </svg>
+                                </>
+                            )}
+                        </button>
+                    </div>
+
+                    <div className="mt-2 flex items-center justify-between text-[11px] text-gray-400 px-1">
+                        <span>💡 <kbd className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700">Enter</kbd> para enviar • <kbd className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700">Shift+Enter</kbd> salto de línea</span>
+                        <span>{requestCount}/{MAX_REQUESTS_PER_MINUTE} msgs/min</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     );
-}
+};
 
-export default ChatBotGroq;
+export default VinculaBot;
