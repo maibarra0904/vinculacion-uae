@@ -176,13 +176,13 @@ export default function InformePracticasContent() {
               Remitir Documentación por Correo Electrónico y de manera Física
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
-              Escanee toda la documentación generada en los pasos anteriores (incluyendo la carpeta de inicio y el Formato 5 con el sello de recibido del Decanato) y envíela por correo a:
+              Escanee toda la documentación generada en los pasos anteriores (incluyendo la carpeta de inicio y el Formato 5 con el sello de recibido del Decanato) y envíela por correo con el Asunto "Informe Final de Práctica Preprofesional" a:
             </p>
             <div className="inline-block bg-gray-50 dark:bg-gray-800/60 px-3 py-2 rounded-xl border border-gray-100 dark:border-gray-700/60 font-mono text-xs font-semibold text-green-600 dark:text-green-400">
               {CONTACTOS.RESPONSABLE.EMAIL}
             </div>
             <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 font-medium">
-              * El proceso formal de vinculación culmina de manera oficial una vez que toda la documentación ha sido remitida a este correo y entregada la carpeta de manera física al Responsable de Vinculación.
+              * Poner una copia <span className="font-bold">CC</span> al correo del docente tutor. El proceso formal de vinculación culmina de manera oficial una vez que toda la documentación ha sido remitida a este correo y entregada la carpeta de manera física al Responsable de Vinculación.
             </p>
 
             {/* Document Ordering Note */}
