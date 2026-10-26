@@ -124,7 +124,7 @@ export default function InformePracticasContent() {
               Ordenar la Carpeta y Gestionar el Memorando del Responsable (Formato 5)
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              Ordene todos los documentos físicos dentro de una <span className="font-semibold text-gray-900 dark:text-white">carpeta plástica de color AMARILLA</span> y gestione el memorando de entrega de informe del Responsable de Vinculación (Formato 5). Se imprimen dos (2) copias de este formato y, adicionalmente, una (1) copia de la cédula del estudiante.
+              Ordene todos los documentos físicos dentro de una <span className="font-semibold text-gray-900 dark:text-white">carpeta plástica de color AMARILLA</span> y gestione el memorando de entrega de informe del Responsable de Vinculación (Formato 5). Se imprimen dos (2) copias de este formato y, adicionalmente, una (1) copia de la cédula del estudiante y una (1) copia de su historial de matrícula.
             </p>
 
             <div className="bg-indigo-50 dark:bg-indigo-950/20 p-4 rounded-xl border border-indigo-100/80 dark:border-indigo-900/40 text-xs text-indigo-900 dark:text-indigo-300 mb-4 leading-relaxed">
@@ -161,7 +161,7 @@ export default function InformePracticasContent() {
               Entregar Documentación a Secretaría de Decanato
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              Entregue una (1) copia física del Formato 5 junto con una (1) copia de su cédula a la Secretaría de Decanato (encargada: <span className="font-semibold text-gray-800 dark:text-white">{CONTACTOS.SECRETARIA.NOMBRE}</span>). En la otra copia original del Formato 5, solicite que le coloquen el respectivo sello y firma de <span className="font-semibold text-green-600 dark:text-green-400">recibido</span>.
+              Entregue una (1) copia física del Formato 5 junto con una (1) copia de su cédula y (1) copia de su historial de matrícula a la Secretaría de Decanato (encargada: <span className="font-semibold text-gray-800 dark:text-white">{CONTACTOS.SECRETARIA.NOMBRE}</span>). En la otra copia original del Formato 5, solicite que le coloquen el respectivo sello y firma de <span className="font-semibold text-green-600 dark:text-green-400">recibido</span>.
             </p>
           </div>
         </div>
