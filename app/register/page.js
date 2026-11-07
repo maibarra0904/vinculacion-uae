@@ -1,12 +1,12 @@
 import Layout from '@/components/ui/Layout'
-import Register from '@/components/ui/Register'
+import Login from '@/components/ui/Login'
 import React from 'react'
 
 const RegisterPage = () => {
 
   return (
         <Layout>
-            <Register />
+            <Login />
         </Layout>
     
   )

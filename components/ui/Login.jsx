@@ -5,15 +5,12 @@ import { useMyContext } from "../context/myContext"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import Alerta from "./Alerta"
-import Link from "next/link"
-import { enterKey } from "@/utils/enterKey"
 
 const Login = () => {
-    const [email, guardaEmail] = useState('')
-    const [password, guardaPassword] = useState('')
     const { auth, setAuth } = useMyContext()
     const [alerta, setAlerta] = useState('')
     const [loading, setLoading] = useState(false)
+    const [statusText, setStatusText] = useState('Verificando cuenta con Google')
     const [puntos, setPuntos] = useState(0)
     const [googleWidth, setGoogleWidth] = useState('320')
 
@@ -45,153 +42,90 @@ const Login = () => {
         }
     }, [auth]);
 
-    const handleChangeEmail = (e) => guardaEmail(e.target.value.trim())
-    const handleChangePassword = (e) => guardaPassword(e.target.value.trim())
-
     const handleGoogleSuccess = async (response) => {
         setLoading(true);
+        setAlerta({});
+        setStatusText('Verificando cuenta con Google');
         try {
             const { credential } = response;
             const backendUrl = process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND || '/api/applications';
             const { data } = await axios.post(`${backendUrl}/auth/google`, { idToken: credential });
 
             if (data?.msg) {
-                setAlerta(data);
-                setTimeout(() => setAlerta({}), 2000);
+                setAlerta({ msg: data.msg, err: true });
+                setTimeout(() => setAlerta({}), 3000);
+                setLoading(false);
                 return;
             }
 
             if (data?.data) {
-                localStorage.setItem('usuario', JSON.stringify(data.data));
-                setAuth(data.data);
+                if (data.isNewUser) {
+                    setStatusText('Registrando usuario nuevo e iniciando sesión');
+                    setAlerta({ msg: '¡Cuenta registrada exitosamente! Iniciando sesión...', err: false });
+                    setTimeout(() => {
+                        localStorage.setItem('usuario', JSON.stringify(data.data));
+                        setAuth(data.data);
+                    }, 900);
+                } else {
+                    setStatusText('Iniciando sesión');
+                    localStorage.setItem('usuario', JSON.stringify(data.data));
+                    setAuth(data.data);
+                }
             } else {
-                setAlerta({ msg: 'Hubo un error del servidor' });
+                setAlerta({ msg: 'Hubo un error del servidor', err: true });
+                setLoading(false);
             }
         } catch (error) {
             const errorMsg = error.response?.data?.msg || error.response?.data?.error || error.message || 'Error al conectar con el asistente de Google';
-            setAlerta({ msg: errorMsg });
+            setAlerta({ msg: errorMsg, err: true });
             console.error("LOGIN_ERROR:", error);
-        } finally {
             setLoading(false);
         }
     };
 
-    const handleSubmit = async () => {
-        setLoading(true)
-        const info = { email, password }
-
-        try {
-            const backendUrl = process.env.NEXT_PUBLIC_URL_OFICIO_BACKEND || '/api/applications';
-            const { data } = await axios.post(`${backendUrl}/auth/login`, info)
-            
-            if (data?.msg) {
-                setAlerta(data)
-                setTimeout(() => setAlerta({}), 2000)
-                setLoading(false)
-                return
-            }
-
-            if (data?.data) {
-                localStorage.setItem('usuario', JSON.stringify(data.data))
-                setAuth(data.data)
-            } else {
-                setAlerta({ msg: 'Hubo un error del servidor' })
-            }
-        } catch (error) {
-            setAlerta({ msg: 'Error al conectar con el servidor' })
-            console.error(error)
-        } finally {
-            setLoading(false)
-        }
-    }
-
     return (
         <div className="min-h-[85vh] flex flex-col justify-center items-center px-4 bg-slate-50 dark:bg-gray-950">
             <div className="w-full max-w-md bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xl shadow-gray-100/50 dark:shadow-none">
-                <div className="flex flex-col items-center mb-6">
-                    <h1 className="text-2xl font-black text-gray-800 dark:text-gray-100">Bienvenido de nuevo</h1>
-                    <p className="text-sm text-gray-400 mt-1">Ingresa tus credenciales para continuar</p>
-                </div>
-
-                {alerta?.msg && <Alerta msg={alerta?.msg} />}
-
-                <form className="space-y-4">
-                    <div>
-                        <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider" htmlFor="email">
-                            Correo Electrónico
-                        </label>
-                        <input
-                            id="email"
-                            type="email"
-                            className="mt-1 text-gray-800 dark:text-gray-200 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all placeholder:text-gray-400 text-sm"
-                            placeholder="nombre@ejemplo.com"
-                            name="email"
-                            value={email}
-                            onChange={handleChangeEmail}
-                            onKeyDown={(event) => enterKey(event, "loginButton")}
-                        />
+                <div className="flex flex-col items-center text-center mb-6">
+                    <div className="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-100 dark:border-indigo-900/60 flex items-center justify-center mb-4 text-indigo-600 dark:text-indigo-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
+                        </svg>
                     </div>
-
-                    <div>
-                        <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider" htmlFor="password">
-                            Contraseña
-                        </label>
-                        <input
-                            id="password"
-                            type="password"
-                            className="mt-1 text-gray-800 dark:text-gray-200 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all placeholder:text-gray-400 text-sm"
-                            placeholder="••••••••"
-                            name="password"
-                            value={password}
-                            onChange={handleChangePassword}
-                            maxLength={30}
-                            onKeyDown={(event) => enterKey(event, "loginButton")}
-                        />
-                    </div>
-
-                    <button
-                        type="button"
-                        id="loginButton"
-                        disabled={loading}
-                        className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-600/10 hover:shadow-indigo-600/20 active:scale-[0.98] transition-all duration-150 mt-2 text-sm disabled:opacity-70 disabled:pointer-events-none"
-                        onClick={handleSubmit}
-                    >
-                        {loading ? `Validando${'.'.repeat(puntos)}` : 'Ingresar'}
-                    </button>
-                </form>
-
-                <div className="flex items-center my-4 space-x-2">
-                    <div className="flex-1 border-t border-gray-100 dark:border-gray-800"></div>
-                    <span className="text-gray-400 text-[11px] uppercase tracking-wider">O inicia con</span>
-                    <div className="flex-1 border-t border-gray-100 dark:border-gray-800"></div>
-                </div>
-
-                <div className="flex justify-center mb-4">
-                    <GoogleLogin
-                        type='standard'
-                        theme='outline'
-                        width={googleWidth}
-                        shape='pill'
-                        onSuccess={handleGoogleSuccess}
-                        onError={() => {
-                            setAlerta({ msg: 'Error de autenticación con Google' });
-                        }}
-                    />
-                </div>
-
-                <div className="border-t border-gray-100 dark:border-gray-800 my-6"></div>
-
-                <div className="space-y-3 text-center text-sm">
-                    <p className="text-gray-600 dark:text-gray-400">
-                        ¿No tienes cuenta?{" "}
-                        <Link href="/register" className="text-indigo-600 dark:text-indigo-400 font-bold hover:underline">
-                            Regístrate
-                        </Link>
+                    <h1 className="text-2xl font-black text-gray-800 dark:text-gray-100">Bienvenido</h1>
+                    <p className="text-sm text-gray-400 mt-1">
+                        Continúa con tu cuenta de Google para acceder a la plataforma
                     </p>
-                    <p>
-                        <Link href="/actualizar" className="text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 hover:underline text-xs">
-                            ¿Olvidaste tu contraseña? Restáurala
-                        </Link>
+                </div>
+
+                {alerta?.msg && <Alerta msg={alerta?.msg} err={alerta?.err} />}
+
+                <div className="flex flex-col items-center justify-center my-6 min-h-[56px]">
+                    {loading ? (
+                        <div className="flex items-center gap-3 py-3 px-5 rounded-xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/50 text-indigo-600 dark:text-indigo-300 text-sm font-semibold">
+                            <svg className="animate-spin h-4 w-4 text-indigo-600 dark:text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                            </svg>
+                            <span>{`${statusText}${'.'.repeat(puntos)}`}</span>
+                        </div>
+                    ) : (
+                        <GoogleLogin
+                            type='standard'
+                            theme='outline'
+                            width={googleWidth}
+                            shape='pill'
+                            onSuccess={handleGoogleSuccess}
+                            onError={() => {
+                                setAlerta({ msg: 'Error de autenticación con Google', err: true });
+                            }}
+                        />
+                    )}
+                </div>
+
+                <div className="border-t border-gray-100 dark:border-gray-800 pt-5 mt-2">
+                    <p className="text-xs text-center text-gray-400 dark:text-gray-500 leading-relaxed">
+                        Si es tu primera vez ingresando, tu cuenta será registrada automáticamente con tus datos de Google antes de iniciar sesión.
                     </p>
                 </div>
             </div>
