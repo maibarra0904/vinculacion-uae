@@ -6,7 +6,7 @@ export default function ConveniosContent() {
       <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white border-b pb-4 mb-6">
         Información sobre Convenios
       </h1>
-      
+
       <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
         Un convenio, es un acuerdo firmado entre partes interesadas (en este caso la Universidad Agraria del Ecuador y una empresa u organización beneficiaria) que habilita poder realizar una actividad de vinculación. Para el caso de una labor comunitaria estudiantil es un <span className="font-bold text-gray-800 dark:text-gray-100">requisito</span> contar con un convenio aprobado con la empresa u organización donde se realizará la actividad de vinculación, para el caso de una practica preprofesional se puede optar por esta opcion sin ser un requisito explicito. Sea que vaya a realizar una labor comunitaria o practica preprofesional tiene dos opciones:
       </p>
@@ -19,20 +19,20 @@ export default function ConveniosContent() {
           </h2>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
             Puede optarse por tomar un convenio existente para lo cuál deberá buscar en la{" "}
-            <Enlace 
-              url="https://uagrariaec-my.sharepoint.com/:x:/g/personal/mibarra_uagraria_edu_ec/EUuzCYrXHr1Ngri1up2M7VUBUCJAg1ab6s9-9M0WXlFx_A?e=Y68wB0" 
-              text="Matriz de Convenios de Labores Comunitarias" 
-              inline={true} 
-              external={true} 
-              nuevo={true} 
+            <Enlace
+              url="https://uagrariaec-my.sharepoint.com/:x:/g/personal/mibarra_uagraria_edu_ec/IQBFrmK9cv6qT6nLu_j2li2NAWY5hbaCoDwwFdU8SwiAyZc?e=ZNoZvt"
+              text="Matriz de Convenios de Labores Comunitarias"
+              inline={true}
+              external={true}
+              nuevo={true}
             />{" "}
             o{" "}
-            <Enlace 
-              url="https://uagrariaec-my.sharepoint.com/:x:/g/personal/mibarra_uagraria_edu_ec/EYYHBkf11UdHpCsO9GIBdq0Bj7HQZFvIMmd42tsbpfZ50g?e=HvYauI" 
-              text="Matriz de Convenios de Prácticas Preprofesionales" 
-              inline={true} 
-              external={true} 
-              nuevo={true} 
+            <Enlace
+              url="https://uagrariaec-my.sharepoint.com/:x:/g/personal/mibarra_uagraria_edu_ec/EYYHBkf11UdHpCsO9GIBdq0Bj7HQZFvIMmd42tsbpfZ50g?e=HvYauI"
+              text="Matriz de Convenios de Prácticas Preprofesionales"
+              inline={true}
+              external={true}
+              nuevo={true}
             />{" "}
             dependiendo del tipo de actividad a realizar, siempre que el convenio seleccionado se encuentre vigente.
           </p>
@@ -60,20 +60,20 @@ export default function ConveniosContent() {
           </h2>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
             El estudiante también puede optar por gestionar la aprobación de un nuevo convenio en caso que ninguno de los convenios disponibles y vigentes le resulte aplicable. En este caso deberá llenar el{" "}
-            <Enlace 
-              url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EXFYQ6NZzB5AlDtmHC1KH4gBPdbAV3b3Wj0mVzfrvnh3OA?e=uCobGQ" 
-              text="Formato de nuevo convenio de labor comunitaria" 
-              inline={true} 
-              external={true} 
-              nuevo={true} 
+            <Enlace
+              url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EXFYQ6NZzB5AlDtmHC1KH4gBPdbAV3b3Wj0mVzfrvnh3OA?e=uCobGQ"
+              text="Formato de nuevo convenio de labor comunitaria"
+              inline={true}
+              external={true}
+              nuevo={true}
             />{" "}
             o{" "}
-            <Enlace 
-              url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EewdRI85625LjGp0Meaby2IBR4otipWvVenA5SM4JnAJ8A?e=Bdaym5" 
-              text="Formato de nuevo convenio de práctica preprofesional" 
-              inline={true} 
-              external={true} 
-              nuevo={true} 
+            <Enlace
+              url="https://uagrariaec-my.sharepoint.com/:w:/g/personal/mibarra_uagraria_edu_ec/EewdRI85625LjGp0Meaby2IBR4otipWvVenA5SM4JnAJ8A?e=Bdaym5"
+              text="Formato de nuevo convenio de práctica preprofesional"
+              inline={true}
+              external={true}
+              nuevo={true}
             />{" "}
             según corresponda. El mismo debe ser <span className="font-semibold text-gray-800 dark:text-white">firmado por el representante legal de la empresa</span> y se adjuntarán su copia de cédula y RUC de la empresa.
           </p>
@@ -90,7 +90,7 @@ export default function ConveniosContent() {
           </div>
 
           <p className="text-xs text-gray-500 dark:text-gray-500 mt-4 text-center">
-             En ambos casos el estudiante debe tomar un recibido de la instancia donde entrega la documentación para hacer un seguimiento a posterior.
+            En ambos casos el estudiante debe tomar un recibido de la instancia donde entrega la documentación para hacer un seguimiento a posterior.
           </p>
         </div>
       </div>
